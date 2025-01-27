@@ -1,3 +1,4 @@
+
 % Options for packages loaded elsewhere
 % chktex-disable
 \PassOptionsToPackage{unicode}{hyperref}
@@ -119,119 +120,85 @@
 	\end{minipage}}\\
 }
 
+
 \begin{document}
 \begin{center}
 	\huge{\textbf{Minh Vu}}
 
-	\href{mailto:mtvu@umass.edu}{\ul{mtvu@umass.edu}} \textbar{} +1 (413) 275 6387
+	\href{mailto:{mtvu@umass.edu}}{\ul{mtvu@umass.edu}} \textbar{} +1(413) 275 6387
 	\textbar{}
-	\href{http://linkedin.com/in/minhvu02}{\ul{linkedin.com/in/minhvu02}}
-	\textbar{} \href{https://github.com/Tristesse02}{\ul{github.com/Tristesse02}}
+	\href{http://linkedin.com/in/minhvu02}{\ul{linkedin.com/in/minhvu02}} 
+	\textbar{} 
+	\href{https://github.com/Tristesse02}{\ul{github.com/Tristesse02}}
 \end{center}
 
-\vspace{-1em} % Reduce vertical spacing here
+\vspace{-1em} 
 
 \begin{longtable}
 	[]{@{} >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6336}} >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3664}}@{}}
 	\noalign{} \endhead \noalign{} \endlastfoot
 
-	% Section Title with larger text
 	\sectionTitle{Work Experiences}
-	\contentEntryWorkExp{Avocademy (YC W22)}{Jun 2024 -- Aug 2024}%
-	{Software Engineer Intern}{Remote, US}{%
+	
+	\contentEntryWorkExp{ Avocademy (YC W22) }{ Jun 2024 -- Aug 2024 }{ Software Engineer Intern }{ Remote, US }{ 
 		\item Leveraged OpenAI API to engineer a job classification system delivering tailored recommendations, boosting job relevance by 50\%
 		\item Utilized React and SpringBoot to develop an auto-tailored job application using serverless and microservice architecture
 		\item Streamlined the extraction of 750+ daily job postings and automated applications using Fire Crawler, PuppeteerJS, and Playwright
 		\item Managed 70,000+ database entries to efficiently monitor job postings, user data, and platform activity using MongoDB and Supabase
-		\item Set up Github CI/CD pipeline for A/B and E2E testing and deployment on Vercel, increasing customer satisfaction by 30\%
-	}
-
-	\contentEntryWorkExp{FPT Software}{Jun 2023 -- Aug 2023}%
-	{Software Engineer Intern}{Hanoi, Vietnam}{%
+		\item Set up Github CI/CD pipeline for A/B and E2E testing and deployment on Vercel, increasing customer satisfaction by 30\% }
+	
+	\contentEntryWorkExp{ FPT Software }{ Jun 2023 -- Aug 2023 }{ Software Engineer Intern }{ Hanoi, Vietnam }{ 
 		\item Led an AngularJS-TypeScript website for managing prescription, serving Japan's Pharmacists Association with 500-100 daily visits
 		\item Refined the company's JavaScript SDK, enabling functionality and seamless integration for over 350+ UIs and modals
 		\item Designed Observer pattern to implement two-way data binding, synchronizing 20,000 data entries between UI and data store
-		\item Managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method
-	}
-
-	\contentEntryWorkExp{Viettel AI}{Jun 2024 -- Aug 2024}%
-	{Machine Learning Engineer Intern}{Hanoi, Vietnam}{%
+		\item Managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method }
+	
+	\contentEntryWorkExp{ Viettel AI }{ Jun 2024 -- Aug 2024 }{ Machine Learning Engineer Intern }{ Hanoi, Vietnam }{ 
 		\item Deployed Microsoft's GraphRAG data retrieval into sociological documentation, achieving 30\% improvement in F1 score
-		\item Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25\%
-	}
-
-	\contentEntryWorkExp{University of Massachusett Amherst}{Sep 2022 -- Current}%
-	{Teaching Assistant}{Amherst, MA}{%
+		\item Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25\% }
+	
+	\contentEntryWorkExp{ University of Massachusett Amherst }{ Sep 2022 -- Current }{ Teaching Assistant }{ Amherst, MA }{ 
 		\item Functioned as a teaching assistant for 1,500+ students across 6 consecutive semesters
-		\item Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class
-	}
+		\item Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class }
+	
+	
 
 	\sectionTitle{Personal Projects}
+	
+	\contentEntryPersonalProj{ CloudCueAI }{ ['AWS Lambda', 'API Gateway', 'S3', 'Transcribe', 'CloudWatch', 'SAM Cli', 'ExpressJS', 'Flask'] }{ 
+		\item Leveraged AWS Lambda \& Transcribe to build live word prediction service for mock interview, boosting screening success by 50\%
+		\item Integrated AWS S3 for secure transcript storage and API Gateway to enable low-latency, cutting transcription delays by 30\%
+		\item Fine-tuned Facebook OPT-1.3b for word suggestions and visualized results via React-D3-Cloud, boosting users engagement by 40\%
+		\item Engineered a WebSocket system for live audio streaming and real-time transcription with sub-200ms latency }
+	
+	\contentEntryPersonalProj{ Beatcode }{ ['FastAPI', 'RestfulAPI', 'Docker', 'WebSocket', 'PostgreSQL', 'PassLib', 'SQLAlchemy'] }{ 
+		\item Utilized Python and FastAPI to design a scalable multi-client LeetCode game platform, achieving 500+ players during beta
+		\item Optimized Docker container for code judging and WebSocket for reliable gameplay connections, supporting 1,000+ concurrent users
+		\item Engineered PostgreSQL to track player performance metrics and integrated OpenAI to analyze runtime complexity and provide feedback, increasing code acceptance rates by 18\%
+		\item Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40\% }
+	
+	\contentEntryPersonalProj{ OhEss }{ ['Google Lighthouse', 'React', 'Linux', 'Kolibri', 'NextJS', 'Vercel'] }{ 
+		\item Engineered a web-based Windows 10 operating system replica with TypeScript and React, achieving a 100\% Google Lighthouse SEO score for seamless UI interaction
+		\item Integrated Kolibri and Linux programs into a NextJS interface on Vercel, enabling in-browser files hosting for 200+ users }
+	
+	\contentEntryPersonalProj{ Sculpt AI }{ ['Tensorflow', 'OpenCV', 'SAM model', 'MediaPipe'] }{ 
+		\item Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30\%
+		\item Implement body pose tracking and measurement with MediaPipe, achieving a prototype success rate of 85\% during the hackathon }
+	
 
-	\contentEntryPersonalProj{CloudCueAI}{AWS Lambda, API Gateway, S3, Transcribe, CloudWatch, SAM Cli, ExpressJS, Flask}{%
-		\item Leveraged AWS Lambda \& Transcribe to build live word prediction service
-		for mock interview, boosting screening success by 50\%
-
-		\item Integrated AWS S3 for secure transcript storage and API Gateway to
-		enable low-latency, cutting transcription delays by 30\%
-
-		\item Fine-tuned Facebook OPT-1.3b for word suggestions and visualized
-		results via React-D3-Cloud, boosting users engagement by 40\%
-
-		\item Engineered a WebSocket system for live audio streaming and real-time
-		transcription with sub-200ms latency
-	}
-
-	\contentEntryPersonalProj{Beatcode}{FastAPI, RestfulAPI, Docker, WebSocket, PostgreSQL, PassLib, SQLAlchemy}{%
-		\item Utilized Python and FastAPI to design a scalable multi-client LeetCode
-		game platform, achieving 500+ players during beta
-
-		\item Optimized Docker container for code judging and WebSocket for reliable
-		gameplay connections, supporting 1,000+ concurrent users
-
-		\item Engineered PostgreSQL to track player performance metrics and integrated
-		OpenAI to analyze runtime complexity and provide feedback, increasing
-		code acceptance rates by 18\%
-
-		\item Built OAuth, session management with Passlib, and CORS support client-server
-		interaction, improving security compliance by 40\%
-	}
-
-	\contentEntryPersonalProj{OhEss}{Google Lighthouse, React, Linux, Kolibri, NextJS, Vercel}{%
-		\item Engineered a web-based Windows 10 operating system replica with TypeScript
-		and React, achieving a 100\% Google Lighthouse SEO score for seamless UI
-		interaction
-
-		\item Integrated Kolibri and Linux programs into a NextJS interface on Vercel,
-		enabling in-browser files hosting for 200+ users
-	}
-
-	\contentEntryPersonalProj{Sculpt AI}{Tensorflow, OpenCV, SAM model, MediaPipe}{%
-		\item Pioneered 3D solution for Metaverse platforms, using AI-based
-		image cropping and Blender modeling, cutting manual effort by 30\%
-
-		\item Implement body pose tracking and measurement with MediaPipe,
-		achieving a prototype success rate of 85\% during the hackathon
-	}
 
 	\sectionTitle{Technical Skills}
+	\contentEntryTechnicalSkills{ 
+		\item Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++, C\#, Go, Rust, Swift, Kotlin
+		\item Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS, AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB }
 
-	\contentEntryTechnicalSkills{%
-		\item Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++,
-		C\#, Go, Rust, Swift, Kotlin
-
-		\item Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS,
-		AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB
-	}
 
 	\sectionTitle{Education}
+	
+	\contentEntryWorkExp{ University of Massachusetts Amherst }{ May 2026 }{ Master of Science in Computer Science - GPA: 3.9 }{ Amherst, MA }{ 
+		\item Algorithm for Data Science, Discrete Mathematics, Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra, Programming Methodology, Machine Learning, Operating System, Computer Architecture }
 
-	\contentEntryWorkExp{UMass Amherst}{May 2026}%
-	{Master of Computer Science and Mathematics - GPA: 3.9}{Amherst, MA}{%
-		\item Courses: Algorithm for Data Science, Discrete Mathematics,
-		Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra,
-		Programming Methodology, Machine Learning, Operating System, Computer Architecture
-	}
+
 \end{longtable}
 \end{document}
 % chktex-enable
