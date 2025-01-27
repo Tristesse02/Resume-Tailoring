@@ -77,13 +77,14 @@
 % command for bullet points formatting
 
 \newcommand{\sectionTitle}[1]{
-    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large #1} }
-    \\ \noalign{\vspace{0em}}
+    \noalign{\vspace{0.6em}}
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large #1} }\\ 
+    \noalign{\vspace{0em}}
     \noalign{\hrule height 0.5pt}
-    \noalign{\vspace{0.4em}}
 }
 
 \newcommand{\contentEntryWorkExp}[5]{% 
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
     \textbf{#1} & \textbf{\small #2} \\ \small
     #3 & \small #4 \\ % Add job label and location
     \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
@@ -96,6 +97,7 @@
 }
 
 \newcommand{\contentEntryPersonalProj}[3]{
+  \noalign{\vspace{0.4em}} % Add some vertical space between entries
   \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
 	\textbf{#1 \textbar{}} \emph{#2}} \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
 	\begin{minipage}[t]{\linewidth}
@@ -107,6 +109,7 @@
 }
 
 \newcommand{\contentEntryTechnicalSkills}[1]{
+  \noalign{\vspace{0.4em}} % Add some vertical space between entries
   \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
 	\begin{minipage}[t]{\linewidth}
 		\raggedright
@@ -131,7 +134,7 @@
 	\textbar{} \href{https://github.com/Tristesse02}{\ul{github.com/Tristesse02}}
 \end{center}
 
-\vspace{-0.5em} % Reduce vertical spacing here
+\vspace{-1em} % Reduce vertical spacing here
 
 \begin{longtable}
 	[]{@{} >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6336}} >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3664}}@{}}
@@ -148,8 +151,6 @@
 		\item Set up Github CI/CD pipeline for A/B and E2E testing and deployment on Vercel, increasing customer satisfaction by 30\%
 	}
 
-	\noalign{\vspace{0.4em}} % Add some vertical space between entries
-
 	\contentEntryWorkExp{FPT Software}{Jun 2023 -- Aug 2023}%
 	{Software Engineer Intern}{Hanoi, Vietnam}{%
 		\item Led an AngularJS-TypeScript website for managing prescription, serving Japan's Pharmacists Association with 500-100 daily visits
@@ -158,23 +159,17 @@
 		\item Managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method
 	}
 
-	\noalign{\vspace{0.4em}} % Add some vertical space between entries
-
 	\contentEntryWorkExp{Viettel AI}{Jun 2024 -- Aug 2024}%
 	{Machine Learning Engineer Intern}{Hanoi, Vietnam}{%
 		\item Deployed Microsoft's GraphRAG data retrieval into sociological documentation, achieving 30\% improvement in F1 score
 		\item Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25\%
 	}
 
-	\noalign{\vspace{0.4em}} % Add some vertical space between entries
-
 	\contentEntryWorkExp{University of Massachusett Amherst}{Sep 2022 -- Current}%
 	{Teaching Assistant}{Amherst, MA}{%
 		\item Functioned as a teaching assistant for 1,500+ students across 6 consecutive semesters
 		\item Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class
 	}
-
-	\noalign{\vspace{0.6em}} % Add some vertical space between entries
 
 	\sectionTitle{Personal Projects}
 
@@ -192,8 +187,6 @@
 		transcription with sub-200ms latency
 	}
 
-	\noalign{\vspace{0.4em}}
-
 	\contentEntryPersonalProj{Beatcode}{FastAPI, RestfulAPI, Docker, WebSocket, PostgreSQL, PassLib, SQLAlchemy}{%
 		\item Utilized Python and FastAPI to design a scalable multi-client LeetCode
 		game platform, achieving 500+ players during beta
@@ -209,8 +202,6 @@
 		interaction, improving security compliance by 40\%
 	}
 
-	\noalign{\vspace{0.4em}}
-
 	\contentEntryPersonalProj{OhEss}{Google Lighthouse, React, Linux, Kolibri, NextJS, Vercel}{%
 		\item Engineered a web-based Windows 10 operating system replica with TypeScript
 		and React, achieving a 100\% Google Lighthouse SEO score for seamless UI
@@ -220,8 +211,6 @@
 		enabling in-browser files hosting for 200+ users
 	}
 
-	\noalign{\vspace{0.4em}}
-
 	\contentEntryPersonalProj{Sculpt AI}{Tensorflow, OpenCV, SAM model, MediaPipe}{%
 		\item Pioneered 3D solution for Metaverse platforms, using AI-based
 		image cropping and Blender modeling, cutting manual effort by 30\%
@@ -229,8 +218,6 @@
 		\item Implement body pose tracking and measurement with MediaPipe,
 		achieving a prototype success rate of 85\% during the hackathon
 	}
-
-	\noalign{\vspace{0.6em}}
 
 	\sectionTitle{Technical Skills}
 
@@ -241,8 +228,6 @@
 		\item Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS,
 		AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB
 	}
-
-	\noalign{\vspace{0.6em}}
 
 	\sectionTitle{Education}
 
