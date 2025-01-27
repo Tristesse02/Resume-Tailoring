@@ -1,0 +1,39 @@
+# Virtual environment
+venvResumeTailor/
+configs/
+
+# Environment variables
+.env
+
+# LaTeX temporary files
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Compiled LaTeX output
+*.pdf
+
+# Backup or temporary files
+*.bak
+*.tmp
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Tools and debugging
+.idea/
+.vscode/
+*.test
+
+# Custom tailored files
+testGGD.py

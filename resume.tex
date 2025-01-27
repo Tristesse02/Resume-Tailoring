@@ -1,0 +1,306 @@
+% Options for packages loaded elsewhere
+% chktex-disable
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[]{article}
+\pagestyle{empty}
+\usepackage{xcolor}
+\usepackage{amsmath, amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+\usepackage{unicode-math} % this also loads fontspec
+\defaultfontfeatures{Scale=MatchLowercase}
+\defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+% xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+\usepackage[]{microtype} \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip} }{% else
+\setlength{\parindent}{0pt} \setlength{\parskip}{6pt plus 2pt minus 1pt}} }{% if KOMA class
+\KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{longtable, booktabs, array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\ifLuaTeX
+\usepackage{luacolor}
+\usepackage[soul]{lua-ul}
+\else
+\usepackage{soul}
+\fi
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{hidelinks, pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+% \usepackage{mathptmx} % Times New Roman
+%% If we really need more space, just commend out this and use this font instead, super effective
+%% Space adjustment Area (Horizontal)
+
+\usepackage{etoolbox}
+\usepackage[top=0.4in, bottom=0.75in, left=0.5in, right=0.5in]{
+  geometry
+} %% Space adjustment Area (Vertical)
+\usepackage{enumitem}
+\AtBeginEnvironment{itemize}{\small}
+\setlist[itemize]{left=0em, itemsep=0.1em, topsep=0em, parsep=0em}
+\renewcommand{\labelitemi}{\scriptsize$\bullet$}
+
+\begin{document}
+  \begin{center}
+    \huge{\textbf{Minh Vu}}
+
+    \href{mailto:mtvu@umass.edu}{\ul{mtvu@umass.edu}} \textbar{} +1 (413) 275 6387
+    \textbar{}
+    \href{http://linkedin.com/in/minhvu02}{\ul{linkedin.com/in/minhvu02}}
+    \textbar{} \href{https://github.com/Tristesse02}{\ul{github.com/Tristesse02}}
+  \end{center}
+
+  \vspace{-0.5em} % Reduce vertical spacing here
+
+  \begin{longtable}
+    []{@{} >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6336}} >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3664}}@{}}
+    \noalign{} \endhead \noalign{} \endlastfoot
+
+    % Section Title with larger text
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large
+    Work Experiences} }
+    \\ \noalign{\vspace{0em}} % Add some vertical space below the title
+    \noalign{\hrule height 0.5pt} % Add a horizontal line below the section title
+    \noalign{\vspace{0.4em}}
+
+    % Entry: Avocademy
+    \textbf{Avocademy (YC W22)} & \textbf{\small Jun 2024 -- Aug 2024} \\ \small
+    Software Engineer Intern & \small Remote, US \\
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Leveraged OpenAI API to engineer a job classification system delivering
+          tailored recommendations, boosting job relevance by 50\%
+
+        \item Utilized React and SpringBoot to develop an auto tailored job application
+          using serverless and microservice architecture
+
+        \item Streamlined the extraction of 750+ daily job postings and
+          automated applications using Fire Crawler, PuppeteerJS, and Playwright
+
+        \item Managed 70,000+ database entries to efficiently monitor job
+          posting, user data, and platform activity using MongoDB and Supabase
+
+        \item Set up Github CI/CD pipeline for A/B and E2E testing and deployment
+          on Vercel, increasing customer satisfaction by 30\%
+      \end{itemize}
+    \end{minipage}}
+    \\
+
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
+    \textbf{FPT Software} & \textbf{\small Jun 2023 -- Aug 2023} \\ \small Software
+    Engineer Intern & \small Hanoi, Vietnam \\
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Led an AngularJS-TypeScript website for managing prescription,
+          serving Japan's Pharmacists Association with 500-100 daily visits
+
+        \item Refined the company\textquotesingle s JavaScript SDK, enabling functionality
+          and seamless integration for over 350+ UIs and modals
+
+        \item Designed Observer pattern to implement two-way data binding,
+          synchronizing 20,000 data entries between UI and data store
+
+        \item Managed tasks and schedules in fast-paced environment, improving
+          communication and collaboration using Agile-Scrum method
+      \end{itemize}
+    \end{minipage}}\\
+
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
+    \textbf{Viettel AI} & \textbf{\small Jun 2024 -- Aug 2024} \\ \small Machine
+    Learning Engineer Intern & \small Hanoi, Vietnam \\
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Deployed Microsoft's GraphRAG data retrieval into sociological documentation,
+          achieving 30\% improvement in F1 score
+
+        \item Enhanced employee property search using Solr for text and SBERT for
+          semantic search, boosting mean average precision by 25\%
+      \end{itemize}
+    \end{minipage}}
+    \\
+
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
+    \textbf{University of Massachusett Amherst} & \textbf{\small Sep 2022 -- Current}
+    \\ \small Teaching Assistant & \small Amherst, MA \\
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Functioned as a teaching assistant for 1,500+ students across 6
+          consecutive semesters
+
+        \item Led instruction in DSA, Web Programming, Programming Methodology,
+          Discrete Mathematics, and Machine Learning class
+      \end{itemize}
+    \end{minipage}}\\
+
+    \noalign{\vspace{0.6em}} % Add some vertical space between entries
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large
+    Personal Projects} } \\ \noalign{\vspace{0em}} % Add some vertical space below the title
+    \noalign{\hrule height 0.5pt} % Add a horizontal line below the section title
+    \noalign{\vspace{0.4em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \textbf{CloudCueAI \textbar{}} \emph{AWS Lambda, API Gateway, S3, Transcribe,
+    CloudWatch, SAM Cli, ExpressJS, Flask}} \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Leveraged AWS Lambda \& Transcribe to build live word prediction service
+          for mock interview, boosting screening success by 50\%
+
+        \item Integrated AWS S3 for secure transcript storage and API Gateway to
+          enable low-latency, cutting transcription delays by 30\%
+
+        \item Fine-tuned Facebook OPT-1.3b for word suggestions and visualized
+          results via React-D3-Cloud, boosting users engagement by 40\%
+
+        \item Engineered a WebSocket system for live audio streaming and real-time
+          transcription with sub-200ms latency
+      \end{itemize}
+    \end{minipage}} \\
+
+    \noalign{\vspace{0.4em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \textbf{Beatcode \textbar{}} \emph{FastAPI, RestfulAPI, Docker, WebSocket,
+    PostgreSQL, PassLib, SQLAlchemy}}
+    \\
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Utilized Python and FastAPI to design a scalable multi-client LeetCode
+          game platform, achieving 500+ players during beta
+
+        \item Optimized Docker container for code judging and WebSocket for reliable
+          gameplay connections, supporting 1,000+ concurrent users
+
+        \item Engineered PostgreSQL to track player performance metrics and integrated
+          OpenAI to analyze runtime complexity and provide feedback, increasing
+          code acceptance rates by 18\%
+
+        \item Built OAuth, session management with Passlib, and CORS support client-server
+          interaction, improving security compliance by 40\%
+      \end{itemize}
+    \end{minipage}}
+    \\
+
+    \noalign{\vspace{0.4em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \textbf{OhEss \textbar{}} \emph{Google Lighthouse, React, Linux, Kolibri,
+    NextJS, Vercel}} \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Engineered a web-based Windows 10 operating system replica with TypeScript
+          and React, achieving a 100\% Google Lighthouse SEO score for seamless UI
+          interaction
+
+        \item Integrated Kolibri and Linux programs into a NextJS interface on Vercel,
+          enabling in-browser files hosting for 200+ users
+      \end{itemize}
+    \end{minipage}} \\
+
+    \noalign{\vspace{0.4em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \textbf{Sculpt AI \textbar{}} \emph{Tensorflow, OpenCV, SAM model, MediaPipe}}
+    \\
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Pioneered 3D solution for Metaverse platforms, using AI-based
+          image cropping and Blender modeling, cutting manual effort by 30\%
+
+        \item Implement body pose tracking and measurement with MediaPipe,
+          achieving a prototype success rate of 85\% during the hackathon
+      \end{itemize}
+    \end{minipage}}
+    \\
+
+    \noalign{\vspace{0.6em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large
+    Technical Skills} } \\ \noalign{\vspace{0em}} % Add some vertical space below the title
+    \noalign{\hrule height 0.5pt} % Add a horizontal line below the section title
+    \noalign{\vspace{0.4em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++,
+          C\#, Go, Rust, Swift, Kotlin
+
+        \item Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS,
+          AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB
+      \end{itemize}
+    \end{minipage}} \\
+
+    \noalign{\vspace{0.6em}}
+
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth)}@{}}{ \textbf{\large
+    Education} }
+    \\ \noalign{\vspace{0em}} % Add some vertical space below the title
+    \noalign{\hrule height 0.5pt} % Add a horizontal line below the section title
+    \noalign{\vspace{0.4em}}
+
+    \textbf{UMass Amherst} & \textbf{\small May 2026} \\ Master of Computer
+    Science and Mathematics - GPA: 3.9 &\small Amherst, MA \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+    \begin{minipage}[t]{\linewidth}
+      \raggedright
+      \begin{itemize}
+        \item Courses: Algorithm for Data Science, Discrete Mathematics,
+          Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra,
+          Programming Methodology, Machine Learning, Operating System, Computer Architecture
+      \end{itemize}
+    \end{minipage}} \\
+  \end{longtable}
+\end{document}
+% chktex-enable
