@@ -23,7 +23,7 @@ with open("personalData.json") as f:
 data = recursive_escape(data)
 
 # Load the LaTeX template
-with open("templateResume.tex.j2") as f:
+with open("templateResume.j2") as f:
     template = Template(f.read())
 
 rendered_latex = template.render(data)
