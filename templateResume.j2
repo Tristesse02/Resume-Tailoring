@@ -86,7 +86,7 @@
 
 \newcommand{\contentEntryWorkExp}[5]{% 
     \noalign{\vspace{0.4em}} % Add some vertical space between entries
-    \textbf{#1} & \textbf{\small #2} \\ \small
+    \textbf{\ignorespaces #1} & \textbf{\small #2} \\ \small
     #3 & \small #4 \\ % Add job label and location
     \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
         \begin{minipage}[t]{\linewidth}
@@ -100,7 +100,7 @@
 \newcommand{\contentEntryPersonalProj}[3]{
   \noalign{\vspace{0.4em}} % Add some vertical space between entries
   \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
-	\textbf{#1 \textbar{}} \emph{#2}} \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+	\textbf{\ignorespaces #1 \textbar{}} \emph{#2}} \\ \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
 	\begin{minipage}[t]{\linewidth}
 		\raggedright
 		\begin{itemize}
@@ -147,7 +147,7 @@
 
 	\sectionTitle{Personal Projects}
 	{% for project in personal_projects %}
-	\contentEntryPersonalProj{ {{ project.title }} }{ {{ project.techstack }} }{ {% for item in project.description %}
+	\contentEntryPersonalProj{ {{ project.title }} }{ {{ project.techstack | join(", ") }} }{ {% for item in project.description %}
 		\item {{ item }}{% endfor %} }
 	{% endfor %}
 
