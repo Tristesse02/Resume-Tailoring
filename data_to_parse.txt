@@ -1,0 +1,139 @@
+{
+	"name": "Minh Vu",
+	"email": "{mtvu@umass.edu}",
+	"phone": "+1(413) 275 6387",
+	"linkedin": "{linkedin.com/in/minhvu02}",
+	"linkedin_link": "{http://linkedin.com/in/minhvu02}",
+	"github": "{github.com/Tristesse02}",
+	"github_link": "{https://github.com/Tristesse02}",
+	"work_experiences": [
+	  {
+		"company": "Avocademy (YC W22)",
+		"position": "Software Engineer Intern",
+		"duration": "Jun 2024 -- Aug 2024",
+		"location": "Remote, US",
+		"responsibilities": [
+			"""
+			Internship
+			Tech-stack: React, SpringBoot, OpenAI API, Fire Crawler, PuppeteerJS, PlayWright, SupaBase, MongoDB, Github, CI/CD, A/B Testing, E2E testing, Vercel
+			Description: Developing an automated tailoring job application where student just has to pre-fill in information and everyday, the system will automatically apply to desired job for them. Jobs will be crawl on daily basis and user can pick their desired job that they want to apply then system will autofill and apply to the job. We also use openai api to help extract necessary information to display to user.
+			Numbers: 750+ daily job postings; 70000+ entries in database
+			"""
+		]
+	  },
+	  {
+		"company": "FPT Software",
+		"position": "Software Engineer Intern",
+		"duration": "Jun 2023 -- Aug 2023",
+		"location": "Hanoi, Vietnam",
+		"responsibilities": [
+		  """
+		  Internship
+		  Tech-stack: AngularJS, TypeScript, JavaScript, Observer
+		  Description: Creating a functional webpage for Japanese Pharmacists Association. My tasks was to refined company's JavaScript SDK, to ensure it works with UI through multiple webpage and modals. I also create observer pattern that helps automate the 20,000 data binding from frontend to backend and vice versa, with high accuracy and consuming less time of coding
+		  Numbers: 500-1000 daily visits webpage, 350+ UIs and modals, 20,000 data entries
+		  """,
+		  Managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method
+		]
+	  },
+	  {
+		"company": "Viettel AI",
+		"position": "Machine Learning Engineer Intern",
+		"duration": "Jun 2024 -- Aug 2024",
+		"location": "Hanoi, Vietnam",
+		"responsibilities": [
+		  "Deployed Microsoft's GraphRAG data retrieval into sociological documentation, achieving 30% improvement in F1 score",
+		  "Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25%"
+		]
+	  },
+	  {
+		"company": "University of Massachusett Amherst",
+		"position": "Teaching Assistant",
+		"duration": "Sep 2022 -- Current",
+		"location": "Amherst, MA",
+		"responsibilities": [
+		  "Functioned as a teaching assistant for 1,500+ students across 6 consecutive semesters",
+		  "Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class"
+		]
+	  }
+	],
+	"personal_projects": [
+	  {
+		"title": "CloudCueAI",
+		"techstack": [
+		  "AWS Lambda",
+		  "API Gateway",
+		  "S3",
+		  "Transcribe",
+		  "CloudWatch",
+		  "SAM Cli",
+		  "ExpressJS",
+		  "Flask"
+		],
+		"description": [
+			"""
+			Personal Project
+			TechStack: AWS Lambda, API Gateway, S3, Transcribe, CloudWatch, SAM Cli, ExpressJS, Flask, React-D3-Cloud
+			Description: Noticing that many people, especially international students struggle in finding the word or phrase to describe a situation during interview, I created a tools that suggest word in real time. All we have to do is that speaking into the mic, the live transcribe by Amazon will help transcribe those voice data and send back to us. Then I use a Facebook OPT-1.3b model to find the next highest chance occuring word so that it would act as the word suggestion based on the context is what we were saying. And those suggested word will be display in terms of word cloud with its size correspond to the weight. Later, all of the transcribe is saved under S3 storage
+			"""
+		]
+	  },
+	  {
+		"title": "Beatcode",
+		"techstack": [
+		  "FastAPI",
+		  "RestfulAPI",
+		  "Docker",
+		  "WebSocket",
+		  "PostgreSQL",
+		  "PassLib",
+		  "SQLAlchemy"
+		],
+		"description": [
+		  "Utilized Python and FastAPI to design a scalable multi-client LeetCode game platform, achieving 500+ players during beta",
+		  "Optimized Docker container for code judging and WebSocket for reliable gameplay connections, supporting 1,000+ concurrent users",
+		  "Engineered PostgreSQL to track player performance metrics and integrated OpenAI to analyze runtime complexity and provide feedback, increasing code acceptance rates by 18%",
+		  "Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40%"
+		]
+	  },
+	  {
+		"title": "OhEss",
+		"techstack": [
+		  "Google Lighthouse",
+		  "React",
+		  "Linux",
+		  "Kolibri",
+		  "NextJS",
+		  "Vercel"
+		],
+		"description": [
+		  "Engineered a web-based Windows 10 operating system replica with TypeScript and React, achieving a 100% Google Lighthouse SEO score for seamless UI interaction",
+		  "Integrated Kolibri and Linux programs into a NextJS interface on Vercel, enabling in-browser files hosting for 200+ users"
+		]
+	  },
+	  {
+		"title": "Sculpt AI",
+		"techstack": ["Tensorflow", "OpenCV", "SAM model", "MediaPipe"],
+		"description": [
+		  "Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30%",
+		  "Implement body pose tracking and measurement with MediaPipe, achieving a prototype success rate of 85% during the hackathon"
+		]
+	  }
+	],
+	"technical_skills": [
+	  "Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++, C#, Go, Rust, Swift, Kotlin",
+	  "Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS, AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB"
+	],
+	"educations": [
+	  {
+		"university": "University of Massachusetts Amherst",
+		"degree": "Master of Science in Computer Science - GPA: 3.9",
+		"graduate": "May 2026",
+		"location": "Amherst, MA",
+		"courses": [
+		  "Algorithm for Data Science, Discrete Mathematics, Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra, Programming Methodology, Machine Learning, Operating System, Computer Architecture"
+		]
+	  }
+	]
+  }
+  
