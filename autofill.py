@@ -1,11 +1,18 @@
 import json
 from jinja2 import Template
 
+
 def escape_latex(value):
     """Escape LaTeX special characters."""
     if isinstance(value, str):
-        return value.replace('%', r'\%').replace('_', r'\_').replace('&', r'\&').replace('#', r'\#')
+        return (
+            value.replace("%", r"\%")
+            .replace("_", r"\_")
+            .replace("&", r"\&")
+            .replace("#", r"\#")
+        )
     return value
+
 
 def recursive_escape(obj):
     if isinstance(obj, dict):
@@ -16,10 +23,11 @@ def recursive_escape(obj):
         return escape_latex(obj)
     return obj
 
+
 # Load the JSON file
 with open("personalData.json") as f:
     data = json.load(f)
-    
+
 data = recursive_escape(data)
 
 # Load the LaTeX template
