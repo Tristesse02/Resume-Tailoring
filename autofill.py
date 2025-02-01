@@ -25,7 +25,7 @@ def recursive_escape(obj):
 
 
 # Load the JSON file
-with open("personalData.json") as f:
+with open("personalData.json") as f: # TODO: Fix this one
     data = json.load(f)
 
 data = recursive_escape(data)
