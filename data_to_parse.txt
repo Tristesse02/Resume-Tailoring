@@ -30,10 +30,9 @@
 		  """
 		  Internship
 		  Tech-stack: AngularJS, TypeScript, JavaScript, Observer
-		  Description: Creating a functional webpage for Japanese Pharmacists Association. My tasks was to refined company's JavaScript SDK, to ensure it works with UI through multiple webpage and modals. I also create observer pattern that helps automate the 20,000 data binding from frontend to backend and vice versa, with high accuracy and consuming less time of coding
+		  Description: Creating a functional webpage for Japanese Pharmacists Association. My tasks was to refined company's JavaScript SDK, to ensure it works with UI through multiple webpage and modals. I also create observer pattern that helps automate the 20,000 data binding from frontend to backend and vice versa, with high accuracy and consuming less time of coding. I also managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method
 		  Numbers: 500-1000 daily visits webpage, 350+ UIs and modals, 20,000 data entries
-		  """,
-		  Managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method
+		  """
 		]
 	  },
 	  {
