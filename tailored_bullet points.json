@@ -1,0 +1,36 @@
+{
+  "Work Experience": [
+    {
+      "Title": "Avocademy (YC W22)",
+      "description": [
+        "Engineered React-SpringBoot web application for automating job applications, managing 750+ daily job postings and 70,000+ database entries.",
+        "Implemented RESTful APIs with OpenAI and automated job data extraction using PuppeteerJS and Playwright to enhance user experience by 40%.",
+        "Optimized database interactions using MongoDB and Supabase, improving data retrieval efficiency by 30%.",
+        "Conducted E2E testing and CI/CD deployment processes with GitHub and Vercel, reducing deployment times by 25%.",
+        "Collaborated in an agile-scrum team environment, enhancing cross-functional communication and contributing to seamless feature roll-outs."
+      ]
+    },
+    {
+      "Title": "FPT Software",
+      "description": [
+        "Led AngularJS-TypeScript website for Japanese Pharmacists, managing 20,000 data bindings and serving 500-1000 daily visits.",
+        "Refined JavaScript SDK ensuring seamless UI navigation across 350+ components, reducing operational errors by 40%.",
+        "Developed observer pattern for automated data synchronization between frontend and backend, improving accuracy by 35%.",
+        "Managed tasks and schedules in agile-scrum settings, enhancing team productivity and project delivery timelines by 15%.",
+        "Implemented performance optimizations ensuring scalability and responsiveness of web interfaces."
+      ]
+    }
+  ],
+  "Personal Projects": [
+    {
+      "Title": "CloudCueAI",
+      "description": [
+        "Leveraged AWS Lambda-ExpressJS-Flask stack to create real-time word suggestion tool, enhancing interview readiness for 200+ users.",
+        "Utilized AWS Transcribe for speech-to-text conversion with FB OPT-1.3b for context-driven suggestions, boosting user engagement by 50%.",
+        "Designed dynamic word cloud visualizations using React-D3-Cloud, improving UX interaction significantly.",
+        "Integrated Amazon S3 for secure data storage of transcriptions, ensuring data retrieval and user privacy.",
+        "Monitored and optimized application performance using AWS CloudWatch, reducing latency issues by 30%."
+      ]
+    }
+  ]
+}
