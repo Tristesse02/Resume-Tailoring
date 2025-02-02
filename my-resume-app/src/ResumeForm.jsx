@@ -34,13 +34,13 @@ export default function ResumeForm() {
         />
         <input
           className={styles.input}
-          placeholder="Tech Stack"
+          placeholder="Tech Stack (e.g. React, Node.js, AWS, etc.)"
           value={form.techStack}
           onChange={(e) => setForm({ ...form, techStack: e.target.value })}
         />
-        <input
-          className={styles.input}
-          placeholder="Description"
+        <textarea
+          className={styles.textarea}
+          placeholder="Description (just describe by words, as detailed as possible)"
           value={form.description}
           onChange={(e) => setForm({ ...form, description: e.target.value })}
         />
@@ -55,7 +55,7 @@ export default function ResumeForm() {
         </button>
       </div>
 
-      <div>
+      <div className={styles.entryList}>
         {entries.map((entry, index) => (
           <div key={index} className={styles.entryCard}>
             <p>
