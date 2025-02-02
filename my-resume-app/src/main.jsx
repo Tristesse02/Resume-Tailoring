@@ -1,19 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import ResumeForm from "./ResumeForm.jsx";
+import EntriesWrapper from "./EntriesWrapper.jsx";
+import PageContainer from "./PageContainer.jsx";
+import Header from "./Header.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center", // This centers vertically
-        height: "100vh", // Ensures it takes full height
-      }}
-    >
-      <ResumeForm />
-    </div>
+    <PageContainer>
+      <Header />
+      <EntriesWrapper />
+    </PageContainer>
   </StrictMode>
 );

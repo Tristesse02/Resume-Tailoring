@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styles from "./ResumeForm.module.css";
 
-export default function ResumeForm() {
-  const [entries, setEntries] = useState([]);
+export default function ResumeForm({ id }) {
   const [form, setForm] = useState({
     type: "",
     techStack: "",
@@ -10,20 +9,9 @@ export default function ResumeForm() {
     numbers: "",
   });
 
-  const addEntry = () => {
-    console.log("Add Entry Clicked!"); // Debugging log
-    if (form.type && form.techStack && form.description && form.numbers) {
-      setEntries([...entries, form]);
-      console.log("New Entries:", [...entries, form]); // Debugging log
-      setForm({ type: "", techStack: "", description: "", numbers: "" });
-    } else {
-      console.log("Missing Fields:", form); // Debugging log
-    }
-  };
-
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Resume Entry Form</h1>
+      <h1 className={styles.title}>Resume Entry Form {id}</h1>
 
       <div className={styles.formGroup}>
         <input
@@ -50,28 +38,6 @@ export default function ResumeForm() {
           value={form.numbers}
           onChange={(e) => setForm({ ...form, numbers: e.target.value })}
         />
-        <button className={styles.button} onClick={addEntry}>
-          Add Entry
-        </button>
-      </div>
-
-      <div className={styles.entryList}>
-        {entries.map((entry, index) => (
-          <div key={index} className={styles.entryCard}>
-            <p>
-              <strong>Type:</strong> {entry.type}
-            </p>
-            <p>
-              <strong>Tech Stack:</strong> {entry.techStack}
-            </p>
-            <p>
-              <strong>Description:</strong> {entry.description}
-            </p>
-            <p>
-              <strong>Numbers:</strong> {entry.numbers}
-            </p>
-          </div>
-        ))}
       </div>
     </div>
   );
