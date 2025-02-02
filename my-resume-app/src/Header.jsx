@@ -3,7 +3,7 @@ const Header = () => {
     <header
       style={{ textAlign: "center", marginBottom: "1rem", color: "white" }}
     >
-      <h1>Work Experience and Personal Project</h1>
+      <h1>Bro! Let me help you tailor your resume 😫</h1>
     </header>
   );
 };
