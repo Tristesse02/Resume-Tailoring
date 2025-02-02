@@ -11,7 +11,7 @@ export default function ResumeForm({ id }) {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Resume Entry Form {id}</h1>
+      <h1 className={styles.title}>Experience {id}</h1>
 
       <div className={styles.formGroup}>
         <input
