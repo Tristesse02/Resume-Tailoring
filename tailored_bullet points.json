@@ -1,7 +1,7 @@
 {
   "Work Experience": [
     {
-      "Title": "Avocademy (YC W22)",
+      "title": "Avocademy (YC W22)",
       "description": [
         "Engineered React-SpringBoot web application for automating job applications, managing 750+ daily job postings and 70,000+ database entries.",
         "Implemented RESTful APIs with OpenAI and automated job data extraction using PuppeteerJS and Playwright to enhance user experience by 40%.",
@@ -11,7 +11,7 @@
       ]
     },
     {
-      "Title": "FPT Software",
+      "title": "FPT Software",
       "description": [
         "Led AngularJS-TypeScript website for Japanese Pharmacists, managing 20,000 data bindings and serving 500-1000 daily visits.",
         "Refined JavaScript SDK ensuring seamless UI navigation across 350+ components, reducing operational errors by 40%.",
@@ -23,7 +23,7 @@
   ],
   "Personal Projects": [
     {
-      "Title": "CloudCueAI",
+      "title": "CloudCueAI",
       "description": [
         "Leveraged AWS Lambda-ExpressJS-Flask stack to create real-time word suggestion tool, enhancing interview readiness for 200+ users.",
         "Utilized AWS Transcribe for speech-to-text conversion with FB OPT-1.3b for context-driven suggestions, boosting user engagement by 50%.",
