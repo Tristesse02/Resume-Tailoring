@@ -1,9 +1,9 @@
+import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import EntriesWrapper from "./EntriesWrapper.jsx";
-import PageContainer from "./PageContainer.jsx";
-import Header from "./Header.jsx";
+import Header from "./components/functionalilty/Header.jsx";
+import EntriesWrapper from "./components/functionalilty/EntriesWrapper.jsx";
+import PageContainer from "./components/functionalilty/PageContainer.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
