@@ -3,8 +3,10 @@ import AddEntry from "./AddEntry.jsx";
 import styles from "./index.module.css";
 import ResumeForm from "./ResumeForm.jsx";
 import SubmitButton from "./SubmitButton.jsx";
+import { useJobDescription } from "../../useContext/JobDescriptionContext.jsx";
 
 const EntriesWrapper = () => {
+  const { jobDescription } = useJobDescription(); // use context instead of passing props
   const [entries, setEntries] = useState([
     {
       id: 1,
@@ -43,49 +45,43 @@ const EntriesWrapper = () => {
   };
 
   const submitAllForms = () => {
-    // TODO: modify the content in the form to match a kind of json format
-    // then send this json to a backend that we will build now
-    let obj = entries.reduce((acc, cur) => {
-      if (cur.formData.type === "Project") {
-        console.log("you read");
-        if (!acc.hasOwnProperty("Personal Projects")) {
-          acc["Personal Projects"] = [];
-        }
-        acc["Personal Projects"].push({
-          title: cur.formData.name,
-          description:
-            cur.formData.type +
-            "\n" +
-            cur.formData.techStack +
-            "\n" +
-            cur.formData.description +
-            "\n" +
-            cur.formData.numbers,
-        });
-      } else {
-        console.log("bro come one");
-        if (!acc.hasOwnProperty("Work Experience")) {
-          acc["Work Experience"] = [];
-          console.log("ye?");
-        }
-        acc["Work Experience"].push({
-          title: cur.formData.name,
-          description:
-            cur.formData.type +
-            "\n" +
-            cur.formData.techStack +
-            "\n" +
-            cur.formData.description +
-            "\n" +
-            cur.formData.numbers,
-        });
-      }
+    let resumeData = entries.reduce((acc, cur) => {
+      const category =
+        cur.formData.type === "Project"
+          ? "Personal Projects"
+          : "Work Experience";
+      if (!acc[category]) acc[category] = [];
+
+      acc[category].push({
+        title: cur.formData.name,
+        description: `${cur.formData.type}\n${cur.formData.techStack}\n${cur.formData.description}\n${cur.formData.numbers}`,
+      });
+
       return acc;
     }, {});
 
-    console.log(obj);
+    // TODO: Replace data mock with real job description
+    let requestedBody = {
+      resume_data: resumeData,
+      job_description: jobDescription,
+    };
 
-    console.log("Submitted Forms: ", JSON.stringify(obj)); // successfully formatting to json and ready to send to backend
+    fetch("http://localhost:5000/tailor-resume", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestedBody),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data) {
+          console.log("Generated Resume:", data.data);
+        } else {
+          console.error("Error:", data.error);
+        }
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   return (
@@ -96,7 +92,7 @@ const EntriesWrapper = () => {
           id={entry.id}
           formData={entry.formData}
           updateFormData={updateFormData}
-        /> // Pass unique ID
+        /> // Pass unique I FD
       ))}
       <AddEntry onClick={addNewEntry} />
       <SubmitButton submitAllForms={submitAllForms} />
