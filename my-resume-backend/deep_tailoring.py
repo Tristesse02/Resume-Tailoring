@@ -72,40 +72,45 @@ user_message = f"Job Description:\n{job_description}"
 # Initialize OpenAI client
 client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
-# Generate chat completion
-chat_completion = client.chat.completions.create(
-    messages=[
-        {"role": "system", "content": system_message},
-        {"role": "user", "content": user_message},
-    ],
-    model="gpt-4o",
-)
+try:
+    # Generate chat completion
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {"role": "system", "content": system_message},
+            {"role": "user", "content": user_message},
+        ],
+        model="gpt-4o",
+    )
 
-# Get GPT response
-output_content = chat_completion.choices[0].message.content.strip()
-print(output_content)  # TODO: debugging purpose
+    # Get GPT response
+    output_content = chat_completion.choices[0].message.content.strip()
+    print(output_content)  # TODO: debugging purpose
 
+    # **Step 1: Extract JSON from Response**
+    def extract_json(text):
+        """Extracts valid JSON from an OpenAI response (handles markdown and extra text)."""
+        match = re.search(
+            r"```json\s*([\s\S]+?)\s*```", text
+        )  # Look for JSON code block
+        json_str = match.group(1) if match else text  # If no markdown, assume pure JSON
 
-# **Step 1: Extract JSON from Response**
-def extract_json(text):
-    """Extracts valid JSON from an OpenAI response (handles markdown and extra text)."""
-    match = re.search(r"```json\s*([\s\S]+?)\s*```", text)  # Look for JSON code block
-    json_str = match.group(1) if match else text  # If no markdown, assume pure JSON
+        try:
+            return json.loads(json_str)  # Validate JSON
+        except json.JSONDecodeError as e:
+            print("Error: Invalid JSON output:", e)
+            return None  # Handle error case
 
-    try:
-        return json.loads(json_str)  # Validate JSON
-    except json.JSONDecodeError as e:
-        print("Error: Invalid JSON output:", e)
-        return None  # Handle error case
+    # **Step 2: Parse the JSON Output**
+    parsed_json = extract_json(output_content)
 
+    if parsed_json:
+        print(parsed_json)
+        print(json.dumps(parsed_json, indent=2))  # ✅ This is what `server.py` receives
+    else:
+        print(json.dumps({"error": "Invalid JSON response from OpenAI"}))
 
-# **Step 2: Parse the JSON Output**
-parsed_json = extract_json(output_content)
-print(parsed_json)
-
-tailor.update_template(parsed_json)
-
-tailor.generate_latex("templateResume.j2")
+except Exception as e:
+    print("Error during OpenAI processing:", str(e))
 
 # **Step 3: Write JSON to a File If Valid**
 # if parsed_json:

@@ -14,21 +14,21 @@ class ResumeTailor:
         """
         work_exp = {}
 
-        # **1️⃣ Store AI-generated work experience & project descriptions**
+        # **Store AI-generated work experience & project descriptions**
         for tailored_experience in output["Work Experience"]:
             work_exp[tailored_experience["title"]] = tailored_experience["description"]
 
         for tailored_project in output["Personal Projects"]:
             work_exp[tailored_project["title"]] = tailored_project["description"]
 
-        # **2️⃣ Update Work Experiences**
+        # **Update Work Experiences**
         for empty_experience in self.template["work_experiences"]:
             if empty_experience["company"] in work_exp:
                 empty_experience["responsibilities"] = work_exp[
                     empty_experience["company"]
                 ]
 
-        # **3️⃣ Update Personal Projects**
+        # **Update Personal Projects**
         for empty_project in self.template["personal_projects"]:
             if empty_project["title"] in work_exp:
                 empty_project["description"] = work_exp[empty_project["title"]]
@@ -46,7 +46,7 @@ class ResumeTailor:
         """
         with open(output_path, "w") as updated_file:
             json.dump(self.template, updated_file, indent=2)
-        print(f"✅ Resume updated and saved to {output_path}")
+        print(f"Resume updated and saved to {output_path}")
 
     def escape_latex(self, value):
         """Escape LaTeX special characters."""
@@ -73,18 +73,18 @@ class ResumeTailor:
         """
         Generate a LaTeX file from the updated JSON template using Jinja2.
         """
-        # **1️⃣ Escape LaTeX special characters**
+        # **Escape LaTeX special characters**
         escaped_data = self.recursive_escape(self.template)
 
-        # **2️⃣ Load the LaTeX template**
+        # **Load the LaTeX template**
         with open(template_path, "r") as f:
             template = Template(f.read())
 
-        # **3️⃣ Render the template with the escaped JSON data**
+        # **Render the template with the escaped JSON data**
         rendered_latex = template.render(escaped_data)
 
-        # **4️⃣ Write the output to a LaTeX file**
+        # **Write the output to a LaTeX file**
         with open(output_latex_path, "w") as f:
             f.write(rendered_latex)
 
-        print(f"✅ LaTeX file generated successfully at: {output_latex_path}")
+        print(f"LaTeX file generated successfully at: {output_latex_path}")
