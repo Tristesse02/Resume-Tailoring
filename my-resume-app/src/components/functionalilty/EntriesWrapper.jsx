@@ -1,25 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddEntry from "./AddEntry.jsx";
 import styles from "./index.module.css";
 import ResumeForm from "./ResumeForm.jsx";
 import SubmitButton from "./SubmitButton.jsx";
 import { useJobDescription } from "../../useContext/JobDescriptionContext.jsx";
 
+const LOCAL_STORAGE_KEY = "resume_entries";
+
 const EntriesWrapper = () => {
   const { jobDescription } = useJobDescription(); // use context instead of passing props
-  const [entries, setEntries] = useState([
-    {
-      id: 1,
-      formData: {
-        name: "",
-        type: "",
-        techStack: "",
-        description: "",
-        numbers: "",
-        bulletPoints: "",
-      },
-    },
-  ]); // Start with one form
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    const savedEntries = localStorage.getItem(LOCAL_STORAGE_KEY);
+
+    if (savedEntries) {
+      setEntries(JSON.parse(savedEntries));
+    } else {
+      setEntries([
+        {
+          id: 1,
+          formData: {
+            name: "",
+            type: "",
+            techStack: "",
+            description: "",
+            numbers: "",
+            bulletPoints: "",
+          },
+        },
+      ]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (entries.length > 0) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(entries));
+    }
+  }, [entries]);
 
   const addNewEntry = () => {
     setEntries([
