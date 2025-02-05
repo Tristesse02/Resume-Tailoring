@@ -12,7 +12,8 @@ load_dotenv()
 # OpenAI API key
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-# **AI-generated out (sim)
+# **Initialize ResumeTailor with the JSON template**
+tailor = ResumeTailor("temp_personal_info.json")
 
 # Read JSON input from Flask
 json_data = sys.stdin.read()
@@ -24,9 +25,6 @@ try:
 except json.JSONDecodeError:
     print("Error: Invalid JSON input.")
     sys.exit(1)
-
-with open("sample_data/resume_data.json", "r") as file:
-    resume_data = json.load(file)
 
 # **System message**
 system_message = f"""
@@ -103,9 +101,14 @@ def extract_json(text):
 
 # **Step 2: Parse the JSON Output**
 parsed_json = extract_json(output_content)
+print(parsed_json)
+
+tailor.update_template(parsed_json)
+
+tailor.generate_latex("templateResume.j2")
 
 # **Step 3: Write JSON to a File If Valid**
-if parsed_json:
-    print(json.dumps(parsed_json, indent=2))  # Output JSON to stdout
-else:
-    print(json.dumps({"error": "Invalid JSON response from OpenAI"}))
+# if parsed_json:
+#     print(json.dumps(parsed_json, indent=2))  # Output JSON to stdout
+# else:
+#     print(json.dumps({"error": "Invalid JSON response from OpenAI"}))

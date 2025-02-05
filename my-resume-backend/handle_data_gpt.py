@@ -33,7 +33,12 @@ class ResumeTailor:
             if empty_project["title"] in work_exp:
                 empty_project["description"] = work_exp[empty_project["title"]]
 
+        # print(self.template)
+
         return self.template  # Return the updated template
+
+    def get_template(self):
+        return self.template
 
     def save_to_file(self, output_path):
         """

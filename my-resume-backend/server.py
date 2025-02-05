@@ -48,7 +48,7 @@ def tailor_resume():
                 {"message": "Resume tailored successfully!", "data": tailored_resume}
             )
         else:
-            return jsonify({"error": "Invalid JSON response from script.py"}), 500
+            return jsonify({"error": "Invalid JSON response from deep_tailoring.py"}), 500
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
