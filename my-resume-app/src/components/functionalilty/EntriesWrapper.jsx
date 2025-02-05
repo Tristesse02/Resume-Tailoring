@@ -16,6 +16,7 @@ const EntriesWrapper = () => {
         techStack: "",
         description: "",
         numbers: "",
+        bulletPoints: "",
       },
     },
   ]); // Start with one form
@@ -31,6 +32,7 @@ const EntriesWrapper = () => {
           techStack: "",
           description: "",
           numbers: "",
+          bulletPoints: "",
         },
       },
     ]); // Create unique ID
@@ -54,7 +56,7 @@ const EntriesWrapper = () => {
 
       acc[category].push({
         title: cur.formData.name,
-        description: `${cur.formData.type}\n${cur.formData.techStack}\n${cur.formData.description}\n${cur.formData.numbers}`,
+        description: `${cur.formData.type}\nTech-stack:${cur.formData.techStack}\nDescription:${cur.formData.description}\nQuantifiable Metrics:${cur.formData.numbers}Number of Bullet Points:${cur.formData.bulletPoints}`,
       });
 
       return acc;

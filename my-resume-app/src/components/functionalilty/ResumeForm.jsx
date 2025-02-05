@@ -9,6 +9,7 @@ export default function ResumeForm({ id, formData, updateFormData }) {
       techStack: "",
       description: "",
       numbers: "",
+      bulletPoints: "",
     }
   );
 
@@ -56,6 +57,13 @@ export default function ResumeForm({ id, formData, updateFormData }) {
           className={styles.input}
           placeholder="Numbers 🔢(Quantifiable Result)"
           value={form.numbers}
+          onChange={handleChange}
+        />
+        <input
+          name="bulletPoints"
+          className={styles.input}
+          placeholder="How many bullet points do you want to add? (From 👆to🤚)"
+          value={form.bulletPoints}
           onChange={handleChange}
         />
       </div>

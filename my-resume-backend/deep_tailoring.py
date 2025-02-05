@@ -34,7 +34,7 @@ Below are guidelines to follow:
 1. You will receive a my resume_data on work experience, personal projects, and skills in form of JSON format in this system prompt.
 I will provide you the job description in the user prompt. And your task is try to create bullet points for the resume that maximize the technical skills and soft skills that are presented in the job description.
 2. Your task is to replace the string in the "description" field in provided JSON data as the array containing bullet points for each work experience and personal project.
-3. For each job description, you should create a maximum of 5 bullet points and a minimum of 2 bullet points.
+3. For each job description, the number of bullet points will be stated in the "description" field.
 4. Each bullet point should follow the following method:
     4.1 For the first bullet point of each job description and personal project, you should strictly follow this writing style:
         - "[Action Verb] + [Important Technical Skill] + "to [do something (briefly intro to project if it is Personal Project)]" + , [a quantifiable result (give a justifiable percentage or number)]"
