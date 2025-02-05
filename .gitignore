@@ -34,3 +34,6 @@ __pycache__/
 .idea/
 .vscode/
 *.test
+
+my-resume-backend/output/
+my-resume-backend/testing.py
