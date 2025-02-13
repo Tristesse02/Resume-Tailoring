@@ -1,18 +1,46 @@
 {
   "Work Experience": [
     {
-      	"title": "Avocademy (YC W22)",
-      	"description": "Internship\n Tech-stack: React, SpringBoot, OpenAI API, Fire Crawler, PuppeteerJS, PlayWright, SupaBase, MongoDB, Github, CI/CD, A/B Testing, E2E testing, Vercel\n Description: Developing an automated tailoring job application where student just has to pre-fill in information and everyday, the system will automatically apply to desired job for them. Jobs will be crawl on daily basis and user can pick their desired job that they want to apply then system will autofill and apply to the job. We also use openai api to help extract necessary information to display to user.\nNumbers: 750+ daily job postings; 70000+ entries in database"
-    },
-	{
-	  	"title": "FPT Software",
-	  	"description": "Internship\nTech-stack: AngularJS, TypeScript, JavaScript, Observer\n Description: Creating a functional webpage for Japanese Pharmacists Association. My tasks was to refined company's JavaScript SDK, to ensure it works with UI through multiple webpage and modals. I also create observer pattern that helps automate the 20,000 data binding from frontend to backend and vice versa, with high accuracy and consuming less time of coding. I also managed tasks and schedules in fast-paced environment, improving communication and collaboration using Agile-Scrum method\nNumbers: 500-1000 daily visits webpage, 350+ UIs and modals, 20,000 data entries"
-	}
+      "title": "Avocademy (YC W22)",
+      "type": "Project",
+      "techStack": [
+        "React",
+        "SpringBoot",
+        "OpenAI API",
+        "Fire Crawler",
+        "PuppeteerJS",
+        "PlayWright",
+        "SupaBase",
+        "MongoDB",
+        "Github",
+        "CI/CD",
+        "A/B Testing",
+        "E2E testing",
+        "Vercel"
+      ],
+      "description": "Developing an automated tailoring job application where student just has to pre-fill in information and everyday, the system will automatically apply to desired job for them. Jobs will be crawl on daily basis and user can pick their desired job that they want to apply then system will autofill and apply to the job. We also use openai api to help extract necessary information to display to user.",
+      "quantifiableMetrics": "750+ daily job postings; 70000+ entries in database",
+      "bulletPoints": 5
+    }
   ],
   "Personal Projects": [
-	{
-		"title": "CloudCueAI",
-		"description": "Personal Project\nTechStack: AWS Lambda, API Gateway, S3, Transcribe, CloudWatch, SAM Cli, ExpressJS, Flask, React-D3-Cloud\nDescription: Noticing that many people, especially international students struggle in finding the word or phrase to describe a situation during interview, I created a tools that suggest word in real time. All we have to do is that speaking into the mic, the live transcribe by Amazon will help transcribe those voice data and send back to us. Then I use a Facebook OPT-1.3b model to find the next highest chance occuring word so that it would act as the word suggestion based on the context is what we were saying. And those suggested word will be display in terms of word cloud with its size correspond to the weight. Later, all of the transcribe is saved under S3 storage"
-	}
+    {
+      "title": "CloudCueAI",
+      "type": "Project",
+      "techStack": [
+        "AWS Lambda",
+        "API Gateway",
+        "S3",
+        "Transcribe",
+        "CloudWatch",
+        "SAM Cli",
+        "ExpressJS",
+        "Flask",
+        "React-D3-Cloud"
+      ],
+      "description": "Noticing that many people, especially international students struggle in finding the word or phrase to describe a situation during interview, I created a tools that suggest word in real time. All we have to do is that speaking into the mic, the live transcribe by Amazon will help transcribe those voice data and send back to us. Then I use a Facebook OPT-1.3b model to find the next highest chance occuring word so that it would act as the word suggestion based on the context is what we were saying. And those suggested word will be display in terms of word cloud with its size correspond to the weight. Later, all of the transcribe is saved under S3 storage",
+      "quantifiableMetrics": "",
+      "bulletPoints": 4
+    }
   ]
 }
