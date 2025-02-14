@@ -35,3 +35,4 @@ Return the updated `resume_data` as a JSON object with newly added skills while 
 
 EOF 1st version
 ------------------------------------------------------------------------------------------------------------------------
+2nd version: fits if you want to made up skills
