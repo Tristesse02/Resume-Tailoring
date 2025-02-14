@@ -1,3 +1,8 @@
+/**
+ * @typedef {import('../types/EntriesWrapper.js').ResumeData} ResumeData
+ * @typedef {import('../types/EntriesWrapper.js').ResumeEntry} ResumeEntry
+ * @typedef {import('../types/EntriesWrapper.js').ResumeRequest} ResumeRequest
+ */
 import AddEntry from "./AddEntry.jsx";
 import styles from "./index.module.css";
 import ResumeForm from "./ResumeForm.jsx";
@@ -64,26 +69,34 @@ const EntriesWrapper = () => {
     );
   };
 
+  /** @type {ResumeEntry} */
   const submitAllForms = () => {
+    /** @type {ResumeData} */
     let resumeData = entries.reduce((acc, cur) => {
       const category =
         cur.formData.type === "Project"
-          ? "Personal Projects"
-          : "Work Experience";
+          ? "personal_projects"
+          : "work_experiences";
       if (!acc[category]) acc[category] = [];
-
       acc[category].push({
         title: cur.formData.name,
-        description: `${cur.formData.type}\nTech-stack:${cur.formData.techStack}\nDescription:${cur.formData.description}\nQuantifiable Metrics:${cur.formData.numbers}\nNumber of Bullet Points:${cur.formData.bulletPoints}`,
+        type: cur.formData.type,
+        techStack: cur.formData.techStack.split(",").map((e) => e.trim()), // Convert to array of strings of tech stacks
+        description: cur.formData.description,
+        quantifiableMetrics: cur.formData.numbers,
+        bulletPoints: cur.formData.bulletPoints,
       });
 
       return acc;
     }, {});
 
+    /** @type {ResumeRequest} */
     let requestedBody = {
       resume_data: resumeData,
       job_description: jobDescription,
     };
+
+    console.log(requestedBody); // TODO: testing purposes
 
     fetch("http://localhost:5000/tailor-resume", {
       method: "POST",
