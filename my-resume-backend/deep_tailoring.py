@@ -45,7 +45,7 @@ class DeepResumeTailor:
                     - "Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40%"
                     - "Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25%"
                     - "Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30%"
-            4.3 Try to make every line contains around 17 words to avoid getting to the new line unnecessarily. 
+            4.3 Every line should have around 16–17 words, keeping it under 18–19 to avoid unnecessary line breaks.
             4.4 For the soft skills, try to naturally incorporate them into bullet points.
         5. Make sure that you must return the updated resume_data as a JSON object while preserving its structure.
 
