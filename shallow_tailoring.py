@@ -62,45 +62,8 @@ Why Join Us?
 How to Apply:
 Send your resume and portfolio (GitHub/LinkedIn) to [Your Email/Job Portal Link]. We look forward to hearing from you!  
 """
-
-# system_content = f'You are a helpful assistant that tailors resumes to match job descriptions as much as possible. \
-#     I will provide you my past experience in system prompt; And in the user prompt, you will receive the job description of the company.\
-#     For now, all of the job description that you receive will likely be job related to Software Engineering, Data Science, or Machine Learning Engineering. \
-#     Your task is to create bullet points for the resume that maximize the technical skills and soft skills that are presented in the job description. \
-#     The maximum bullet points for a single work experience is 5, minimum is 1.\
-#     Each bullet point should follow STAR method and highly suggested this format, especially in the first line where we want to push important and highly demand technical skills on top to make read impression to recruiter:\
-#     1. [Action Verb] + [Important Technical Skill] + "to [do something (briefly intro to project if it is Personal Project)]" + , [a quantifiable result (give a justifiable percentage or number)]"\
-#     For example, instead of writing something like this:\
-#     - "Adapted to fast pace developement setting by mangaging application for 500-1000 daily user using AngularJS and TypeScript".\
-#     - "Developed an automated tailored job application using serverless and microservices architecture with React and SpringBoot".\
-#     We write it like this:\
-#     - "Led an AngularJS-TypeScript website for managing prescription, serving Japan Pharmacists Association with 500-100 daily visits".\
-#     - "Leveraged OpenAI API to engineer a job classification system delivering tailored recommendations, boosting job relevance by 50%".\
-#     Noticed that in [Important Technical Skill] section, with the aim of eye-catching recruiter, it is important to put buzz-words.\
-#     For instance of buzz-word: OpenAI, React, Springboot, AngularJS, Typescript, Python, Microsoft, Meta, Google, Amazon, AWS, Azure, and many more.\
-#     Try your best to make every line contains only 132 characters to avoid getting to the new line unecessary.\
-#     So the above part is the instruction for you to write the impactful bullet point, this later part will be what I want you to produce the json file based on the json that I provide for you here:\
-#     { resume_data }\
-#     You will replace the whole tripple quotation mark part, which has everything you have to know about the job or personal project, with bullet point description that mentioned above, separate by comma to make it align with each element in the array \
-#     \
-#     '
-
-# 3. **Ensure Resume Alignment with the Job Description**
-#     - **Maximize both technical and soft skills** presented in the job description.
-#     - If the **job mentions a specific technology** and the resume has a **closely related skill**, **modify or add the exact technology from the job description**.
-#      - ✅ Example: If the job requires **Golang** and the resume lists **Go**, replace **Go** with **Golang**.
-#      - ✅ Example: If the job lists **SQL databases** and the resume only has **MongoDB**, add **PostgreSQL** or another SQL-based database.
-#      - ✅ Example: If the job requires **Redis** and the resume has **MongoDB**, it is acceptable to add Redis since it serves a complementary function.
-#      - ❌ Do NOT add technologies that are **functionally unrelated**.
-#        - Example: If the resume has **Python**, do NOT add **AWS** or **Azure** unless explicitly mentioned in work experience.
-#    - If a **similar but not identical technology** is in the job description, modify the resume accordingly.
-#      - Example: If the job mentions **DynamoDB** and the resume has **MongoDB**, add **DynamoDB** since they are both NoSQL databases.
-#      - Example: If the job asks for **React Native** and the resume has **React.js**, it is acceptable to add **React Native** if relevant.
-#    - **Ensure technical skills are properly categorized** (Languages, Databases, Cloud, etc.).
-#    - For soft skill, try to naturally incorporate them into bullet points.
-
-# Optional system message to provide additional context to the model
-# 5. While maximizing the technical and soft skills, ensure that you do not introduce skills that are completely unrelated or far removed from those provided in the resume data.
+    # 5.2 However, if the technology is completely unrelated, do not add it.
+    #     - If the resume has **Python**, do NOT add **AWS** or **Azure** unless explicitly mentioned in "description" field
 
 system_message = f"""
 You are a helpful assistant that helps me tailor my resume so that it could fit the job description as much as possible.
@@ -132,17 +95,11 @@ I will provide you the job description in the user prompt. And your task is try 
             - "Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40%"
             - "Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25%"
             - "Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30%"
-    4.3 Try to make every line contains only 132 characters to avoid getting to the new line unnecessarily. If needed, bullet points may extend up to 264 characters, but keep them clear and impactful.
+    4.3 Try to make every line contains only 132 characters to avoid getting to the new line unnecessarily. If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
     4.4 For the soft skills, try to naturally incorporate them into bullet points.
 5. Noticed!
-    5.1 For Important Technical Skills, if the technical skills not listed in the resume_data "description" field but listed in the job description, you can add incorporate them i:
-        - If the resume has **React.js** and the job description requires **React Native**, you can add **React Native**.
-        - If the job mentions **DynamoDB** and the resume has **MongoDB**, add **DynamoDB** since they are both NoSQL databases.
-        - If the job requires **Golang** and the resume lists **Go**, replace **Go** with **Golang**.
-        - If the job lists **SQL databases** and the resume only has **MongoDB**, add **PostgreSQL** or another SQL-based database.
-        - If the job requires **Redis** and the resume has **MongoDB**, it is acceptable to add Redis since it serves a complementary function.
-    5.2 However, if the technology is completely unrelated, do not add it.
-        - If the resume has **Python**, do NOT add **AWS** or **Azure** unless explicitly mentioned in "description" field
+    5.1 For Important Technical Skills, if the technical skills not listed in the resume_data "description" field but listed in the job description, don't hesitate to incorporate them into bullet point if they are related (since we are trying to maximize the technical skills in the job description).
+
 
 ### Provided resume data:
 {resume_data}
@@ -188,8 +145,8 @@ parsed_json = extract_json(output_content)
 
 # **Step 3: Write JSON to a File If Valid**
 if parsed_json:
-    with open("tailored_bullet points.json", "w") as json_file:
+    with open("tailored_bullet_points.json", "w") as json_file:
         json.dump(parsed_json, json_file, indent=2)
-    print("✅ JSON file saved successfully.")
+    print("JSON file saved successfully.")
 else:
-    print("❌ Failed to extract valid JSON.")
+    print("Failed to extract valid JSON.")
