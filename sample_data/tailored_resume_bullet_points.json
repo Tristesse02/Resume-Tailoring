@@ -1,0 +1,134 @@
+{
+  "name": "Minh Vu",
+  "email": "{mtvu@umass.edu}",
+  "phone": "+1(413) 275 6387",
+  "linkedin": "{linkedin.com/in/minhvu02}",
+  "linkedin_link": "{http://linkedin.com/in/minhvu02}",
+  "github": "{github.com/Tristesse02}",
+  "github_link": "{https://github.com/Tristesse02}",
+  "work_experiences": [
+    {
+      "company": "Avocademy (YC W22)",
+      "position": "Software Engineer Intern",
+      "duration": "Jun 2024 -- Aug 2024",
+      "location": "Remote, US",
+      "responsibilities": [
+        "Built an OpenAI-powered job application system with React and SpringBoot, autofilling 750+ jobs daily.",
+        "Utilized SupaBase and MongoDB for efficient data storage, managing 70,000+ entries with high availability.",
+        "Integrated Fire Crawler and PuppeteerJS to automate job postings retrieval, enhancing job matching precision.",
+        "Implemented CI/CD and A/B testing on Vercel for deployment, ensuring 99.9% uptime during peak user access."
+      ]
+    },
+    {
+      "company": "FPT Software",
+      "position": "Software Engineer Intern",
+      "duration": "Jun 2023 -- Aug 2023",
+      "location": "Hanoi, Vietnam",
+      "responsibilities": [
+        "Led an AngularJS-TypeScript website for the Japanese Pharmacists Association, servicing 500-1000 daily visits.",
+        "Enhanced JavaScript SDK with Observer pattern, automating data binding for 20,000 entries at 98% accuracy.",
+        "Managed fast-paced development cycles in an Agile-Scrum environment, improving project delivery by 20%."
+      ]
+    },
+    {
+      "company": "Viettel AI",
+      "position": "Machine Learning Engineer Intern",
+      "duration": "Jun 2024 -- Aug 2024",
+      "location": "Hanoi, Vietnam",
+      "responsibilities": [
+        "Deployed Microsoft's GraphRAG to improve sociological documentation with a 30% increase in F1 score.",
+        "Enhanced search accuracy by 25% using Solr and SBERT, optimizing property retrieval for corporate users."
+      ]
+    },
+    {
+      "company": "University of Massachusett Amherst",
+      "position": "Teaching Assistant",
+      "duration": "Sep 2022 -- Current",
+      "location": "Amherst, MA",
+      "responsibilities": [
+        "Instructed 1,500+ students in Computer Science topics, contributing to their academic success.",
+        "Facilitated learning in DSA, Web Programming, and Machine Learning, mentoring diverse student groups."
+      ]
+    }
+  ],
+  "personal_projects": [
+    {
+      "title": "CloudCueAI",
+      "techstack": [
+        "AWS Lambda",
+        "API Gateway",
+        "S3",
+        "Transcribe",
+        "CloudWatch",
+        "SAM Cli",
+        "ExpressJS",
+        "Flask"
+      ],
+      "description": [
+        "Architected a real-time interview language tool with AWS Lambda and Flask, improving communication skills.",
+        "Used Amazon Transcribe for voice data processing, delivering immediate feedback on word suggestions.",
+        "Stored transcriptions securely in S3 and monitored deployments via CloudWatch for reliability."
+      ]
+    },
+    {
+      "title": "Beatcode",
+      "techstack": [
+        "FastAPI",
+        "RestfulAPI",
+        "Docker",
+        "WebSocket",
+        "PostgreSQL",
+        "PassLib",
+        "SQLAlchemy"
+      ],
+      "description": [
+        "Developed a scalable LeetCode game platform with FastAPI, engaging 500+ players during beta phases.",
+        "Optimized Docker and WebSocket for smooth user experience, supporting over 1,000 concurrent users.",
+        "Leveraged PostgreSQL and OpenAI for performance analytics, boosting code acceptance rates by 18%."
+      ]
+    },
+    {
+      "title": "OhEss",
+      "techstack": [
+        "Google Lighthouse",
+        "React",
+        "Linux",
+        "Kolibri",
+        "NextJS",
+        "Vercel"
+      ],
+      "description": [
+        "Engineered a Windows 10 OS replica with React and TypeScript, achieving 100% SEO score in Lighthouse.",
+        "Incorporated Kolibri and Linux apps in NextJS on Vercel, managing in-browser file services for 200+ users."
+      ]
+    },
+    {
+      "title": "Sculpt AI",
+      "techstack": [
+        "Tensorflow",
+        "OpenCV",
+        "SAM model",
+        "MediaPipe"
+      ],
+      "description": [
+        "Devised 3D modeling for Metaverse with AI, reducing manual modeling time by 30% using OpenCV and Blender.",
+        "Implemented MediaPipe for dynamic pose tracking, achieving 85% success rate in real-time environments."
+      ]
+    }
+  ],
+  "technical_skills": [
+    "Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++, C#, Golang, Rust, Swift, Kotlin",
+    "Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS, AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB"
+  ],
+  "educations": [
+    {
+      "university": "University of Massachusetts Amherst",
+      "degree": "Master of Science in Computer Science - GPA: 3.9",
+      "graduate": "May 2026",
+      "location": "Amherst, MA",
+      "courses": [
+        "Algorithm for Data Science, Discrete Mathematics, Algorithm Design, Search Engine, Computer Systems, Advanced Linear Algebra, Programming Methodology, Machine Learning, Operating System, Computer Architecture"
+      ]
+    }
+  ]
+}
