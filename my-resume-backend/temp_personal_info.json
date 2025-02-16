@@ -26,10 +26,7 @@
       "position": "Machine Learning Engineer Intern",
       "duration": "Jun 2024 -- Aug 2024",
       "location": "Hanoi, Vietnam",
-      "responsibilities": [
-        "Deployed Microsoft's GraphRAG data retrieval into sociological documentation, achieving 30% improvement in F1 score",
-        "Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25%"
-      ]
+      "responsibilities": []
     },
     {
       "company": "University of Massachusett Amherst",
@@ -68,12 +65,7 @@
         "PassLib",
         "SQLAlchemy"
       ],
-      "description": [
-        "Utilized Python and FastAPI to design a scalable multi-client LeetCode game platform, achieving 500+ players during beta",
-        "Optimized Docker container for code judging and WebSocket for reliable gameplay connections, supporting 1,000+ concurrent users",
-        "Engineered PostgreSQL to track player performance metrics and integrated OpenAI to analyze runtime complexity and provide feedback, increasing code acceptance rates by 18%",
-        "Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40%"
-      ]
+      "description": []
     },
     {
       "title": "OhEss",
