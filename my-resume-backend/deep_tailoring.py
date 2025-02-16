@@ -4,8 +4,6 @@ import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# from handle_data_gpt import ResumeTailor
-
 
 class DeepResumeTailor:
     def __init__(self, api_key=None):

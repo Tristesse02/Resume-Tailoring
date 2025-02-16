@@ -1,7 +1,5 @@
 import os
-import re
 import sys
-import json
 import signal
 import subprocess
 from flask_cors import CORS
@@ -72,7 +70,7 @@ def tailor_resume():
         formatted_json.format_resume_data()
         data = formatted_json.get_formatted_json()
 
-        print("ditconmedzvlon", data, flush=True)
+        # print("ditconmedzvlon", data, flush=True)
         tailored_resume = deep_tailor.tailor_resume(data)
 
         if not tailored_resume:
@@ -134,17 +132,6 @@ def compile_latex_to_pdf(latex_file, output_pdf):
         print("PDF generated successfully!")
     except subprocess.CalledProcessError as e:
         print(f"Error in LaTeX compilation: {e.stderr.decode()}")
-
-
-def extract_json(text):
-    """Extract JSON from OpenAI response"""
-    match = re.search(r"```json\s*([\s\S]+?)\s*```", text)
-    json_str = match.group(1) if match else text
-
-    try:
-        return json.loads(json_str)
-    except json.JSONDecodeError:
-        return None
 
 
 if __name__ == "__main__":
