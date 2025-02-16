@@ -7,19 +7,23 @@ import subprocess
 from flask_cors import CORS
 from flask import Flask, request, jsonify, send_file
 
+from formatting_json import FormattingJSON
+from deep_tailoring import DeepResumeTailor
+from latex_resume_builder import LatexResumeBuilder
+
 print("Debugging prints will now appear instantly!", flush=True)
 sys.stdout.reconfigure(line_buffering=True)
-
-# Import ResumeTailor class
-from handle_data_gpt import ResumeTailor
 
 app = Flask(__name__)
 CORS(app)  # Allow frontend to call the backend
 
-TEMPLATE_JSON = "temp_personal_info.json"
-LATEX_TEMPLATE = "templateResume.j2"
-OUTPUT_LATEX = "output/output.tex"
 OUTPUT_PDF = "output/output.pdf"
+OUTPUT_LATEX = "output/output.tex"
+LATEX_TEMPLATE = "templateResume.j2"
+TEMPLATE_JSON = "temp_personal_info.json"
+
+# Initialize DeepResumeTailor
+deep_tailor = DeepResumeTailor()
 
 
 def shutdown_server(signal, frame):
@@ -41,29 +45,33 @@ def tailor_resume():
     try:
         # Get JSON data from frontend
         data = request.get_json()
-        json_data = json.dumps(data)
 
-        # Run script.py with JSON data as input
-        result = subprocess.run(
-            ["python", "deep_tailoring.py"],
-            input=json_data,
-            text=True,
-            capture_output=True,
-        )
+        # Validate input data
+        if not data:
+            return jsonify({"error": "Invalid input data"}), 400
 
-        # Extract JSON response
-        output_text = result.stdout.strip()
-        tailored_resume = extract_json(output_text)
+        # Format json data before passing in to gpt
+        formatted_json = FormattingJSON(data)
+        formatted_json.format_resume_data()
+        data = formatted_json.get_formatted_json()
+
+        tailored_resume = deep_tailor.tailor_resume(data)
 
         if not tailored_resume:
             return (
-                jsonify({"error": "Invalid JSON response from deep_tailoring.py", "data": output_text}),
+                jsonify(
+                    {
+                        "error": "Invalid JSON response from deep_tailoring.py",
+                        "data": tailored_resume,
+                    }
+                ),
                 500,
             )
 
         print("you got to this point lol?", flush=True)
+        print(tailored_resume, flush=True)
         # Process tailored resume using Resume Tailor
-        tailor = ResumeTailor(TEMPLATE_JSON)
+        tailor = LatexResumeBuilder(TEMPLATE_JSON)
         tailor.update_template(tailored_resume)
 
         tailor.generate_latex(LATEX_TEMPLATE, OUTPUT_LATEX)
