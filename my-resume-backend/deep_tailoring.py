@@ -14,6 +14,8 @@ class DeepResumeTailor:
         self.client = OpenAI(api_key=self.api_key)
         # self.tailor = ResumeTailor("temp_personal_info.json")
 
+    # If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
+
     def generate_system_message(self, resume_data):
         return f"""
         You are a helpful assistant that helps me tailor my resume so that it could fit the job description as much as possible.
@@ -45,10 +47,9 @@ class DeepResumeTailor:
                     - "Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40%"
                     - "Enhanced employee property search using Solr for text and SBERT for semantic search, boosting mean average precision by 25%"
                     - "Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30%"
-            4.3 Try to make every line contains only 132 characters to avoid getting to the new line unnecessarily. If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
+            4.3 Try to make every line contains around 17 words to avoid getting to the new line unnecessarily. 
             4.4 For the soft skills, try to naturally incorporate them into bullet points.
-        5. Noticed!
-            5.1 For Important Technical Skills, if the technical skills not listed in the resume_data "description" field but listed in the job description, don't hesitate to incorporate them into bullet point if they are related (since we are trying to maximize the technical skills in the job description).
+        5. Make sure that you must return the updated resume_data as a JSON object while preserving its structure.
 
 
         ### Provided resume data:
@@ -60,7 +61,7 @@ class DeepResumeTailor:
             resume_data = input_data.get("resume_data", {})
             job_description = input_data.get("job_description", "")
 
-            print("minhdz", resume_data, job_description, flush=True)
+            # print("minhdz", resume_data, job_description, flush=True)
 
             # More error handling
             if not resume_data or not job_description:
@@ -82,7 +83,7 @@ class DeepResumeTailor:
 
                 # TODO: Error handling: We are largely assuming that output_content has ```json``` block so that .extract_json() can work
                 output_content = chat_completion.choices[0].message.content.strip()
-                print("ducdz", output_content, flush=True)
+                # print("ducdz", output_content, flush=True)
                 return self.extract_json(output_content)
             except Exception as e:
                 print("Error during OpenAI processing:", str(e))

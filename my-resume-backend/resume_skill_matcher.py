@@ -59,7 +59,7 @@ class ResumeSkillMatcher:
         )
 
         output_content = chat_completion.choices[0].message.content.strip()
-        print(output_content)
+        # print(output_content)
         return self.extract_json(output_content)
 
     @staticmethod

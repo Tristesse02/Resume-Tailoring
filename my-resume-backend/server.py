@@ -9,6 +9,7 @@ from flask import Flask, request, jsonify, send_file
 
 from formatting_json import FormattingJSON
 from deep_tailoring import DeepResumeTailor
+from resume_skill_matcher import ResumeSkillMatcher
 from latex_resume_builder import LatexResumeBuilder
 
 print("Debugging prints will now appear instantly!", flush=True)
@@ -24,6 +25,7 @@ TEMPLATE_JSON = "temp_personal_info.json"
 
 # Initialize DeepResumeTailor
 deep_tailor = DeepResumeTailor()
+resume_skill_matcher = ResumeSkillMatcher()
 
 
 def shutdown_server(signal, frame):
@@ -51,10 +53,26 @@ def tailor_resume():
             return jsonify({"error": "Invalid input data"}), 400
 
         # Format json data before passing in to gpt
+        # data: containing "resume_data" and "job_description" fields
         formatted_json = FormattingJSON(data)
+
+        # Step trivial: Extracting job description and resume data
+        job_description = formatted_json.get_job_description()
+
+        # Step 1: Augmenting the technical skills in the resume
+        formatted_augment_skills = formatted_json.format_augment_skill()
+        augmented_skills_json = resume_skill_matcher.match_skills(
+            formatted_augment_skills, job_description
+        )
+
+        # Step 2: Updating the technical skills in resume:
+        formatted_json.augment_skill_to_input_json(augmented_skills_json)
+
+        # Step 3: Formatting the resume data for deep tailoring
         formatted_json.format_resume_data()
         data = formatted_json.get_formatted_json()
 
+        print("ditconmedzvlon", data, flush=True)
         tailored_resume = deep_tailor.tailor_resume(data)
 
         if not tailored_resume:
@@ -69,7 +87,7 @@ def tailor_resume():
             )
 
         print("you got to this point lol?", flush=True)
-        print(tailored_resume, flush=True)
+        # print(tailored_resume, flush=True)
         # Process tailored resume using Resume Tailor
         tailor = LatexResumeBuilder(TEMPLATE_JSON)
         tailor.update_template(tailored_resume)
