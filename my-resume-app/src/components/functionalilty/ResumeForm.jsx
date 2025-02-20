@@ -1,7 +1,12 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 
-export default function ResumeForm({ id, formData, updateFormData }) {
+export default function ResumeForm({
+  id,
+  formData,
+  updateFormData,
+  removeEntry,
+}) {
   const [form, setForm] = useState(
     formData || {
       name: "",
@@ -21,7 +26,12 @@ export default function ResumeForm({ id, formData, updateFormData }) {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Experience {id}</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Experience {id}</h1>
+        <button className={styles.removeButton} onClick={() => removeEntry(id)}>
+          ❌
+        </button>
+      </div>
 
       <div className={styles.formGroup}>
         <input

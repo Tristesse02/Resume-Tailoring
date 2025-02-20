@@ -62,6 +62,10 @@ const EntriesWrapper = () => {
     ]); // Create unique ID
   };
 
+  const removeEntry = (id) => {
+    setEntries((prevEntries) => prevEntries.filter((entry) => entry.id !== id));
+  };
+
   const updateFormData = (id, newFormData) => {
     setEntries((prevEntries) =>
       prevEntries.map((entry) =>
@@ -149,6 +153,7 @@ const EntriesWrapper = () => {
           id={entry.id}
           formData={entry.formData}
           updateFormData={updateFormData}
+          removeEntry={removeEntry}
         /> // Pass unique I FD
       ))}
       <div className={styles.buttonContainer}>

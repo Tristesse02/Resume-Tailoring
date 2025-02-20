@@ -47,6 +47,7 @@
 
 /* ResumeForm.module.css */
 .container {
+  position: relative;
   max-width: 900px;
   margin: 100%;
   padding: 1.5rem;
@@ -168,4 +169,29 @@
 
 .backButton:hover {
   background-color: #374151; /* Darker gray on hover */
+}
+
+/* Header Flexbox to align title and remove button */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Remove (❌) Button */
+.removeButton {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  color: #ff4d4d; /* Red color */
+  font-size: 1.5rem; /* Increase size */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.removeButton:hover {
+  color: #ff1a1a;
 }
