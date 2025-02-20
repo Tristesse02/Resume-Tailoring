@@ -5,7 +5,7 @@
   justify-content: flex-start; /* Prevent forms from pushing header */
   align-items: center;
   width: 100%;
-  min-height: 100vh; /* Allow it to grow dynamically */
+  min-height: auto; /* Allow it to grow dynamically */
   gap: 1rem; /* Add spacing */
   padding-top: 2rem; /* Ensures space below the header */
 }
@@ -18,6 +18,15 @@
   width: 100%;
   height: 100vh;
   padding: 2rem 0;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 20px;
+  margin-bottom: 50px; /* Add bottom spacing */
 }
 
 .button {
@@ -136,4 +145,27 @@
   font-size: 1rem;
   resize: vertical;
   box-sizing: border-box;
+}
+
+.backButtonContainer {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  width: 100%;
+  margin: 1rem auto 0 1rem; /* Add margin for spacing */
+}
+
+.backButton {
+  padding: 10px 15px;
+  background-color: #4b5563; /* Gray background */
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.backButton:hover {
+  background-color: #374151; /* Darker gray on hover */
 }

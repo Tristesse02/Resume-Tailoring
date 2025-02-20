@@ -6,8 +6,9 @@
 import AddEntry from "./AddEntry.jsx";
 import styles from "./index.module.css";
 import ResumeForm from "./ResumeForm.jsx";
-import { useState, useEffect } from "react";
 import SubmitButton from "./SubmitButton.jsx";
+
+import { useState, useEffect } from "react";
 import { useJobDescription } from "../../useContext/JobDescriptionContext.jsx";
 
 const LOCAL_STORAGE_KEY = "resume_entries";
@@ -69,8 +70,13 @@ const EntriesWrapper = () => {
     );
   };
 
-  /** @type {ResumeEntry} */
+  // /** @type {ResumeEntry} */
   const submitAllForms = () => {
+    // Retrieve profile data from local storage
+    const storedProfileData = localStorage.getItem("profileData");
+    const profileData = storedProfileData ? JSON.parse(storedProfileData) : {};
+
+    // Process experiences and projects
     /** @type {ResumeData} */
     let resumeData = entries.reduce((acc, cur) => {
       const category =
@@ -92,6 +98,7 @@ const EntriesWrapper = () => {
 
     /** @type {ResumeRequest} */
     let requestedBody = {
+      profile_data: profileData,
       resume_data: resumeData,
       job_description: jobDescription,
     };
@@ -144,8 +151,10 @@ const EntriesWrapper = () => {
           updateFormData={updateFormData}
         /> // Pass unique I FD
       ))}
-      <AddEntry onClick={addNewEntry} />
-      <SubmitButton submitAllForms={submitAllForms} />
+      <div className={styles.buttonContainer}>
+        <AddEntry onClick={addNewEntry} />
+        <SubmitButton submitAllForms={submitAllForms} />
+      </div>
     </div>
   );
 };

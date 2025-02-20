@@ -1,17 +1,20 @@
 import "./index.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Header from "./components/functionalilty/Header.jsx";
-import EntriesWrapper from "./components/functionalilty/EntriesWrapper.jsx";
-import PageContainer from "./components/functionalilty/PageContainer.jsx";
-import JobDescriptionInput from "./components/functionalilty/JobDescriptionInput.jsx";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import MainPage from "./components/pages/MainPage";
+import ResumeTailor from "./components/pages/ResumeTailor";
+import Profile from "./components/pages/Profile";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <PageContainer>
-      <Header />
-      <JobDescriptionInput />
-      <EntriesWrapper />
-    </PageContainer>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/resume-tailor" element={<ResumeTailor />} />
+      </Routes>
+    </Router>
   </StrictMode>
 );
