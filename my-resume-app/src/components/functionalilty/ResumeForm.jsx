@@ -48,7 +48,6 @@ export default function ResumeForm({
           onChange={handleChange}
         >
           <option value="">Select Type 💜</option>
-          <option value="Intern">Intern</option>
           <option value="Job">Job</option>
           <option value="Project">Project</option>
         </select>
