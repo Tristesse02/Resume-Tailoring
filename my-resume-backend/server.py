@@ -84,12 +84,13 @@ def tailor_resume():
                 500,
             )
 
-        print("you got to this point lol?", flush=True)
         # print(tailored_resume, flush=True)
         # Process tailored resume using Resume Tailor
         tailor = LatexResumeBuilder(TEMPLATE_JSON)
-        tailor.update_template(tailored_resume)
-
+        tailor.update_template(
+            tailored_resume, formatted_json.get_profile_data()
+        )  # TODO: For the fact that we will have to maintain this codebase, please refactor somehow so that it is easy for modification
+        ## Currently, the passing of get_profile_data() makes the code looks super ugly
         tailor.generate_latex(LATEX_TEMPLATE, OUTPUT_LATEX)
 
         print("till this point", flush=True)
@@ -139,3 +140,55 @@ if __name__ == "__main__":
         app.run(port=5000, debug=True, use_reloader=True)
     except KeyboardInterrupt:
         print("Backend stopped...")
+
+        # Sample data to avoid gpt call
+        tailored_resume = {
+            "personal_projects": [
+                {
+                    "title": "CloudCueAI",
+                    "description": [
+                        "Engineered a serverless application using AWS Lambda and API Gateway to develop a real-time interview tool, attracting 500-1000 daily visits.",
+                        "Implemented infrastructure automation with Terraform and AWS SAM, improving deployment speed and reliability by 30%.",
+                        "Developed comprehensive monitoring and observability using CloudWatch, ensuring system uptime and performance for 20,000 data entries.",
+                        "Enhanced authentication with IAM and JWT, strengthening security and compliance.",
+                    ],
+                },
+                {
+                    "title": "Beatcode",
+                    "description": [
+                        "Developed WebSocket APIs using FastAPI for real-time coding battles, supporting 1,000+ concurrent users.",
+                        "Managed PostgreSQL databases to reliably store player data and performance metrics for 500+ players during beta.",
+                        "Established a robust CI/CD pipeline using Docker and GitHub Actions, accelerating deployment processes by 40%.",
+                        "Implemented OAuth and CORS for seamless user authentication, enhancing system security and user access.",
+                    ],
+                },
+            ],
+            "work_experiences": [
+                {
+                    "title": "FPT Software",
+                    "description": [
+                        "Led an AngularJS-TypeScript website for managing prescriptions, serving Japan Pharmacists Association with 500-1000 daily visits.",
+                        "Refined an Observer pattern to automate 20,000 data bindings, increasing efficiency and code accuracy by 50%.",
+                        "Enhanced collaborative development using Agile-Scrum, improving team productivity and communication in a fast-paced environment.",
+                        "Integrated JavaScript SDK across multiple web pages and modals, ensuring seamless interaction with frontend UI.",
+                    ],
+                },
+                {
+                    "title": "Avocademy (YC W22)",
+                    "description": [
+                        "Leveraged OpenAI API to engineer a job classification system, boosting job relevance by 50%.",
+                        "Streamlined the extraction of 750+ daily job postings and automated applications using Fire Crawler, PuppeteerJS, and Playwright.",
+                        "Managed 70,000+ database entries to efficiently monitor job posting, user data, and platform activity using MongoDB and Supabase.",
+                        "Automated deployments and enhanced system reliability with Vercel, GitHub CI/CD, and A/B testing.",
+                        "Developed secure cloud interactions by integrating OAuth and IAM policies, improving security compliance by 40%.",
+                    ],
+                },
+                {
+                    "title": "Viettel AI",
+                    "description": [
+                        "Pioneered a semantic search pipeline with Solr and SBERT, enhancing text search relevance by 25%.",
+                        "Implemented data storage and retrieval systems using Microsoft Graph RAG, optimizing data access and management.",
+                    ],
+                },
+            ],
+        }

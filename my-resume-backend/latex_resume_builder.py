@@ -1,5 +1,6 @@
 import json
 from jinja2 import Template
+from urllib.parse import urlparse
 
 
 class LatexResumeBuilder:
@@ -8,7 +9,7 @@ class LatexResumeBuilder:
         with open(template_path, "r") as f:
             self.template = json.load(f)  # Load the template
 
-    def update_template(self, output):
+    def update_template(self, output, profile_data):
         """
         Update the resume template with the provided AI-generated output.
         """
@@ -33,7 +34,24 @@ class LatexResumeBuilder:
             if empty_project["title"] in work_exp:
                 empty_project["description"] = work_exp[empty_project["title"]]
 
-        # print(self.template)
+        # LinkedIn and Github extraction
+        linkedIn_url = urlparse(profile_data["linkedin"])
+        linkedIn_none_url = linkedIn_url.netloc + linkedIn_url.path
+
+        github_url = urlparse(profile_data["github"])
+        github_non_url = github_url.netloc + github_url.path
+
+        # **Update personal information**
+        self.template["name"] = profile_data["name"]
+        self.template["email"] = f"{{{profile_data['email']}}}"
+        self.template["phone"] = profile_data["phone"]
+        self.template["linkedin"] = f"{{{linkedIn_none_url}}}"
+        self.template["linkedin_link"] = f"{{{profile_data['linkedin']}}}"
+        self.template["github"] = f"{{{github_non_url}}}"
+        self.template["github_link"] = f"{{{profile_data['github']}}}"
+
+        # [Debug Purpose]
+        # print("ditmenooo", self.template, flush=True)
 
         return self.template  # Return the updated template
 

@@ -16,15 +16,25 @@ class FormattingJSON:
         return self.input_json["resume_data"]
 
     def get_job_description(self):
-        """Returns the job description data from the input JSON."""
+        """
+        Returns the job description data from the input JSON.
+        """
         return self.input_json["job_description"]
+
+    def get_profile_data(self):
+        """
+        Returns the profile data from the input JSON.
+        """
+        return self.input_json["profile_data"]
 
     def format_augment_skill(self):
         """
         Formats either personal projects or work experiences by restructuring descriptions.
         """
         formatted_augment_skill = {}
-        for exp_obj in self.input_json["resume_data"]["work_experiences"]:
+        for exp_obj in self.input_json["resume_data"][
+            "work_experiences"
+        ]:  # TODO: Replace this to get_resume_data to improve readability
             formatted_augment_skill[exp_obj["title"]] = {}
             formatted_augment_skill[exp_obj["title"]]["tech_skills"] = exp_obj[
                 "techStack"

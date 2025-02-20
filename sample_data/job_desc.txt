@@ -41,3 +41,57 @@ Why Join Us?
 
 How to Apply:
 Send your resume and portfolio (GitHub/LinkedIn) to [Your Email/Job Portal Link]. We look forward to hearing from you!
+
+------------------------------------------------------------------------------------
+1. Cloud Engineer (Serverless & DevOps)
+Location: Remote / Hybrid
+Job Type: Full-time
+
+About the Role:
+We are seeking a Cloud Engineer specializing in serverless architectures and DevOps automation. You will design and maintain scalable cloud infrastructure, optimize deployments, and enhance system reliability through automation and CI/CD best practices.
+
+Responsibilities:
+Design and maintain serverless applications using AWS Lambda, API Gateway, S3, DynamoDB, and Cognito.
+Automate infrastructure management using Terraform, AWS SAM, and Kubernetes.
+Optimize CI/CD pipelines with GitHub Actions, GitLab CI, and Jenkins.
+Enhance security and authentication using JWT, OAuth, and IAM policies.
+Implement monitoring and observability with CloudWatch and logging solutions.
+Preferred Qualifications:
+Experience with multi-cloud environments (AWS, GCP, Azure).
+Strong knowledge of containerized deployments and orchestration.
+Exposure to CDN optimization and edge computing.
+
+2. Software Engineer (Full-Stack & API Development)
+Location: Remote / Hybrid
+Job Type: Full-time
+
+About the Role:
+We are looking for a Full-Stack Software Engineer with expertise in building scalable web applications and APIs. You will develop efficient backend services, interactive front-end applications, and integrate databases for optimal performance.
+
+Responsibilities:
+Develop and maintain RESTful APIs using FastAPI, Flask, or Express.js.
+Build modern front-end applications using React, Next.js, and D3.js.
+Optimize database performance with PostgreSQL, Redis, and NoSQL solutions.
+Implement real-time data communication using WebSockets.
+Conduct unit, integration, and E2E testing using Jest, Cypress, and Playwright.
+Preferred Qualifications:
+Experience with GraphQL and gRPC.
+Strong background in secure authentication and role-based access control.
+Familiarity with A/B testing and performance optimization.
+
+3. Machine Learning Engineer (AI & Search Systems)
+Location: Remote / Hybrid
+Job Type: Full-time
+
+About the Role:
+We are hiring a Machine Learning Engineer to develop and optimize AI-driven solutions, including search retrieval systems and transformer-based models. You will work on RAG pipelines, NLP, and vector search optimization.
+
+Responsibilities:
+Build and fine-tune transformer-based models (BERT, GPT, T5) for AI applications.
+Develop search and retrieval pipelines using Elasticsearch, Meilisearch, Pinecone, and FAISS.
+Implement BM25 and hybrid search approaches for NLP applications.
+Optimize ML model performance and integrate with production environments.
+Preferred Qualifications:
+Experience with Hugging Face, spaCy, and knowledge graphs.
+Exposure to distributed processing using Kafka or RabbitMQ.
+Hands-on experience with multi-modal AI applications.
