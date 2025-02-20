@@ -41,13 +41,17 @@ export default function ResumeForm({
           value={form.name}
           onChange={handleChange}
         />
-        <input
+        <select
           name="type"
           className={styles.input}
-          placeholder="Type 💜(Intern, Job, Project) (you must choose from any of the three ☹️)"
           value={form.type}
           onChange={handleChange}
-        />
+        >
+          <option value="">Select Type 💜</option>
+          <option value="Intern">Intern</option>
+          <option value="Job">Job</option>
+          <option value="Project">Project</option>
+        </select>
         <input
           name="techStack"
           className={styles.input}

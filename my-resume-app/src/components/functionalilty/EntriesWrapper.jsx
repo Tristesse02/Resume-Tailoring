@@ -128,6 +128,11 @@ const EntriesWrapper = () => {
       .catch((error) => console.error("Error:", error));
   };
 
+  // Check if all forms are valid
+  const isFormValid = () => {
+    return entries.every((entry) => entry.formData.type);
+  };
+
   // Function to download PDF from backend
   const downloadPDF = () => {
     fetch("http://localhost:5000/download-pdf")
@@ -158,7 +163,10 @@ const EntriesWrapper = () => {
       ))}
       <div className={styles.buttonContainer}>
         <AddEntry onClick={addNewEntry} />
-        <SubmitButton submitAllForms={submitAllForms} />
+        <SubmitButton
+          submitAllForms={submitAllForms}
+          disabled={!isFormValid()}
+        />
       </div>
     </div>
   );

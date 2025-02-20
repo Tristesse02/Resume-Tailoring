@@ -113,6 +113,13 @@
   background-color: #218838;
 }
 
+/* Disabled state */
+.submitButton.disabled {
+  background-color: #6c757d ; /* Gray background */
+  cursor: not-allowed; /* Show 'not-allowed' cursor */
+  opacity: 0.6; /* Reduce opacity to indicate it's inactive */
+}
+
 /* Job Description Input Container */
 .jobDescriptionContainer {
   max-width: 900px;
