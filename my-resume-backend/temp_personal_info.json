@@ -8,65 +8,17 @@
   "github_link": "",
   "work_experiences": [
     {
-      "company": "Avocademy (YC W22)",
-      "position": "Software Engineer Intern",
-      "duration": "Jun 2024 -- Aug 2024",
-      "location": "Remote, US",
-      "responsibilities": []
-    },
-    {
-      "company": "FPT Software",
-      "position": "Software Engineer Intern",
-      "duration": "Jun 2023 -- Aug 2023",
-      "location": "Hanoi, Vietnam",
-      "responsibilities": []
-    },
-    {
-      "company": "Viettel AI",
-      "position": "Machine Learning Engineer Intern",
-      "duration": "Jun 2024 -- Aug 2024",
-      "location": "Hanoi, Vietnam",
-      "responsibilities": []
-    },
-    {
-      "company": "University of Massachusett Amherst",
+      "title": "University of Massachusett Amherst",
       "position": "Teaching Assistant",
       "duration": "Sep 2022 -- Current",
       "location": "Amherst, MA",
-      "responsibilities": [
+      "description": [
         "Functioned as a teaching assistant for 1,500+ students across 6 consecutive semesters",
         "Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class"
       ]
     }
   ],
   "personal_projects": [
-    {
-      "title": "CloudCueAI",
-      "techstack": [
-        "AWS Lambda",
-        "API Gateway",
-        "S3",
-        "Transcribe",
-        "CloudWatch",
-        "SAM Cli",
-        "ExpressJS",
-        "Flask"
-      ],
-      "description": []
-    },
-    {
-      "title": "Beatcode",
-      "techstack": [
-        "FastAPI",
-        "RestfulAPI",
-        "Docker",
-        "WebSocket",
-        "PostgreSQL",
-        "PassLib",
-        "SQLAlchemy"
-      ],
-      "description": []
-    },
     {
       "title": "OhEss",
       "techstack": [
@@ -91,10 +43,7 @@
       ]
     }
   ],
-  "technical_skills": [
-    "Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++, C#, Go, Rust, Swift, Kotlin",
-    "Libraries/Frameworks: MongoDB, ExpressJS, ReactJS, NodeJS, AngularJS, SpringBoot, Docker, SQL, Supabase, PouchDB"
-  ],
+  "technical_skills": [],
   "educations": [
     {
       "university": "University of Massachusetts Amherst",

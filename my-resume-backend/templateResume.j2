@@ -140,7 +140,7 @@
 
 	\sectionTitle{Work Experiences}
 	{% for job in work_experiences %}
-	\contentEntryWorkExp{ {{ job.company }} }{ {{ job.duration }} }{ {{ job.position }} }{ {{ job.location }} }{ {% for item in job.responsibilities %}
+	\contentEntryWorkExp{ {{ job.title }} }{ {{ job.duration }} }{ {{ job.position }} }{ {{ job.location }} }{ {% for item in job.description %}
 		\item {{ item }}{% endfor %} }
 	{% endfor %}
 	

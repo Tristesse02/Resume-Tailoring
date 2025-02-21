@@ -15,11 +15,23 @@ export default function ResumeForm({
       description: "",
       numbers: "",
       bulletPoints: "",
+      duration: "",
+      position: "",
+      location: "",
     }
   );
 
   const handleChange = (e) => {
-    const newFormData = { ...form, [e.target.name]: e.target.value };
+    const { name, value } = e.target;
+    const newFormData = { ...form, [name]: value };
+
+    // If the type is not project, then clear the project related fields
+    if (name === "type") {
+      newFormData.duration = value !== "Project" ? form.duration : "";
+      newFormData.position = value !== "Project" ? form.position : "";
+      newFormData.location = value !== "Project" ? form.location : "";
+    }
+
     setForm(newFormData);
     updateFormData(id, newFormData);
   };
@@ -51,6 +63,33 @@ export default function ResumeForm({
           <option value="Job">Job</option>
           <option value="Project">Project</option>
         </select>
+
+        {form.type !== "Project" && (
+          <>
+            <input
+              name="duration"
+              className={styles.input}
+              placeholder="Duration (Jun 2024 -- Aug 2024)"
+              value={form.duration}
+              onChange={handleChange}
+            />
+            <input
+              name="position"
+              className={styles.input}
+              placeholder="Position (e.g. Software Engineer Intern)"
+              value={form.position}
+              onChange={handleChange}
+            />
+            <input
+              name="location"
+              className={styles.input}
+              placeholder="Location (e.g. Remote, US)"
+              value={form.location}
+              onChange={handleChange}
+            />
+          </>
+        )}
+
         <input
           name="techStack"
           className={styles.input}

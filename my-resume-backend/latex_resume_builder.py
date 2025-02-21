@@ -9,9 +9,14 @@ class LatexResumeBuilder:
         with open(template_path, "r") as f:
             self.template = json.load(f)  # Load the template
 
-    def update_template(self, output, profile_data):
+    def update_template(self, output, profile_data, resume_data):
         """
         Update the resume template with the provided AI-generated output.
+
+        params:
+        output: AI-generated output from deep_tailoring.py
+        profile_data: Profile data (metadata) extracted from the front-end
+        resume_data: Resume data (work experiences and personal project) extracted from the front-end
         """
         work_exp = {}
 
@@ -22,17 +27,34 @@ class LatexResumeBuilder:
         for tailored_project in output["personal_projects"]:
             work_exp[tailored_project["title"]] = tailored_project["description"]
 
-        # **Update Work Experiences**
-        for empty_experience in self.template["work_experiences"]:
-            if empty_experience["company"] in work_exp:
-                empty_experience["responsibilities"] = work_exp[
-                    empty_experience["company"]
-                ]
+        # Extract an empty array work_experience from the temp_personal_info.json
+        work_exp_field = self.template["work_experiences"]
+        # Paste work_experiences into the temp_personal_info.json
+        for experiences in resume_data["work_experiences"]:
+            work_exp_field.append(
+                {
+                    "title": experiences["title"],
+                    "position": experiences["position"],
+                    "duration": experiences["duration"],
+                    "location": experiences["location"],
+                    "description": work_exp[experiences["title"]],
+                }
+            )
 
-        # **Update Personal Projects**
-        for empty_project in self.template["personal_projects"]:
-            if empty_project["title"] in work_exp:
-                empty_project["description"] = work_exp[empty_project["title"]]
+        # Extract an empty array personal_projects from the temp_personal_info.json
+        personal_projects_field = self.template["personal_projects"]
+        # Paste personal_projects into the temp_personal_info.json
+        for projects in resume_data["personal_projects"]:
+            personal_projects_field.append(
+                {
+                    "title": projects["title"],
+                    "techstack": projects["techStack"],
+                    "description": work_exp[projects["title"]],
+                }
+            )
+
+        # [Debug Purpose]
+        # print(tailored_experience, flush=True)
 
         # LinkedIn and Github extraction
         linkedIn_url = urlparse(profile_data["linkedin"])
@@ -49,6 +71,12 @@ class LatexResumeBuilder:
         self.template["linkedin_link"] = f"{{{profile_data['linkedin']}}}"
         self.template["github"] = f"{{{github_non_url}}}"
         self.template["github_link"] = f"{{{profile_data['github']}}}"
+
+        # Technical Skills/Frameworks Showoff
+        self.template["technical_skills"] = [
+            f"Languages: {profile_data['languages']}",
+            f"Libraries/Framework: {profile_data['frameworks']}",
+        ]
 
         # [Debug Purpose]
         # print("ditmenooo", self.template, flush=True)

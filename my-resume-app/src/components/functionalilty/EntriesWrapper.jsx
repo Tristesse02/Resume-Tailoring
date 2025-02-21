@@ -69,7 +69,20 @@ const EntriesWrapper = () => {
   const updateFormData = (id, newFormData) => {
     setEntries((prevEntries) =>
       prevEntries.map((entry) =>
-        entry.id === id ? { ...entry, formData: newFormData } : entry
+        entry.id === id
+          ? {
+              ...entry,
+              formData: {
+                ...newFormData,
+                duration:
+                  newFormData.type !== "Project" ? newFormData.duration : "",
+                position:
+                  newFormData.type !== "Project" ? newFormData.position : "",
+                location:
+                  newFormData.type !== "Project" ? newFormData.location : "",
+              },
+            }
+          : entry
       )
     );
   };
@@ -88,14 +101,22 @@ const EntriesWrapper = () => {
           ? "personal_projects"
           : "work_experiences";
       if (!acc[category]) acc[category] = [];
-      acc[category].push({
+      let entryData = {
         title: cur.formData.name,
         type: cur.formData.type,
         techStack: cur.formData.techStack.split(",").map((e) => e.trim()), // Convert to array of strings of tech stacks
         description: cur.formData.description,
         quantifiableMetrics: cur.formData.numbers,
         bulletPoints: cur.formData.bulletPoints,
-      });
+      };
+
+      if (cur.formData.type !== "Project") {
+        entryData.duration = cur.formData.duration;
+        entryData.position = cur.formData.position;
+        entryData.location = cur.formData.location;
+      }
+
+      acc[category].push(entryData);
 
       return acc;
     }, {});
@@ -107,7 +128,7 @@ const EntriesWrapper = () => {
       job_description: jobDescription,
     };
 
-    console.log(requestedBody); // TODO: testing purposes
+    console.log("dzai vlon", requestedBody); // TODO: testing purposes
 
     fetch("http://localhost:5000/tailor-resume", {
       method: "POST",

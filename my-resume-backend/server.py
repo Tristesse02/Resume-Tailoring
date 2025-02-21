@@ -56,7 +56,9 @@ def tailor_resume():
 
         # Step trivial: Extracting job description and resume data
         job_description = formatted_json.get_job_description()
+        resume_data = formatted_json.get_resume_data()
 
+        ## [Debugging Purpose] START HERE
         # Step 1: Augmenting the technical skills in the resume
         formatted_augment_skills = formatted_json.format_augment_skill()
         augmented_skills_json = resume_skill_matcher.match_skills(
@@ -70,7 +72,7 @@ def tailor_resume():
         formatted_json.format_resume_data()
         data = formatted_json.get_formatted_json()
 
-        # print("ditconmedzvlon", data, flush=True)
+        print("ditconmedzvlon", data, flush=True)
         tailored_resume = deep_tailor.tailor_resume(data)
 
         if not tailored_resume:
@@ -84,11 +86,13 @@ def tailor_resume():
                 500,
             )
 
+        ## END HERE
+
         # print(tailored_resume, flush=True)
         # Process tailored resume using Resume Tailor
         tailor = LatexResumeBuilder(TEMPLATE_JSON)
         tailor.update_template(
-            tailored_resume, formatted_json.get_profile_data()
+            tailored_resume, formatted_json.get_profile_data(), resume_data
         )  # TODO: For the fact that we will have to maintain this codebase, please refactor somehow so that it is easy for modification
         ## Currently, the passing of get_profile_data() makes the code looks super ugly
         tailor.generate_latex(LATEX_TEMPLATE, OUTPUT_LATEX)

@@ -15,7 +15,7 @@ const ProfilePage = () => {
           phone: "",
           linkedin: "",
           github: "",
-          skills: "",
+          languages: "",
           frameworks: "",
         };
   });
@@ -89,9 +89,9 @@ const ProfilePage = () => {
         <textarea
           className={styles.textarea}
           type="text"
-          name="skills"
+          name="languages"
           placeholder="Technical Skills (comma-separated)"
-          value={formData.skills}
+          value={formData.languages}
           onChange={handleChange}
         />
         <textarea
