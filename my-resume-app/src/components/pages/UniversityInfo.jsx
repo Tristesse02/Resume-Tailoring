@@ -12,7 +12,8 @@ const UniversityInfo = () => {
       : {
           university: "",
           degree: "",
-          graduation: "",
+          gpa: "",
+          graduate: "",
           location: "",
           courses: "",
         };
@@ -62,9 +63,18 @@ const UniversityInfo = () => {
         <input
           className={styles.input}
           type="text"
-          name="graduation"
+          name="gpa"
+          placeholder="GPA"
+          value={formData.gpa}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className={styles.input}
+          type="text"
+          name="graduate"
           placeholder="Graduation Year"
-          value={formData.graduation}
+          value={formData.graduate}
           onChange={handleChange}
           required
         />

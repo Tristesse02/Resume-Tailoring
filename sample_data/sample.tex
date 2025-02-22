@@ -86,8 +86,21 @@
 
 \newcommand{\contentEntryWorkExp}[5]{% 
     \noalign{\vspace{0.4em}} % Add some vertical space between entries
-    \textbf{#1} & \textbf{\small #2} \\ \small
+    \textbf{\ignorespaces #1} & \textbf{\small #2} \\ \small
     #3 & \small #4 \\ % Add job label and location
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            \begin{itemize}
+                #5 % Items go here
+            \end{itemize}
+        \end{minipage}}\\
+}
+
+\newcommand{\contentEntryEducation}[6]{% 
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
+    \textbf{#1} & \textbf{\small #2} \\ \small
+    #3 - GPA: #6 & \small #4 \\ % Add job label and location
     \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
         \begin{minipage}[t]{\linewidth}
             \raggedright
@@ -227,12 +240,12 @@
 
 	\sectionTitle{Education}
 
-	\contentEntryWorkExp{UMass Amherst}{May 2026}%
-	{Master of Computer Science and Mathematics - GPA: 3.9}{Amherst, MA}{%
+	\contentEntryEducation{UMass Amherst}{May 2026}%
+	{Master of Computer Science and Mathematics}{Amherst, MA}{%
 		\item Courses: Algorithm for Data Science, Discrete Mathematics,
 		Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra,
 		Programming Methodology, Machine Learning, Operating System, Computer Architecture
-	}
+	}{4.2}
 \end{longtable}
 \end{document}
 % chktex-enable

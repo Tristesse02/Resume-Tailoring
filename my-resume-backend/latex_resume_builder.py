@@ -9,7 +9,7 @@ class LatexResumeBuilder:
         with open(template_path, "r") as f:
             self.template = json.load(f)  # Load the template
 
-    def update_template(self, output, profile_data, resume_data):
+    def update_template(self, output, profile_data, resume_data, university_data):
         """
         Update the resume template with the provided AI-generated output.
 
@@ -77,6 +77,15 @@ class LatexResumeBuilder:
             f"Languages: {profile_data['languages']}",
             f"Libraries/Framework: {profile_data['frameworks']}",
         ]
+
+        # University Data
+        education_obj = self.template["educations"][0]
+        education_obj["university"] = university_data["university"]
+        education_obj["degree"] = university_data["degree"]
+        education_obj["gpa"] = university_data["gpa"]
+        education_obj["graduate"] = university_data["graduate"]
+        education_obj["location"] = university_data["location"]
+        education_obj["courses"].append(f"Courses: {university_data['courses']}")
 
         # [Debug Purpose]
         # print("ditmenooo", self.template, flush=True)

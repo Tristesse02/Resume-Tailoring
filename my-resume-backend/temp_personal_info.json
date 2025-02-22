@@ -46,13 +46,12 @@
   "technical_skills": [],
   "educations": [
     {
-      "university": "University of Massachusetts Amherst",
-      "degree": "Master of Science in Computer Science - GPA: 3.9",
-      "graduate": "May 2026",
-      "location": "Amherst, MA",
-      "courses": [
-        "Algorithm for Data Science, Discrete Mathematics, Algorithm Design, Search Engine, Computer Systems, Advance Linear Algebra, Programming Methodology, Machine Learning, Operating System, Computer Architecture"
-      ]
+      "university": "",
+      "degree": "",
+      "gpa": "",
+      "graduate": "",
+      "location": "",
+      "courses": []
     }
   ]
 }

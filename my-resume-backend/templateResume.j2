@@ -97,6 +97,19 @@
         \end{minipage}}\\
 }
 
+\newcommand{\contentEntryEducation}[6]{% 
+    \noalign{\vspace{0.4em}} % Add some vertical space between entries
+    \textbf{\ignorespaces #1} & \textbf{\small #2} \\ \small
+    #3- GPA: #6 & \small #4 \\ % Add job label and location
+    \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
+        \begin{minipage}[t]{\linewidth}
+            \raggedright
+            \begin{itemize}
+                #5 % Items go here
+            \end{itemize}
+        \end{minipage}}\\
+}
+
 \newcommand{\contentEntryPersonalProj}[3]{
   \noalign{\vspace{0.4em}} % Add some vertical space between entries
   \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
@@ -159,8 +172,8 @@
 
 	\sectionTitle{Education}
 	{% for edu in educations %}
-	\contentEntryWorkExp{ {{ edu.university }} }{ {{ edu.graduate }} }{ {{ edu.degree }} }{ {{ edu.location }} }{ {% for item in edu.courses %}
-		\item {{ item }}{% endfor %} }
+	\contentEntryEducation{ {{ edu.university }} }{ {{ edu.graduate }} }{ {{ edu.degree }} }{ {{ edu.location }} }{ {% for item in edu.courses %}
+		\item {{ item }}{% endfor %} }{ {{ edu.gpa }} }
 	{% endfor %}
 
 

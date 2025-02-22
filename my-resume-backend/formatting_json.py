@@ -27,6 +27,12 @@ class FormattingJSON:
         """
         return self.input_json["profile_data"]
 
+    def get_university_data(self):
+        """
+        Returns the university data from the input JSON.
+        """
+        return self.input_json["university_data"]
+
     def format_augment_skill(self):
         """
         Formats either personal projects or work experiences by restructuring descriptions.
