@@ -93,6 +93,11 @@ const EntriesWrapper = () => {
     const storedProfileData = localStorage.getItem("profileData");
     const profileData = storedProfileData ? JSON.parse(storedProfileData) : {};
 
+    const storedUniversityData = localStorage.getItem("universityData");
+    const universityData = storedUniversityData
+      ? JSON.parse(storedUniversityData)
+      : {};
+
     // Process experiences and projects
     /** @type {ResumeData} */
     let resumeData = entries.reduce((acc, cur) => {
@@ -124,6 +129,7 @@ const EntriesWrapper = () => {
     /** @type {ResumeRequest} */
     let requestedBody = {
       profile_data: profileData,
+      university_data: universityData,
       resume_data: resumeData,
       job_description: jobDescription,
     };

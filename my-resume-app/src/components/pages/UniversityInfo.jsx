@@ -1,28 +1,26 @@
+import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./index.module.css"; // Assuming you use CSS modules
 
-const ProfilePage = () => {
+const UniversityInfo = () => {
   const navigate = useNavigate();
   // Load saved profile data from localStorage
   const [formData, setFormData] = useState(() => {
-    const savedData = localStorage.getItem("profileData");
+    const savedData = localStorage.getItem("universityData");
     return savedData
       ? JSON.parse(savedData)
       : {
-          name: "",
-          email: "",
-          phone: "",
-          linkedin: "",
-          github: "",
-          languages: "",
-          frameworks: "",
+          university: "",
+          degree: "",
+          graduation: "",
+          location: "",
+          courses: "",
         };
   });
 
   // Update localStorage when formData changes
   useEffect(() => {
-    localStorage.setItem("profileData", JSON.stringify(formData));
+    localStorage.setItem("universityData", JSON.stringify(formData));
   }, [formData]);
 
   const handleChange = (e) => {
@@ -31,12 +29,12 @@ const ProfilePage = () => {
 
   const handleNextPage = () => {
     // Store data (could be stored in localStorage or context)
-    localStorage.setItem("profileData", JSON.stringify(formData));
-    navigate("/university-info"); // Move to next page
+    localStorage.setItem("universityData", JSON.stringify(formData));
+    navigate("/resume-tailor"); // Move to next page
   };
 
   const handlePreviousPage = () => {
-    navigate("/"); // Move to previous page
+    navigate("/profile"); // Move to previous page
   };
 
   return (
@@ -46,60 +44,44 @@ const ProfilePage = () => {
         <input
           className={styles.input}
           type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
+          name="university"
+          placeholder="University"
+          value={formData.university}
           onChange={handleChange}
           required
         />
         <input
           className={styles.input}
           type="text"
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
+          name="degree"
+          placeholder="Degree"
+          value={formData.degree}
           onChange={handleChange}
           required
         />
         <input
           className={styles.input}
-          type="url"
-          name="linkedin"
-          placeholder="LinkedIn Profile Link"
-          value={formData.linkedin}
+          type="text"
+          name="graduation"
+          placeholder="Graduation Year"
+          value={formData.graduation}
           onChange={handleChange}
+          required
         />
         <input
           className={styles.input}
-          type="url"
-          name="github"
-          placeholder="GitHub Profile Link"
-          value={formData.github}
+          type="text"
+          name="location"
+          placeholder="University Location"
+          value={formData.location}
           onChange={handleChange}
         />
         <textarea
           className={styles.textarea}
           type="text"
-          name="languages"
-          placeholder="Technical Skills (comma-separated)"
-          value={formData.languages}
-          onChange={handleChange}
-        />
-        <textarea
-          className={styles.textarea}
-          type="text"
-          name="frameworks"
-          placeholder="Libraries/Frameworks (comma-separated)"
-          value={formData.frameworks}
+          name="courses"
+          placeholder="Courses"
+          value={formData.courses}
           onChange={handleChange}
         />
       </form>
@@ -115,4 +97,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default UniversityInfo;

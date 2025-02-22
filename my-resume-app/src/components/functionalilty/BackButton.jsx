@@ -7,7 +7,7 @@ const BackButton = () => {
   return (
     <div className={styles.backButtonContainer}>
       <button
-        onClick={() => navigate("/profile")}
+        onClick={() => navigate("/university-info")}
         className={styles.backButton}
       >
         ⬅ Back to Profile
