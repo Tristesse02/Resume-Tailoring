@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./index.module.css";
+import ToggleButton from "../ui/toggleButton";
 
 export default function ResumeForm({
   id,
@@ -39,6 +40,7 @@ export default function ResumeForm({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+        <ToggleButton />
         <h1 className={styles.title}>Experience {id}</h1>
         <button className={styles.removeButton} onClick={() => removeEntry(id)}>
           ❌
