@@ -14,6 +14,7 @@ export default function ResumeForm({
       type: "",
       techStack: "",
       description: "",
+      bulletDescription: "",
       numbers: "",
       bulletPoints: "",
       duration: "",
@@ -21,6 +22,8 @@ export default function ResumeForm({
       location: "",
     }
   );
+
+  const [isOn, setIsOn] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,10 +40,79 @@ export default function ResumeForm({
     updateFormData(id, newFormData);
   };
 
+  const handleOnFocus = (e) => {
+    if (!form.bulletDescription.trim()) {
+      const newForm = { ...form, bulletDescription: "• " };
+      setForm(newForm);
+      updateFormData(id, newForm);
+    }
+  };
+
+  const handleOnBlur = (e) => {
+    if (form.bulletDescription.trim() === "•") {
+      const newForm = { ...form, bulletDescription: "" };
+      setForm(newForm);
+      updateFormData(id, newForm);
+    }
+  };
+
+  const handleOnKeyDown = (e) => {
+    const cursorPosition = e.target.selectionStart;
+    const value = form.bulletDescription;
+
+    // Prevent Backspace from deleting bullet point
+    if (e.key === "Backspace") {
+      // Checking if we have only 2 characters left
+      if (value.length === 2) {
+        console.log("till this point", value);
+        e.preventDefault();
+      } else {
+        const prevChar = value[cursorPosition - 1];
+        const prevChar2 = value[cursorPosition - 2];
+
+        if (prevChar2 === "•" && prevChar === " ") {
+          e.preventDefault();
+          const before = value.slice(cursorPosition);
+          const after = value.slice(0, cursorPosition - 3);
+
+          const updatedValue = `${after}${before}`;
+          const newForm = { ...form, bulletDescription: updatedValue };
+          setForm(newForm);
+          updateFormData(id, newForm);
+
+          // Move cursor to correct position after insert
+          setTimeout(() => {
+            const el = e.target;
+            el.selectionStart = el.selectionEnd = cursorPosition - 3;
+          }, 0);
+        }
+      }
+    }
+
+    // Handle Enter key to add new bullet point
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const before = value.slice(0, cursorPosition);
+      const after = value.slice(cursorPosition);
+
+      const updateedValue = `${before}\n• ${after}`;
+
+      const newForm = { ...form, bulletDescription: updateedValue };
+      setForm(newForm);
+      updateFormData(id, newForm);
+
+      // Move cursor to correct position after insert
+      setTimeout(() => {
+        const el = e.target;
+        el.selectionStart = el.selectionEnd = cursorPosition + 3;
+      }, 0);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <ToggleButton />
+        <ToggleButton isOn={isOn} setIsOn={setIsOn} />
         <h1 className={styles.title}>Experience {id}</h1>
         <button className={styles.removeButton} onClick={() => removeEntry(id)}>
           ❌
@@ -91,35 +163,54 @@ export default function ResumeForm({
             />
           </>
         )}
+        {(form.type === "Project" ||
+          form.type.includes("Select Type") ||
+          isOn) && (
+          <input
+            name="techStack"
+            className={styles.input}
+            placeholder="Tech Stack ⚙️🛠️(e.g. React, Node.js, AWS, etc.)"
+            value={form.techStack}
+            onChange={handleChange}
+          />
+        )}
 
-        <input
-          name="techStack"
-          className={styles.input}
-          placeholder="Tech Stack ⚙️🛠️(e.g. React, Node.js, AWS, etc.)"
-          value={form.techStack}
-          onChange={handleChange}
-        />
-        <textarea
-          name="description"
-          className={styles.textarea}
-          placeholder="Description 📃(just describe by words, as detailed as possible)"
-          value={form.description}
-          onChange={handleChange}
-        />
-        <input
-          name="numbers"
-          className={styles.input}
-          placeholder="Numbers 🔢(Quantifiable Result)"
-          value={form.numbers}
-          onChange={handleChange}
-        />
-        <input
-          name="bulletPoints"
-          className={styles.input}
-          placeholder="How many bullet points do you want to add? (From 👆to🤚)"
-          value={form.bulletPoints}
-          onChange={handleChange}
-        />
+        {isOn ? (
+          <>
+            <textarea
+              name="description"
+              className={styles.textarea}
+              placeholder="Description 📃(just describe by words, as detailed as possible)"
+              value={form.description}
+              onChange={handleChange}
+            />
+            <input
+              name="numbers"
+              className={styles.input}
+              placeholder="Numbers 🔢(Quantifiable Result)"
+              value={form.numbers}
+              onChange={handleChange}
+            />
+            <input
+              name="bulletPoints"
+              className={styles.input}
+              placeholder="How many bullet points do you want to add? (From 👆to🤚)"
+              value={form.bulletPoints}
+              onChange={handleChange}
+            />
+          </>
+        ) : (
+          <textarea
+            name="bulletDescription"
+            className={styles.textarea}
+            placeholder="Bullet points 📝(e.g. Developed a web application using React.js)"
+            value={form.bulletDescription}
+            onBlur={handleOnBlur}
+            onFocus={handleOnFocus}
+            onKeyDown={handleOnKeyDown}
+            onChange={handleChange}
+          />
+        )}
       </div>
     </div>
   );

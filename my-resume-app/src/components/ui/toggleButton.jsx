@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styles from "./index.module.css"; // Import CSS Module
 
-const ToggleButton = () => {
-  const [isOn, setIsOn] = useState(true);
-
+const ToggleButton = ({ isOn, setIsOn }) => {
   const handleToggle = () => {
     setIsOn(!isOn);
   };
