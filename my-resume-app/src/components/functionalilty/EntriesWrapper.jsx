@@ -113,6 +113,7 @@ const EntriesWrapper = () => {
         type: cur.formData.type,
         techStack: cur.formData.techStack.split(",").map((e) => e.trim()), // Convert to array of strings of tech stacks
         description: cur.formData.description,
+        bulletDescription: cur.formData.bulletDescription,
         quantifiableMetrics: cur.formData.numbers,
         bulletPoints: cur.formData.bulletPoints,
       };

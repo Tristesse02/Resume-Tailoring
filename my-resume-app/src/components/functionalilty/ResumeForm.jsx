@@ -67,13 +67,14 @@ export default function ResumeForm({
         console.log("till this point", value);
         e.preventDefault();
       } else {
+        const nextChar = value[cursorPosition];
         const prevChar = value[cursorPosition - 1];
         const prevChar2 = value[cursorPosition - 2];
 
-        if (prevChar2 === "•" && prevChar === " ") {
+        const helperDeleteAndMoveCursor = (e, i, j) => {
           e.preventDefault();
-          const before = value.slice(cursorPosition);
-          const after = value.slice(0, cursorPosition - 3);
+          const before = value.slice(cursorPosition + i);
+          const after = value.slice(0, cursorPosition - j);
 
           const updatedValue = `${after}${before}`;
           const newForm = { ...form, bulletDescription: updatedValue };
@@ -83,8 +84,16 @@ export default function ResumeForm({
           // Move cursor to correct position after insert
           setTimeout(() => {
             const el = e.target;
-            el.selectionStart = el.selectionEnd = cursorPosition - 3;
+            el.selectionStart = el.selectionEnd = cursorPosition - j;
           }, 0);
+        };
+
+        if (prevChar2 === "•" && prevChar === " ") {
+          helperDeleteAndMoveCursor(e, 0, 3);
+        } else if (prevChar === "•") {
+          helperDeleteAndMoveCursor(e, 1, 2);
+        } else if (nextChar === "•") {
+          helperDeleteAndMoveCursor(e, 2, 1);
         }
       }
     }
