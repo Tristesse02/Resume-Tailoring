@@ -8,6 +8,7 @@ import styles from "./index.module.css";
 import ResumeForm from "./ResumeForm.jsx";
 import SubmitButton from "./SubmitButton.jsx";
 
+import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
 import { useJobDescription } from "../../useContext/JobDescriptionContext.jsx";
 
@@ -25,12 +26,13 @@ const EntriesWrapper = () => {
     } else {
       setEntries([
         {
-          id: 1,
+          id: id,
           formData: {
             name: "",
             type: "",
             techStack: "",
             bulletDescription: "",
+            isBulletDescription: true,
             description: "",
             numbers: "",
             bulletPoints: "",
@@ -47,15 +49,18 @@ const EntriesWrapper = () => {
   }, [entries]);
 
   const addNewEntry = () => {
+    const uniqueId = uuidv4();
+
     setEntries([
       ...entries,
       {
-        id: entries.length + 1,
+        id: uniqueId,
         formData: {
           name: "",
           type: "",
           techStack: "",
           bulletDescription: "",
+          isBulletDescription: true,
           description: "",
           numbers: "",
           bulletPoints: "",
@@ -76,12 +81,13 @@ const EntriesWrapper = () => {
               ...entry,
               formData: {
                 ...newFormData,
-                duration:
-                  newFormData.type !== "Project" ? newFormData.duration : "",
-                position:
-                  newFormData.type !== "Project" ? newFormData.position : "",
-                location:
-                  newFormData.type !== "Project" ? newFormData.location : "",
+                // [Issue #1.3]: Do we really have to do this? Like setting it to "" when the type is not project?
+                // duration:
+                //   newFormData.type !== "Project" ? newFormData.duration : "",
+                // position:
+                //   newFormData.type !== "Project" ? newFormData.position : "",
+                // location:
+                //   newFormData.type !== "Project" ? newFormData.location : "",
               },
             }
           : entry
@@ -114,10 +120,12 @@ const EntriesWrapper = () => {
         techStack: cur.formData.techStack.split(",").map((e) => e.trim()), // Convert to array of strings of tech stacks
         description: cur.formData.description,
         bulletDescription: cur.formData.bulletDescription,
+        isBulletDescription: cur.formData.isBulletDescription,
         quantifiableMetrics: cur.formData.numbers,
         bulletPoints: cur.formData.bulletPoints,
       };
 
+      // [Issue #1.2]: Although not clearing the fields when switching types, the data
       if (cur.formData.type !== "Project") {
         entryData.duration = cur.formData.duration;
         entryData.position = cur.formData.position;
@@ -182,10 +190,11 @@ const EntriesWrapper = () => {
 
   return (
     <div className={styles.containerWrapper}>
-      {entries.map((entry) => (
+      {entries.map((entry, idx) => (
         <ResumeForm
           key={entry.id}
           id={entry.id}
+          indexEntry={idx + 1}
           formData={entry.formData}
           updateFormData={updateFormData}
           removeEntry={removeEntry}

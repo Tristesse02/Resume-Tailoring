@@ -4,6 +4,7 @@ import ToggleButton from "../ui/toggleButton";
 
 export default function ResumeForm({
   id,
+  indexEntry,
   formData,
   updateFormData,
   removeEntry,
@@ -14,6 +15,7 @@ export default function ResumeForm({
       type: "",
       techStack: "",
       description: "",
+      isBulletDescription: true,
       bulletDescription: "",
       numbers: "",
       bulletPoints: "",
@@ -27,17 +29,26 @@ export default function ResumeForm({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log("cai ditconme");
     const newFormData = { ...form, [name]: value };
 
+    // [Issue #1.1]: I dont think this one should be set to empty when users reselect the type!
+
     // If the type is not project, then clear the project related fields
-    if (name === "type") {
-      newFormData.duration = value !== "Project" ? form.duration : "";
-      newFormData.position = value !== "Project" ? form.position : "";
-      newFormData.location = value !== "Project" ? form.location : "";
-    }
+    // if (name === "type") {
+    //   newFormData.duration = value !== "Project" ? form.duration : "";
+    //   newFormData.position = value !== "Project" ? form.position : "";
+    //   newFormData.location = value !== "Project" ? form.location : "";
+    // }
 
     setForm(newFormData);
     updateFormData(id, newFormData);
+  };
+
+  const handleOnToggle = (value) => {
+    const newForm = { ...form, isBulletDescription: value };
+    setForm(newForm);
+    updateFormData(id, newForm);
   };
 
   const handleOnFocus = (e) => {
@@ -64,13 +75,8 @@ export default function ResumeForm({
     if (e.key === "Backspace") {
       // Checking if we have only 2 characters left
       if (value.length === 2) {
-        console.log("till this point", value);
         e.preventDefault();
       } else {
-        const nextChar = value[cursorPosition];
-        const prevChar = value[cursorPosition - 1];
-        const prevChar2 = value[cursorPosition - 2];
-
         const helperDeleteAndMoveCursor = (e, i, j) => {
           e.preventDefault();
           const before = value.slice(cursorPosition + i);
@@ -87,6 +93,10 @@ export default function ResumeForm({
             el.selectionStart = el.selectionEnd = cursorPosition - j;
           }, 0);
         };
+
+        const nextChar = value[cursorPosition];
+        const prevChar = value[cursorPosition - 1];
+        const prevChar2 = value[cursorPosition - 2];
 
         if (prevChar2 === "•" && prevChar === " ") {
           helperDeleteAndMoveCursor(e, 0, 3);
@@ -121,8 +131,8 @@ export default function ResumeForm({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <ToggleButton isOn={isOn} setIsOn={setIsOn} />
-        <h1 className={styles.title}>Experience {id}</h1>
+        <ToggleButton isOn={isOn} setIsOn={setIsOn} onToggle={handleOnToggle} />
+        <h1 className={styles.title}>Experience {indexEntry}</h1>
         <button className={styles.removeButton} onClick={() => removeEntry(id)}>
           ❌
         </button>

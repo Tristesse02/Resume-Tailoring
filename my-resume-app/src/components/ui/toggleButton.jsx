@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styles from "./index.module.css"; // Import CSS Module
 
-const ToggleButton = ({ isOn, setIsOn }) => {
+const ToggleButton = ({ isOn, setIsOn, onToggle }) => {
   const handleToggle = () => {
-    setIsOn(!isOn);
+    const newValue = !isOn;
+    setIsOn(newValue);
+    onToggle(newValue);
   };
 
   return (
