@@ -29,7 +29,6 @@ export default function ResumeForm({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log("cai ditconme");
     const newFormData = { ...form, [name]: value };
 
     // [Issue #1.1]: I dont think this one should be set to empty when users reselect the type!

@@ -108,13 +108,14 @@ const EntriesWrapper = () => {
 
     // Process experiences and projects
     /** @type {ResumeData} */
-    let resumeData = entries.reduce((acc, cur) => {
+    let resumeData = entries.reduce((acc, cur, idx) => {
       const category =
         cur.formData.type === "Project"
           ? "personal_projects"
           : "work_experiences";
       if (!acc[category]) acc[category] = [];
       let entryData = {
+        order: idx,
         title: cur.formData.name,
         type: cur.formData.type,
         techStack: cur.formData.techStack.split(",").map((e) => e.trim()), // Convert to array of strings of tech stacks
