@@ -68,6 +68,12 @@ export default function ResumeForm({
 
   const handleOnKeyDown = (e) => {
     const cursorPosition = e.target.selectionStart;
+    const cursorEndPosition = e.target.selectionEnd;
+
+    if (cursorPosition !== cursorEndPosition) {
+      return;
+    }
+    
     const value = form.bulletDescription;
 
     // Prevent Backspace from deleting bullet point
