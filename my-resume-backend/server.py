@@ -55,24 +55,36 @@ def tailor_resume():
         formatted_json = FormattingJSON(data)
 
         # Step trivial: Extracting job description and resume data
-        job_description = formatted_json.get_job_description()
         resume_data = formatted_json.get_resume_data()
+        profile_data = formatted_json.get_profile_data()
+        job_description = formatted_json.get_job_description()
         university_data = formatted_json.get_university_data()
+
+        # Step trivial: Extract data that we want to pass to gpt (be tailored later)
+        no_need_tailor_fn = formatted_json.extract_fields_need_tailoring()
+        jobs_no_need_tailor = no_need_tailor_fn("jobs")
+        projects_no_need_tailor = no_need_tailor_fn("projects")
+
+        # print(jobs_no_need_tailor, flush=True)
+        # print(projects_no_need_tailor, flush=True)
 
         ## [Debugging Purpose] START HERE
         # Step 1: Augmenting the technical skills in the resume
+        # [Note 2.0]: GPT is being used HERE
         formatted_augment_skills = formatted_json.format_augment_skill()
         augmented_skills_json = resume_skill_matcher.match_skills(
             formatted_augment_skills, job_description
         )
 
         # Step 2: Updating the technical skills in resume:
+        # [Note 1.1]: Although we don't tailor the bullet point, we still want to augment the skills
         formatted_json.augment_skill_to_input_json(augmented_skills_json)
 
         # Step 3: Formatting the resume data for deep tailoring
         formatted_json.format_resume_data()
         data = formatted_json.get_formatted_json()
 
+        # [Note 2.1]: GPT is being used HERE
         print("ditconmedzvlon", data, flush=True)
         tailored_resume = deep_tailor.tailor_resume(data)
 
@@ -89,63 +101,63 @@ def tailor_resume():
 
         ## END HERE
 
-        # [Testing Purpose]
-        # tailored_resume = {
-        #     "personal_projects": [
-        #         {
-        #             "title": "CloudCueAI",
-        #             "description": [
-        #                 "Engineered a serverless application using AWS Lambda and API Gateway to develop a real-time interview tool, attracting 500-1000 daily visits.",
-        #                 "Implemented infrastructure automation with Terraform and AWS SAM, improving deployment speed and reliability by 30%.",
-        #                 "Developed comprehensive monitoring and observability using CloudWatch, ensuring system uptime and performance for 20,000 data entries.",
-        #                 "Enhanced authentication with IAM and JWT, strengthening security and compliance.",
-        #             ],
-        #         },
-        #         {
-        #             "title": "Beatcode",
-        #             "description": [
-        #                 "Developed WebSocket APIs using FastAPI for real-time coding battles, supporting 1,000+ concurrent users.",
-        #                 "Managed PostgreSQL databases to reliably store player data and performance metrics for 500+ players during beta.",
-        #                 "Established a robust CI/CD pipeline using Docker and GitHub Actions, accelerating deployment processes by 40%.",
-        #                 "Implemented OAuth and CORS for seamless user authentication, enhancing system security and user access.",
-        #             ],
-        #         },
-        #     ],
-        #     "work_experiences": [
-        #         {
-        #             "title": "FPT Software",
-        #             "description": [
-        #                 "Led an AngularJS-TypeScript website for managing prescriptions, serving Japan Pharmacists Association with 500-1000 daily visits.",
-        #                 "Refined an Observer pattern to automate 20,000 data bindings, increasing efficiency and code accuracy by 50%.",
-        #                 "Enhanced collaborative development using Agile-Scrum, improving team productivity and communication in a fast-paced environment.",
-        #                 "Integrated JavaScript SDK across multiple web pages and modals, ensuring seamless interaction with frontend UI.",
-        #             ],
-        #         },
-        #         {
-        #             "title": "Avocademy (YC W22)",
-        #             "description": [
-        #                 "Leveraged OpenAI API to engineer a job classification system, boosting job relevance by 50%.",
-        #                 "Streamlined the extraction of 750+ daily job postings and automated applications using Fire Crawler, PuppeteerJS, and Playwright.",
-        #                 "Managed 70,000+ database entries to efficiently monitor job posting, user data, and platform activity using MongoDB and Supabase.",
-        #                 "Automated deployments and enhanced system reliability with Vercel, GitHub CI/CD, and A/B testing.",
-        #                 "Developed secure cloud interactions by integrating OAuth and IAM policies, improving security compliance by 40%.",
-        #             ],
-        #         },
-        #         {
-        #             "title": "Viettel AI",
-        #             "description": [
-        #                 "Pioneered a semantic search pipeline with Solr and SBERT, enhancing text search relevance by 25%.",
-        #                 "Implemented data storage and retrieval systems using Microsoft Graph RAG, optimizing data access and management.",
-        #             ],
-        #         },
-        #     ],
-        # }
+        # [Testing Purpose - Sample Tailored Output from GPT]
+        tailored_resume = {
+            "personal_projects": [
+                {
+                    "title": "CloudCueAI",
+                    "description": [
+                        "Engineered a serverless application using AWS Lambda and API Gateway to develop a real-time interview tool, attracting 500-1000 daily visits.",
+                        "Implemented infrastructure automation with Terraform and AWS SAM, improving deployment speed and reliability by 30%.",
+                        "Developed comprehensive monitoring and observability using CloudWatch, ensuring system uptime and performance for 20,000 data entries.",
+                        "Enhanced authentication with IAM and JWT, strengthening security and compliance.",
+                    ],
+                },
+                {
+                    "title": "Beatcode",
+                    "description": [
+                        "Developed WebSocket APIs using FastAPI for real-time coding battles, supporting 1,000+ concurrent users.",
+                        "Managed PostgreSQL databases to reliably store player data and performance metrics for 500+ players during beta.",
+                        "Established a robust CI/CD pipeline using Docker and GitHub Actions, accelerating deployment processes by 40%.",
+                        "Implemented OAuth and CORS for seamless user authentication, enhancing system security and user access.",
+                    ],
+                },
+            ],
+            "work_experiences": [
+                {
+                    "title": "FPT Software",
+                    "description": [
+                        "Led an AngularJS-TypeScript website for managing prescriptions, serving Japan Pharmacists Association with 500-1000 daily visits.",
+                        "Refined an Observer pattern to automate 20,000 data bindings, increasing efficiency and code accuracy by 50%.",
+                        "Enhanced collaborative development using Agile-Scrum, improving team productivity and communication in a fast-paced environment.",
+                        "Integrated JavaScript SDK across multiple web pages and modals, ensuring seamless interaction with frontend UI.",
+                    ],
+                },
+                {
+                    "title": "Avocademy (YC W22)",
+                    "description": [
+                        "Leveraged OpenAI API to engineer a job classification system, boosting job relevance by 50%.",
+                        "Streamlined the extraction of 750+ daily job postings and automated applications using Fire Crawler, PuppeteerJS, and Playwright.",
+                        "Managed 70,000+ database entries to efficiently monitor job posting, user data, and platform activity using MongoDB and Supabase.",
+                        "Automated deployments and enhanced system reliability with Vercel, GitHub CI/CD, and A/B testing.",
+                        "Developed secure cloud interactions by integrating OAuth and IAM policies, improving security compliance by 40%.",
+                    ],
+                },
+                {
+                    "title": "Viettel AI",
+                    "description": [
+                        "Pioneered a semantic search pipeline with Solr and SBERT, enhancing text search relevance by 25%.",
+                        "Implemented data storage and retrieval systems using Microsoft Graph RAG, optimizing data access and management.",
+                    ],
+                },
+            ],
+        }
         # [End Testing Purpose]
 
         # print(tailored_resume, flush=True)
 
-        # Retrieving profile data
-        profile_data = formatted_json.get_profile_data()
+        # "augmented_skill_data_raw" is just like "data", but will skills got augmented
+        augmented_skills_data_raw = formatted_json.get_augmented_skill_input_json()
 
         # Process tailored resume using Resume Tailor
         tailor = LatexResumeBuilder(TEMPLATE_JSON)
@@ -154,11 +166,14 @@ def tailor_resume():
             profile_data,
             resume_data,
             university_data,
-        )  # TODO: For the fact that we will have to maintain this codebase, please refactor somehow so that it is easy for modification
-        ## Currently, the passing of get_profile_data() makes the code looks super ugly
+            skill_augmented_resume_data=augmented_skills_data_raw,
+            untailored_jobs=jobs_no_need_tailor,
+            untailored_projects=projects_no_need_tailor,
+        )  # TODO: We are about to pass two ugly looking data. Please fix it
+        print("till this point", flush=True)
+
         tailor.generate_latex(LATEX_TEMPLATE, OUTPUT_LATEX)
 
-        print("till this point", flush=True)
         compile_latex_to_pdf(OUTPUT_LATEX, OUTPUT_PDF)
 
         return jsonify(

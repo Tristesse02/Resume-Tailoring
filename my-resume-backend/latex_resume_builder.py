@@ -9,7 +9,9 @@ class LatexResumeBuilder:
         with open(template_path, "r") as f:
             self.template = json.load(f)  # Load the template
 
-    def update_template(self, output, profile_data, resume_data, university_data):
+    def update_template(
+        self, output, profile_data, resume_data, university_data, **kwargs
+    ):
         """
         Update the resume template with the provided AI-generated output.
 
@@ -17,6 +19,7 @@ class LatexResumeBuilder:
         output: AI-generated output from deep_tailoring.py
         profile_data: Profile data (metadata) extracted from the front-end
         resume_data: Resume data (work experiences and personal project) extracted from the front-end
+        university_data: University data (university, degree, GPA, etc.) extracted from the front-end
         """
         work_exp = {}
 
@@ -27,10 +30,22 @@ class LatexResumeBuilder:
         for tailored_project in output["personal_projects"]:
             work_exp[tailored_project["title"]] = tailored_project["description"]
 
+        # **Store untailored work experience & project descriptions**
+        for key, value in kwargs["untailored_jobs"].items():
+            work_exp[key] = value
+
+        for key, value in kwargs["untailored_projects"].items():
+            work_exp[key] = value
+
+        # [Issue #2.1] - If there exist the same title, then it would be bug lol
+
         # Extract an empty array work_experience from the temp_personal_info.json
         work_exp_field = self.template["work_experiences"]
+        # print("buon the nho", resume_data)
         # Paste work_experiences into the temp_personal_info.json
         for experiences in resume_data["work_experiences"]:
+            # TODO: Now we have to cope with the fact that there are experience
+            # that we don't tailor and there are exp that we do actually tailor
             work_exp_field.append(
                 {
                     "title": experiences["title"],
@@ -44,11 +59,23 @@ class LatexResumeBuilder:
         # Extract an empty array personal_projects from the temp_personal_info.json
         personal_projects_field = self.template["personal_projects"]
         # Paste personal_projects into the temp_personal_info.json
+
+        augmented_skill_obj = {}
+        for projects in kwargs["skill_augmented_resume_data"]["resume_data"][
+            "personal_projects"
+        ]:
+            augmented_skill_obj[projects["title"]] = projects["techStack"]
+
         for projects in resume_data["personal_projects"]:
+            print("huh??", projects, flush=True)
             personal_projects_field.append(
                 {
                     "title": projects["title"],
-                    "techstack": projects["techStack"],
+                    "techstack": (
+                        projects["techStack"]
+                        if projects["title"] not in augmented_skill_obj
+                        else augmented_skill_obj[projects["title"]]
+                    ),  # considering if augmented tech stack should be override (too much is not good!)
                     "description": work_exp[projects["title"]],
                 }
             )

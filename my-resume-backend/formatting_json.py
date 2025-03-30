@@ -1,4 +1,5 @@
 import json
+import copy
 
 
 class FormattingJSON:
@@ -6,8 +7,12 @@ class FormattingJSON:
         """
         Initializes the FormattingJSON class with input JSON data.
         """
+        # TODO: Code fixing for consistency:
+        # The code is now all over the place with self.new_obj containing so many forms!!
         self.input_json = input_json
-        self.new_obj = input_json.copy()
+        self.new_obj = copy.deepcopy(input_json)
+        self.extracted_need_tailored_fields = copy.deepcopy(input_json)
+        self.augmented_skill_input_json = copy.deepcopy(input_json)
 
     def get_resume_data(self):
         """
@@ -33,12 +38,41 @@ class FormattingJSON:
         """
         return self.input_json["university_data"]
 
+    def get_resume_need_tailor_data(self):
+        """
+        Returns the extracted fields that need tailoring from the input JSON.
+        """
+        return self.extracted_need_tailored_fields["resume_data"]
+
+    def get_extracted_need_tailored_fields(self):
+        """
+        Returns the extracted fields that need tailoring from the input JSON.
+        """
+        return self.extracted_need_tailored_fields
+
+    def get_augmented_skill_input_json(self):
+        """
+        Returns the augmented skill input JSON data.
+        """
+        return self.augmented_skill_input_json
+
+    def set_augmented_skill_input_json(self, data):
+        """
+        Sets the augmented skill input JSON data.
+        """
+        self.augmented_skill_input_json = data
+
+    def update_need_tailored_fields(self, field, data):
+        self.extracted_need_tailored_fields["resume_data"][field] = data
+
     def format_augment_skill(self):
         """
         Formats either personal projects or work experiences by restructuring descriptions.
         """
         formatted_augment_skill = {}
-        for exp_obj in self.input_json["resume_data"][
+
+        # print(self.get_resume_need_tailor_data())
+        for exp_obj in self.get_resume_need_tailor_data()[
             "work_experiences"
         ]:  # TODO: Replace this to get_resume_data to improve readability
             formatted_augment_skill[exp_obj["title"]] = {}
@@ -49,7 +83,8 @@ class FormattingJSON:
                 "description"
             ]
 
-        for exp_obj in self.input_json["resume_data"]["personal_projects"]:
+        # print("till this point eh?", flush=True)
+        for exp_obj in self.get_resume_need_tailor_data()["personal_projects"]:
             formatted_augment_skill[exp_obj["title"]] = {}
             formatted_augment_skill[exp_obj["title"]]["tech_skills"] = exp_obj[
                 "techStack"
@@ -59,32 +94,53 @@ class FormattingJSON:
             ]
         return formatted_augment_skill
 
+    def format_untailored_bullet_points(self, arr):
+        for key, value in arr.items():
+            # Remove the bullet points from the string
+            arr[key] = self.remove_format_bullet_points(value)
+
+        return arr
+
+    def remove_format_bullet_points(self, s):
+        """
+        Removes bullet points from a string.
+        """
+        return [line.strip("• ").strip() for line in s.splitlines() if line.strip()]
+
     def augment_skill_to_input_json(self, formatted_augment_skill):
         """
-        Augments the skill to the input JSON data.
+        Augments the skill to the input JSON data
+        After the run of this function, the changes will be made on self.augmented_skill_input_json
+
+        return: None
         """
-        copy_input_json = self.input_json.copy()
-        for personal_project in copy_input_json["resume_data"]["personal_projects"]:
+
+        # augmented_skill_input_json now only contains the tailored data!
+        for personal_project in self.augmented_skill_input_json["resume_data"][
+            "personal_projects"
+        ]:
             personal_project["techStack"] = formatted_augment_skill[
                 personal_project["title"]
             ]["tech_skills"]
 
-        for work_experience in copy_input_json["resume_data"]["work_experiences"]:
+        for work_experience in self.augmented_skill_input_json["resume_data"][
+            "work_experiences"
+        ]:
             work_experience["techStack"] = formatted_augment_skill[
                 work_experience["title"]
             ]["tech_skills"]
-
-        self.new_obj = copy_input_json
 
     def format_experiences(self, key):
         """
         Formats either personal projects or work experiences by restructuring descriptions.
         """
         formatted_list = []
-        for exp_obj in self.input_json["resume_data"][key]:
+        # Now the augmented skill is properly updated and ready to be tailored in deep tailoring
+        for exp_obj in self.augmented_skill_input_json[key]:
             obj_pass_gpt = {
                 "title": exp_obj["title"],
                 "description": (
+                    # TODO: This current code mean that we haven't use the augmented skill yet??
                     f"{exp_obj['type']};Tech Stack: {', '.join(exp_obj['techStack'])};"
                     f"Description: {exp_obj['description']};"
                     f"Quantifiable Metrics: {exp_obj['quantifiableMetrics']};"
@@ -101,6 +157,8 @@ class FormattingJSON:
         self.format_experiences("personal_projects")
         self.format_experiences("work_experiences")
 
+        # TODO: Classify between jobs needed to be tailored by gpt and job that doesn't need to be tailored
+
     def get_formatted_json(self):
         """
         Returns the formatted JSON object.
@@ -108,7 +166,53 @@ class FormattingJSON:
         json_string = json.dumps(self.new_obj, ensure_ascii=False, indent=4)
         return json.loads(json_string)
 
+    def extract_fields_need_tailoring(self):
+        """
+        Extracts fields that need tailoring from the resume data.
 
+        Returns [list] the jobs that no need tailoring.
+        """
+        jobs_need_tailoring = []
+        project_need_tailoring = []
+
+        jobs_no_need_tailoring = {}
+        project_no_need_tailoring = {}
+
+        for exp_obj in self.get_resume_data()["work_experiences"]:
+            if exp_obj["isBulletDescription"]:
+                jobs_need_tailoring.append(exp_obj)
+            else:
+                jobs_no_need_tailoring[exp_obj["title"]] = exp_obj["bulletDescription"]
+
+        for exp_obj in self.get_resume_data()["personal_projects"]:
+            if exp_obj["isBulletDescription"]:
+                project_need_tailoring.append(exp_obj)
+            else:
+                project_no_need_tailoring[exp_obj["title"]] = exp_obj[
+                    "bulletDescription"
+                ]
+
+        # self.get_resume_need_tailor_data()["work_experiences"] = jobs_need_tailoring
+        # self.get_resume_need_tailor_data()["personal_projects"] = project_need_tailoring
+
+        self.update_need_tailored_fields("work_experiences", jobs_need_tailoring)
+        self.update_need_tailored_fields("personal_projects", project_need_tailoring)
+
+        self.set_augmented_skill_input_json(self.get_extracted_need_tailored_fields())
+
+        def get_untailored(field_type):
+            if field_type == "jobs":
+                return self.format_untailored_bullet_points(jobs_no_need_tailoring)
+            elif field_type == "projects":
+                # print("ducdz a", project_no_need_tailoring)
+                return self.format_untailored_bullet_points(project_no_need_tailoring)
+            else:
+                raise ValueError("field_type must be either 'jobs' or 'projects'")
+
+        return get_untailored
+
+
+# Debugging purpose
 if __name__ == "__main__":
     input_json = {
         "resume_data": {
@@ -202,4 +306,4 @@ if __name__ == "__main__":
     }
 
     formattingJSON = FormattingJSON(input_json)
-    print(formattingJSON.format_augment_skill())
+    # print(formattingJSON.format_augment_skill())

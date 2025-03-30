@@ -6,43 +6,8 @@
   "linkedin_link": "",
   "github": "",
   "github_link": "",
-  "work_experiences": [
-    {
-      "title": "University of Massachusett Amherst",
-      "position": "Teaching Assistant",
-      "duration": "Sep 2022 -- Current",
-      "location": "Amherst, MA",
-      "description": [
-        "Functioned as a teaching assistant for 1,500+ students across 6 consecutive semesters",
-        "Led instruction in DSA, Web Programming, Programming Methodology, Discrete Mathematics, and Machine Learning class"
-      ]
-    }
-  ],
-  "personal_projects": [
-    {
-      "title": "OhEss",
-      "techstack": [
-        "Google Lighthouse",
-        "React",
-        "Linux",
-        "Kolibri",
-        "NextJS",
-        "Vercel"
-      ],
-      "description": [
-        "Engineered a web-based Windows 10 operating system replica with TypeScript and React, achieving a 100% Google Lighthouse SEO score for seamless UI interaction",
-        "Integrated Kolibri and Linux programs into a NextJS interface on Vercel, enabling in-browser files hosting for 200+ users"
-      ]
-    },
-    {
-      "title": "Sculpt AI",
-      "techstack": ["Tensorflow", "OpenCV", "SAM model", "MediaPipe"],
-      "description": [
-        "Pioneered 3D solution for Metaverse platforms, using AI-based image cropping and Blender modeling, cutting manual effort by 30%",
-        "Implement body pose tracking and measurement with MediaPipe, achieving a prototype success rate of 85% during the hackathon"
-      ]
-    }
-  ],
+  "work_experiences": [],
+  "personal_projects": [],
   "technical_skills": [],
   "educations": [
     {
