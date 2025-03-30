@@ -56,6 +56,12 @@ class FormattingJSON:
         """
         return self.augmented_skill_input_json
 
+    def get_augmented_skill_input_json_data(self):
+        """
+        Returns the augmented skill input JSON data.
+        """
+        return self.augmented_skill_input_json["resume_data"]
+
     def set_augmented_skill_input_json(self, data):
         """
         Sets the augmented skill input JSON data.
@@ -116,14 +122,14 @@ class FormattingJSON:
         """
 
         # augmented_skill_input_json now only contains the tailored data!
-        for personal_project in self.augmented_skill_input_json["resume_data"][
+        for personal_project in self.get_augmented_skill_input_json_data()[
             "personal_projects"
         ]:
             personal_project["techStack"] = formatted_augment_skill[
                 personal_project["title"]
             ]["tech_skills"]
 
-        for work_experience in self.augmented_skill_input_json["resume_data"][
+        for work_experience in self.get_augmented_skill_input_json_data()[
             "work_experiences"
         ]:
             work_experience["techStack"] = formatted_augment_skill[
@@ -136,7 +142,8 @@ class FormattingJSON:
         """
         formatted_list = []
         # Now the augmented skill is properly updated and ready to be tailored in deep tailoring
-        for exp_obj in self.augmented_skill_input_json[key]:
+        # print(self.augmented_skill_input_json, key, flush=True)
+        for exp_obj in self.get_augmented_skill_input_json_data()[key]:
             obj_pass_gpt = {
                 "title": exp_obj["title"],
                 "description": (
@@ -155,7 +162,9 @@ class FormattingJSON:
         Formats both personal projects and work experiences in the resume data.
         """
         self.format_experiences("personal_projects")
+        print("pass 1", flush=True)
         self.format_experiences("work_experiences")
+        print("pass 2", flush=True)
 
         # TODO: Classify between jobs needed to be tailored by gpt and job that doesn't need to be tailored
 
