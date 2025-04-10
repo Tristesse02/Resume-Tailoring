@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./index.module.css"; // Assuming you use CSS modules
+import styles from "./index.module.css";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const ProfilePage = () => {
   };
 
   const handlePreviousPage = () => {
-    navigate("/"); // Move to previous page
+    navigate("/apikey"); // Move to previous page
   };
 
   return (

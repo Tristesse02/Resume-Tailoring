@@ -5,18 +5,24 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Profile from "./components/pages/Profile";
 import MainPage from "./components/pages/MainPage";
+import ApikeyPage from "./components/pages/ApikeyPage";
 import ResumeTailor from "./components/pages/ResumeTailor";
 import UniversityInfo from "./components/pages/UniversityInfo";
+
+import { ApiKeyProvider } from "./useContext/ApiKeyProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Router>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/university-info" element={<UniversityInfo />} />
-        <Route path="/resume-tailor" element={<ResumeTailor />} />
-      </Routes>
+      <ApiKeyProvider>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/apikey" element={<ApikeyPage />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/university-info" element={<UniversityInfo />} />
+          <Route path="/resume-tailor" element={<ResumeTailor />} />
+        </Routes>
+      </ApiKeyProvider>
     </Router>
   </StrictMode>
 );

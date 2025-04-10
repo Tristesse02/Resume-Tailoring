@@ -32,3 +32,11 @@
 .button:hover {
   background-color: #2563eb; /* Tailwind's blue-600 */
 }
+
+.input {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #333;
+}

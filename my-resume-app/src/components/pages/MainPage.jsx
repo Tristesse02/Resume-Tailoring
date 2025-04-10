@@ -13,7 +13,7 @@ const MainPage = () => {
         optimized suggestions!
       </p>
       <button
-        onClick={() => navigate("/profile")}
+        onClick={() => navigate("/apikey")}
         className={styles.buttonRight}
       >
         Next ➡
