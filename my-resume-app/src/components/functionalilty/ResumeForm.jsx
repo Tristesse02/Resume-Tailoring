@@ -25,7 +25,7 @@ export default function ResumeForm({
     }
   );
 
-  const [isOn, setIsOn] = useState(true);
+  const [isOn, setIsOn] = useState(formData?.isBulletDescription ?? true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,7 +73,7 @@ export default function ResumeForm({
     if (cursorPosition !== cursorEndPosition) {
       return;
     }
-    
+
     const value = form.bulletDescription;
 
     // Prevent Backspace from deleting bullet point
