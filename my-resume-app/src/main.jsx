@@ -10,6 +10,7 @@ import ResumeTailor from "./components/pages/ResumeTailor";
 import UniversityInfo from "./components/pages/UniversityInfo";
 
 import { ApiKeyProvider } from "./useContext/ApiKeyProvider";
+import PageRequireNav from "./components/utils/PageRequireNav";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,9 +19,18 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/apikey" element={<ApikeyPage />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/university-info" element={<UniversityInfo />} />
-          <Route path="/resume-tailor" element={<ResumeTailor />} />
+          <Route
+            path="/profile"
+            element={<PageRequireNav Component={Profile} />}
+          />
+          <Route
+            path="/university-info"
+            element={<PageRequireNav Component={UniversityInfo} />}
+          />
+          <Route
+            path="/resume-tailor"
+            element={<PageRequireNav Component={ResumeTailor} />}
+          />
         </Routes>
       </ApiKeyProvider>
     </Router>

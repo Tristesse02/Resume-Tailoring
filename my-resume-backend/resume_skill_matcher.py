@@ -8,7 +8,12 @@ from dotenv import load_dotenv
 class ResumeSkillMatcher:
     def __init__(self, api_key=None):
         load_dotenv()
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        # self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        # self.client = OpenAI(api_key=self.api_key)
+        
+    def set_api_key(self, api_key):
+        """Set the API key for OpenAI client."""
+        self.api_key = api_key
         self.client = OpenAI(api_key=self.api_key)
 
     def generate_system_message(self, resume_data):

@@ -50,6 +50,17 @@ def tailor_resume():
         if not data:
             return jsonify({"error": "Invalid input data"}), 400
 
+        auth_header = request.headers.get("Authorization", "")
+        api_key = auth_header.replace("Bearer ", "").strip()
+
+        # Optional: Validate
+        if not api_key.startswith("sk-"):
+            return jsonify({"error": "Invalid or missing API key"}), 401
+
+        # Set API key for OpenAI client
+        resume_skill_matcher.set_api_key(api_key)
+        deep_tailor.set_api_key(api_key)
+
         # Format json data before passing in to gpt
         # data: containing "resume_data" and "job_description" fields
         formatted_json = FormattingJSON(data)
@@ -191,6 +202,25 @@ def download_pdf():
     if os.path.exists(OUTPUT_PDF):
         return send_file(OUTPUT_PDF, as_attachment=True)
     return jsonify({"error": "PDF file not found"}), 404
+
+
+## [Docker version], consider for later updates:
+# @app.route("/download-pdf", methods=["GET"])
+# def download_pdf():
+#     """Send the generated PDF to frontend."""
+#     if os.path.exists(OUTPUT_PDF):
+#         response = send_file(OUTPUT_PDF, as_attachment=True)
+
+#         # Optional cleanup after sending
+#         try:
+#             os.remove(OUTPUT_PDF)
+#             os.remove(OUTPUT_LATEX)
+#         except Exception as e:
+#             print(f"Cleanup failed: {e}")
+
+#         return response
+#     return jsonify({"error": "PDF file not found"}), 404
+## End of [Docker version]
 
 
 def compile_latex_to_pdf(latex_file, output_pdf):

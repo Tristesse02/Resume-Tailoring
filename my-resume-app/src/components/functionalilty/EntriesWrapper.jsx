@@ -10,6 +10,8 @@ import SubmitButton from "./SubmitButton.jsx";
 
 import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
+
+import { useApiKey } from "../../useContext/ApiKeyProvider.jsx";
 import { useJobDescription } from "../../useContext/JobDescriptionContext.jsx";
 
 const LOCAL_STORAGE_KEY = "resume_entries";
@@ -17,6 +19,7 @@ const LOCAL_STORAGE_KEY = "resume_entries";
 const EntriesWrapper = () => {
   const { jobDescription } = useJobDescription(); // use context instead of passing props
   const [entries, setEntries] = useState([]);
+  const { apiKey } = useApiKey(); // use context instead of passing props
 
   useEffect(() => {
     const savedEntries = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -152,6 +155,7 @@ const EntriesWrapper = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify(requestedBody),
     })

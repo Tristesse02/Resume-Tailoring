@@ -12,8 +12,12 @@ class DeepResumeTailor:
         self.client = OpenAI(api_key=self.api_key)
         # self.tailor = ResumeTailor("temp_personal_info.json")
 
-    # If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
+    def set_api_key(self, api_key):
+        """Set the API key for OpenAI client."""
+        self.api_key = api_key
+        self.client = OpenAI(api_key=self.api_key)
 
+    # If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
     def generate_system_message(self, resume_data):
         return f"""
         You are a helpful assistant that helps me tailor my resume so that it could fit the job description as much as possible.
