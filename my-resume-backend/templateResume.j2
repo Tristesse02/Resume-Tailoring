@@ -62,7 +62,6 @@
 \author{}
 \date{}
 
-% \usepackage{mathptmx} % Times New Roman
 %% If we really need more space, just commend out this and use this font instead, super effective
 %% Space adjustment Area (Horizontal)
 
@@ -86,8 +85,8 @@
 
 \newcommand{\contentEntryWorkExp}[5]{% 
     \noalign{\vspace{0.4em}} % Add some vertical space between entries
-    \textbf{\ignorespaces #1} & \textbf{\small #2} \\ \small
-    #3 & \small #4 \\ % Add job label and location
+    \textbf{\ignorespaces #1} & \textbf{\small #2} \\\small
+    \ignorespaces #3 & \small #4 \\ % Add job label and location
     \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{1.0000} + 2\tabcolsep}@{}}{%
         \begin{minipage}[t]{\linewidth}
             \raggedright
@@ -136,13 +135,15 @@
 
 \begin{document}
 \begin{center}
-	\huge{\textbf{ {{name}} }}
+	\huge{\textbf{ {{name}} }}\\[-0.4em]
 
-	\href{mailto:{{ email }}}{\ul{{ email }}} \textbar{} {{ phone }}
-	\textbar{}
-	\href{{ linkedin_link }}{\ul{{ linkedin }}} 
-	\textbar{} 
-	\href{{ github_link }}{\ul{{ github }}}
+	{\small
+		\href{mailto:{{ email }}}{\ul{{ email }}} \textbar{} {{ phone }}
+		\textbar{}
+		\href{{ linkedin_link }}{\ul{{ linkedin }}} 
+		\textbar{} 
+		\href{{ github_link }}{\ul{{ github }}}
+	}
 \end{center}
 
 \vspace{-1em} 

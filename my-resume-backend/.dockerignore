@@ -6,6 +6,19 @@ __pycache__/
 # Virtual environments
 venvResumeTailor/
 
+# LaTeX temporary files
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Compiled LaTeX output
+*.pdf
+
+# Latex files
+*.tex
+
 # Output files and temp stuff
 trivial.json
 testing.py

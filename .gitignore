@@ -35,5 +35,4 @@ __pycache__/
 .vscode/
 *.test
 
-my-resume-backend/output/
 my-resume-backend/testing.py
