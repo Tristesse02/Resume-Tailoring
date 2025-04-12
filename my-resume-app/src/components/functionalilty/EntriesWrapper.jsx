@@ -151,7 +151,7 @@ const EntriesWrapper = () => {
 
     console.log("dzai vlon", requestedBody); // TODO: testing purposes
 
-    fetch("http://localhost:5050/tailor-resume", {
+    fetch("https://resume-backend-65ia.onrender.com/tailor-resume", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -178,7 +178,7 @@ const EntriesWrapper = () => {
 
   // Function to download PDF from backend
   const downloadPDF = () => {
-    fetch("http://localhost:5050/download-pdf")
+    fetch("https://resume-backend-65ia.onrender.com/download-pdf")
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
