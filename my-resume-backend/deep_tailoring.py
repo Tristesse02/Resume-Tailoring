@@ -8,8 +8,8 @@ from dotenv import load_dotenv
 class DeepResumeTailor:
     def __init__(self, api_key=None):
         load_dotenv()
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
-        self.client = OpenAI(api_key=self.api_key)
+        # self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        # self.client = OpenAI(api_key=self.api_key)
         # self.tailor = ResumeTailor("temp_personal_info.json")
 
     def set_api_key(self, api_key):

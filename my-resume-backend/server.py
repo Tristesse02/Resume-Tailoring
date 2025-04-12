@@ -228,7 +228,7 @@ def compile_latex_to_pdf(latex_file, output_pdf):
     output_dir = os.path.dirname(output_pdf)
     try:
         result = subprocess.run(
-            ["where", "pdflatex"],  # This will print the pdflatex path
+            ["which", "pdflatex"],  # This will print the pdflatex path
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -248,7 +248,8 @@ def compile_latex_to_pdf(latex_file, output_pdf):
 
 if __name__ == "__main__":
     try:
-        app.run(port=5000, debug=True, use_reloader=True)
+        # app.run(port=5000, debug=True, use_reloader=True)
+        app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=True)
     except KeyboardInterrupt:
         print("Backend stopped...")
 

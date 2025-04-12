@@ -28,6 +28,18 @@ const SecureKeyInput = ({ onConfirm }) => {
       />
       {!locked && <button onClick={handleConfirm}>Confirm</button>}
       {locked && <p>🔒 Key locked for this session</p>}
+      {/* <div>
+        <p>Security Reminder</p>
+        <p>
+          Your API key is stored <strong>only in memory</strong> and will be
+          lose when you refresh or close the page. For your safety:
+        </p>
+        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
+          <li>Don’t use this site on a public or shared computer</li>
+          <li>Don’t leave this tab open unattended</li>
+          <li>Close the tab when you're done</li>
+        </ul>
+      </div> */}
     </div>
   );
 };

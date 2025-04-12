@@ -1,0 +1,16 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venvResumeTailor/
+
+# Output files and temp stuff
+trivial.json
+testing.py
+
+# IDE/editor settings
+*.log
+.DS_Store
+.vscode/
