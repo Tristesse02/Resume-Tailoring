@@ -29,7 +29,7 @@ const EntriesWrapper = () => {
     } else {
       setEntries([
         {
-          id: id,
+          id: uuidv4(),
           formData: {
             name: "",
             type: "",
