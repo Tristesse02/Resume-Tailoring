@@ -73,7 +73,7 @@ export default function ResumeForm({
     if (cursorPosition !== cursorEndPosition) {
       return;
     }
-    
+
     const value = form.bulletDescription;
 
     // Prevent Backspace from deleting bullet point
@@ -138,7 +138,10 @@ export default function ResumeForm({
       <div className={styles.header}>
         <ToggleButton isOn={isOn} setIsOn={setIsOn} onToggle={handleOnToggle} />
         <h1 className={styles.title}>Experience {indexEntry}</h1>
-        <button className={styles.removeButton} onClick={() => removeEntry(id)}>
+        <button
+          className={styles.removeButton}
+          onClick={() => id && removeEntry(id)}
+        >
           ❌
         </button>
       </div>
