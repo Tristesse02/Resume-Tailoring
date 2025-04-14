@@ -84,13 +84,6 @@ const EntriesWrapper = () => {
               ...entry,
               formData: {
                 ...newFormData,
-                // [Issue #1.3]: Do we really have to do this? Like setting it to "" when the type is not project?
-                // duration:
-                //   newFormData.type !== "Project" ? newFormData.duration : "",
-                // position:
-                //   newFormData.type !== "Project" ? newFormData.position : "",
-                // location:
-                //   newFormData.type !== "Project" ? newFormData.location : "",
               },
             }
           : entry
