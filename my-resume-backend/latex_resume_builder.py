@@ -31,11 +31,13 @@ class LatexResumeBuilder:
             work_exp[tailored_project["title"]] = tailored_project["description"]
 
         # **Store untailored work experience & project descriptions**
-        for key, value in kwargs["untailored_jobs"].items():
-            work_exp[key] = value
+        if "untailored_jobs" in kwargs:
+            for key, value in kwargs["untailored_jobs"].items():
+                work_exp[key] = value
 
-        for key, value in kwargs["untailored_projects"].items():
-            work_exp[key] = value
+        if "untailored_projects" in kwargs:
+            for key, value in kwargs["untailored_projects"].items():
+                work_exp[key] = value
 
         # [Issue #2.1] - If there exist the same title, then it would be bug lol
 
@@ -61,10 +63,11 @@ class LatexResumeBuilder:
         # Paste personal_projects into the temp_personal_info.json
 
         augmented_skill_obj = {}
-        for projects in kwargs["skill_augmented_resume_data"]["resume_data"][
-            "personal_projects"
-        ]:
-            augmented_skill_obj[projects["title"]] = projects["techStack"]
+        if "skill_augmented_resume_data" in kwargs:
+            for projects in kwargs["skill_augmented_resume_data"]["resume_data"][
+                "personal_projects"
+            ]:
+                augmented_skill_obj[projects["title"]] = projects["techStack"]
 
         for projects in resume_data["personal_projects"]:
             print("huh??", projects, flush=True)
@@ -75,7 +78,7 @@ class LatexResumeBuilder:
                         projects["techStack"]
                         if projects["title"] not in augmented_skill_obj
                         else augmented_skill_obj[projects["title"]]
-                    ),  # considering if augmented tech stack should be override (too much is not good!)
+                    ),  # TODO: considering if augmented tech stack should be override (too much is not good!)
                     "description": work_exp[projects["title"]],
                 }
             )

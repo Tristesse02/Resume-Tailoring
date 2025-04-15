@@ -2,8 +2,11 @@ import os
 import sys
 import signal
 import subprocess
+
+from dotenv import load_dotenv
+
 from flask_cors import CORS
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, abort, request, jsonify, send_file
 
 from formatting_json import FormattingJSON
 from deep_tailoring import DeepResumeTailor
@@ -13,13 +16,24 @@ from latex_resume_builder import LatexResumeBuilder
 print("Debugging prints will now appear instantly!", flush=True)
 sys.stdout.reconfigure(line_buffering=True)
 
+load_dotenv()
+
 app = Flask(__name__)
-CORS(app)  # Allow frontend to call the backend
+CORS(
+    app,
+    origins=[os.getenv("FRONTEND_URL")],
+    supports_credentials=True,
+    allow_headers=["Content-Type", "Authorization", "X-Dev-Token"],
+)  # Also allow custom headers like X-Dev-Token or Authorization
 
 OUTPUT_PDF = "output/output.pdf"
 OUTPUT_LATEX = "output/output.tex"
 LATEX_TEMPLATE = "templateResume.j2"
 TEMPLATE_JSON = "temp_personal_info.json"
+
+# From .env file
+DEV_SECRET = os.getenv("DEV_SECRET")
+NETWORK_VISIBILITY = os.getenv("NETWORK_VISIBILITY")
 
 # Initialize DeepResumeTailor
 deep_tailor = DeepResumeTailor()
@@ -33,6 +47,21 @@ def shutdown_server(signal, frame):
 
 signal.signal(signal.SIGINT, shutdown_server)
 signal.signal(signal.SIGTERM, shutdown_server)
+
+
+# Simple prevent unauthorized access
+# Avoid bots/ping scans
+# Protect sensitive dev endpoints
+# TODO: For real auth, use OAuth/JWT, Flask-Login, API keys with rate limiting
+@app.before_request
+def check_token():
+    if request.method == "OPTIONS":
+        return # Let preflight through
+    
+    
+    print("minhdz", request.headers.get("X-Dev-Token"), flush=True)
+    if request.headers.get("X-Dev-Token") != DEV_SECRET:
+        abort(403)
 
 
 @app.route("/", methods=["GET"])
@@ -61,8 +90,6 @@ def tailor_resume():
         resume_skill_matcher.set_api_key(api_key)
         deep_tailor.set_api_key(api_key)
 
-        ## Start of DEBUGGING FOR RESUME TAILORING
-
         # Format json data before passing in to gpt
         # data: containing "resume_data" and "job_description" fields
         formatted_json = FormattingJSON(data)
@@ -84,6 +111,7 @@ def tailor_resume():
         ## [Debugging Purpose] START HERE
         # Step 1: Augmenting the technical skills in the resume
         # [Note 2.0]: GPT is being used HERE
+
         formatted_augment_skills = formatted_json.format_augment_skill()
         augmented_skills_json = resume_skill_matcher.match_skills(
             formatted_augment_skills, job_description
@@ -174,7 +202,16 @@ def tailor_resume():
         # Process tailored resume using Resume Tailor
         tailor = LatexResumeBuilder(TEMPLATE_JSON)
 
-        ## End of DEBUGGING FOR RESUME TAILORING
+        ## Testing purpose
+        # print("FROM HERE", flush=True)
+        # print("tailored_resume", tailored_resume, flush=True)
+        # print("profile_data", profile_data, flush=True)
+        # print("resume_data", resume_data, flush=True)
+        # print("university_data", university_data, flush=True)
+        # print("augmented_skills_data_raw", augmented_skills_data_raw, flush=True)
+        # print("jobs_no_need_tailor", jobs_no_need_tailor, flush=True)
+        # print("projects_no_need_tailor", projects_no_need_tailor, flush=True)
+        # print("TO HERE", flush=True)
 
         tailor.update_template(
             tailored_resume,
@@ -204,25 +241,6 @@ def download_pdf():
     if os.path.exists(OUTPUT_PDF):
         return send_file(OUTPUT_PDF, as_attachment=True)
     return jsonify({"error": "PDF file not found"}), 404
-
-
-## [Docker version], consider for later updates:
-# @app.route("/download-pdf", methods=["GET"])
-# def download_pdf():
-#     """Send the generated PDF to frontend."""
-#     if os.path.exists(OUTPUT_PDF):
-#         response = send_file(OUTPUT_PDF, as_attachment=True)
-
-#         # Optional cleanup after sending
-#         try:
-#             os.remove(OUTPUT_PDF)
-#             os.remove(OUTPUT_LATEX)
-#         except Exception as e:
-#             print(f"Cleanup failed: {e}")
-
-#         return response
-#     return jsonify({"error": "PDF file not found"}), 404
-## End of [Docker version]
 
 
 def compile_latex_to_pdf(latex_file, output_pdf):
@@ -267,33 +285,10 @@ def compile_latex_to_pdf(latex_file, output_pdf):
         print(e.stderr.decode())
 
 
-# def compile_latex_to_pdf(latex_file, output_pdf):
-#     """Compiles the LaTeX file into a PDF using `pdflatex`."""
-#     output_dir = os.path.dirname(output_pdf)
-#     try:
-#         result = subprocess.run(
-#             ["which", "pdflatex"],  # This will print the pdflatex path
-#             check=True,
-#             stdout=subprocess.PIPE,
-#             stderr=subprocess.PIPE,
-#         )
-#         print(f"pdflatex Path: {result.stdout.decode().strip()}")  # Debugging output
-
-#         subprocess.run(
-#             ["pdflatex", "-output-directory", output_dir, latex_file],
-#             check=True,
-#             stdout=subprocess.PIPE,
-#             stderr=subprocess.PIPE,
-#         )
-#         print("PDF generated successfully!")
-#     except subprocess.CalledProcessError as e:
-#         print(f"Error in LaTeX compilation: {e.stderr.decode()}")
-
-
 if __name__ == "__main__":
     try:
-        # app.run(port=5000, debug=True, use_reloader=True)
-        app.run(host="0.0.0.0", port=5000, debug=True, use_reloader=True)
+        # app.run(port=5050, debug=True, use_reloader=True)
+        app.run(host=NETWORK_VISIBILITY, port=5050, debug=True, use_reloader=True)
     except KeyboardInterrupt:
         print("Backend stopped...")
 

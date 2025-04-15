@@ -21,6 +21,9 @@ const EntriesWrapper = () => {
   const [entries, setEntries] = useState([]);
   const { apiKey } = useApiKey(); // use context instead of passing props
 
+  const backendURL = import.meta.env.VITE_API_URL;
+  const devSecret = import.meta.env.VITE_DEV_SECRET;
+
   useEffect(() => {
     const savedEntries = localStorage.getItem(LOCAL_STORAGE_KEY);
 
@@ -84,13 +87,6 @@ const EntriesWrapper = () => {
               ...entry,
               formData: {
                 ...newFormData,
-                // [Issue #1.3]: Do we really have to do this? Like setting it to "" when the type is not project?
-                // duration:
-                //   newFormData.type !== "Project" ? newFormData.duration : "",
-                // position:
-                //   newFormData.type !== "Project" ? newFormData.position : "",
-                // location:
-                //   newFormData.type !== "Project" ? newFormData.location : "",
               },
             }
           : entry
@@ -151,11 +147,12 @@ const EntriesWrapper = () => {
 
     console.log("dzai vlon", requestedBody); // TODO: testing purposes
 
-    fetch("https://resume-backend-65ia.onrender.com/tailor-resume", {
+    fetch(`${backendURL}/tailor-resume`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
+        "X-Dev-Token": devSecret,
       },
       body: JSON.stringify(requestedBody),
     })
@@ -178,7 +175,12 @@ const EntriesWrapper = () => {
 
   // Function to download PDF from backend
   const downloadPDF = () => {
-    fetch("https://resume-backend-65ia.onrender.com/download-pdf")
+    fetch(`${backendURL}/download-pdf`, {
+      method: "GET",
+      headers: {
+        "X-Dev-Token": devSecret,
+      },
+    })
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
