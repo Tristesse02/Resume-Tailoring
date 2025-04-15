@@ -162,9 +162,7 @@ class FormattingJSON:
         Formats both personal projects and work experiences in the resume data.
         """
         self.format_experiences("personal_projects")
-        print("pass 1", flush=True)
         self.format_experiences("work_experiences")
-        print("pass 2", flush=True)
 
         # TODO: Classify between jobs needed to be tailored by gpt and job that doesn't need to be tailored
 

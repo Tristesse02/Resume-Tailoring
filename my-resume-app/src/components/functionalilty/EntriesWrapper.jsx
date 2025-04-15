@@ -21,6 +21,9 @@ const EntriesWrapper = () => {
   const [entries, setEntries] = useState([]);
   const { apiKey } = useApiKey(); // use context instead of passing props
 
+  const backendURL = import.meta.env.VITE_API_URL;
+  const devSecret = import.meta.env.VITE_DEV_SECRET;
+
   useEffect(() => {
     const savedEntries = localStorage.getItem(LOCAL_STORAGE_KEY);
 
@@ -144,11 +147,12 @@ const EntriesWrapper = () => {
 
     console.log("dzai vlon", requestedBody); // TODO: testing purposes
 
-    fetch("http://localhost:5050/tailor-resume", {
+    fetch(`${backendURL}/tailor-resume`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
+        "X-Dev-Token": devSecret,
       },
       body: JSON.stringify(requestedBody),
     })
@@ -171,7 +175,12 @@ const EntriesWrapper = () => {
 
   // Function to download PDF from backend
   const downloadPDF = () => {
-    fetch("http://localhost:5050/download-pdf")
+    fetch(`${backendURL}/download-pdf`, {
+      method: "GET",
+      headers: {
+        "X-Dev-Token": devSecret,
+      },
+    })
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
