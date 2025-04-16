@@ -14,9 +14,13 @@ dist
 dist-ssr
 
 # Local env
-*.local
+.env.Local
+.env.development
+.env.test
 .env
-.env.*  # You can allow production env if needed
+
+# Keep this one available for Docker
+!deploy/.env.production
 
 # Git & Docker
 .git

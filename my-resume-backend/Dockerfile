@@ -19,6 +19,9 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 # Copy the entire backend app code
 COPY . .
 
+# Copy production environment file to .env
+COPY deploy/.env .env
+
 # Expose Flask port
 EXPOSE 5000
 
