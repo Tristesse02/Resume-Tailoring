@@ -4,12 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "set PATH=%PATH%;C:\\Users\\vtmin\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64 && concurrently \"npm run frontend\" \"npm run backend\"",
-    "build": "vite build",
+    "dev": "vite",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "frontend": "vite",
-    "backend": "cd ../my-resume-backend && venvResumeTailor\\Scripts\\activate && python server.py"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",
