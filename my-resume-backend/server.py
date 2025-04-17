@@ -56,9 +56,8 @@ signal.signal(signal.SIGTERM, shutdown_server)
 @app.before_request
 def check_token():
     if request.method == "OPTIONS":
-        return # Let preflight through
-    
-    
+        return  # Let preflight through
+
     print("minhdz", request.headers.get("X-Dev-Token"), flush=True)
     if request.headers.get("X-Dev-Token") != DEV_SECRET:
         abort(403)
@@ -251,7 +250,7 @@ def compile_latex_to_pdf(latex_file, output_pdf):
     try:
         # Optional: Confirm pdflatex is in path
         result = subprocess.run(
-            ["which", "pdflatex"],
+            [os.getenv("CMD_TESTING"), "pdflatex"],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -288,7 +287,12 @@ def compile_latex_to_pdf(latex_file, output_pdf):
 if __name__ == "__main__":
     try:
         # app.run(port=5050, debug=True, use_reloader=True)
-        app.run(host=NETWORK_VISIBILITY, port=5050, debug=True, use_reloader=True)
+        app.run(
+            host=NETWORK_VISIBILITY,
+            port=5050,
+            debug=True if os.getenv("DEBUGGER_TESTING") == "1" else False,
+            use_reloader=True,
+        )
     except KeyboardInterrupt:
         print("Backend stopped...")
 
