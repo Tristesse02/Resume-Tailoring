@@ -253,7 +253,7 @@ def compile_latex_to_pdf(latex_file, output_pdf):
     try:
         # Optional: Confirm pdflatex is in path
         result = subprocess.run(
-            ["which", "pdflatex"],
+            ["where", "pdflatex"],
             check=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
