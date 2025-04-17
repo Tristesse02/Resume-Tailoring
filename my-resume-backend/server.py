@@ -287,12 +287,16 @@ def compile_latex_to_pdf(latex_file, output_pdf):
 if __name__ == "__main__":
     try:
         # app.run(port=5050, debug=True, use_reloader=True)
+<<<<<<< HEAD
         app.run(
             host=NETWORK_VISIBILITY,
             port=5050,
             debug=True if os.getenv("DEBUGGER_TESTING") == "1" else False,
             use_reloader=True,
         )
+=======
+        app.run(host=NETWORK_VISIBILITY, port=5050, debug=True, use_reloader=True) # TODO: Debug cannot equals to true
+>>>>>>> 883dafc01c85c4792117d18a331e7a1a3e68b4bf
     except KeyboardInterrupt:
         print("Backend stopped...")
 
