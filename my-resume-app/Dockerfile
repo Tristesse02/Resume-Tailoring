@@ -10,6 +10,9 @@ COPY . .
 # Copy production environment file to .env
 COPY deploy/.env.production .env
 
+# Copy package.json file for deployment
+COPY deploy/package.json package.json
+
 # Install dependencies and build
 RUN npm install && npm run build
 

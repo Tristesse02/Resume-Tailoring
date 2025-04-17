@@ -19,8 +19,12 @@ dist-ssr
 .env.test
 .env
 
+# Ignore Local package.json file
+package.json
+
 # Keep this one available for Docker
 !deploy/.env.production
+!deploy/package.json
 
 # Git & Docker
 .git
