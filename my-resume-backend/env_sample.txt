@@ -1,9 +1,0 @@
-[
-	This part is just for commenting and instruction on how to set up environment file.
- 	1. Replace [ADD YOUR OWN SECRET KEY HERE] with your own secret openai key you get from openai api webpage
-	2. Delete the every part that lies in the bracket (including the bracket itself) 
-	3. Rename the file from env_sample.txt -> .env
-	4. And after this, you will be all set
-]
-
-OPENAI_API_KEY=[ADD YOUR OWN SECRET KEY HERE]
