@@ -1,9 +1,11 @@
+import styles from "./index.module.css";
+
 export function Card({ children }) {
   return (
-    <div className="border rounded-lg p-4 shadow bg-white">{children}</div>
+    <div className={styles.card}>{children}</div>
   );
 }
 
-export function CardContent({ children }) {
-  return <div className="p-4">{children}</div>;
+export default function CardContent({ children }) {
+  return <div className={styles.cardContent}>{children}</div>;
 }

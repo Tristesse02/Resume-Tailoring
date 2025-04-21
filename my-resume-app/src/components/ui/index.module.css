@@ -10,7 +10,7 @@
 .buttonOn {
   width: 100px;
   padding: 0.5rem 1rem;
-  background-color: #3b82f6; /* Tailwind's blue-500 */
+  background-color: #3b82f6; 
   color: white;
   border-radius: 8px;
   border: none;
@@ -21,16 +21,12 @@
 .buttonOff {
   width: 100px;
   padding: 0.5rem 1rem;
-  background-color: #2a2a2a; /* Tailwind's blue-500 */
+  background-color: #2a2a2a; 
   color: white;
   border-radius: 8px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
-}
-
-.button:hover {
-  background-color: #2563eb; /* Tailwind's blue-600 */
 }
 
 .input {
@@ -39,4 +35,41 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #333;
+}
+
+.card {
+  border: 1px solid hsl(214.3 31.8% 91.4%);
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  width: 100%;
+  max-width: 42rem;
+}
+
+.cardContent {
+  padding: 1.5rem; 
+  padding-top: 0px;
+}
+
+.button{
+  background-color: hsl(0 0% 9%);
+  display: inline-flex; 
+  height: 2.75rem; 
+  width: 100%; 
+  align-items: center; 
+  justify-content: center; 
+  white-space: nowrap; 
+  border-radius: 0.375rem; 
+  padding-left: 2rem; 
+  padding-right: 2rem; 
+  font-size: 0.875rem; 
+  line-height: 1.25rem; 
+  font-weight: 500;   
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.button:hover{
+  background-color: hsla(0, 0%, 21%, 0.9)
 }
