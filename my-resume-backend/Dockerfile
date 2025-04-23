@@ -22,6 +22,9 @@ COPY . .
 # Copy production environment file to .env
 COPY deploy/.env .env
 
+# Copy template resume file to app directory
+COPY deploy/templateResume.j2 templateResume.j2
+
 # Expose Flask port
 EXPOSE 5000
 

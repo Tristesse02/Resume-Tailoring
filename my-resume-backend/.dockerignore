@@ -19,6 +19,9 @@ venvResumeTailor/
 # Latex files
 *.tex
 
+# Template Latex files
+*.j2
+
 # Output files and temp stuff
 trivial.json
 testing.py
@@ -27,5 +30,9 @@ testing.py
 *.log
 .DS_Store
 .vscode/
+
+# Docker files
+Dockerfile
+
 
 .env
