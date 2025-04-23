@@ -7,7 +7,7 @@ import { Button } from "../ui/button.jsx";
 const MainPage = () => {
   const navigate = useNavigate();
 
-  console.log("Hello World");
+  console.log("quan dz");
 
   return (
     <div className={styles.container}>
