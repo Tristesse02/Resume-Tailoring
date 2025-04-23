@@ -260,7 +260,7 @@ def compile_latex_to_pdf(latex_file, output_pdf):
         # Try to compile LaTeX
         compile_result = subprocess.run(
             [
-                "xelatex",
+                os.getenv("LATEX_FONT"),
                 "-interaction=nonstopmode",
                 "-output-directory",
                 output_dir,
