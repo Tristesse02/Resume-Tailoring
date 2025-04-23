@@ -7,6 +7,8 @@ import { Button } from "../ui/button.jsx";
 const MainPage = () => {
   const navigate = useNavigate();
 
+  console.log("Hello World");
+
   return (
     <div className={styles.container}>
       <div className={styles.titleWrapper}>
