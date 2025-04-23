@@ -8,6 +8,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   console.log("minh dz");
+  console.log("quan dz");
 
   return (
     <div className={styles.container}>
