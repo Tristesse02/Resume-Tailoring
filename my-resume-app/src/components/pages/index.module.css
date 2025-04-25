@@ -344,3 +344,23 @@ label {
     grid-column: span 1;
   }
 }
+
+/* Education section */
+.educationFormGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.fullWidthSpan6 {
+  grid-column: span 6;
+}
+
+.fullWidthSpan3 {
+  grid-column: span 3;
+}
+
+.fullWidthSpan2 {
+  grid-column: span 2;
+}
