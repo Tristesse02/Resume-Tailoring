@@ -1,6 +1,7 @@
+import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./index.module.css";
+import { ArrowLeft, ArrowRight, User } from "lucide-react";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -40,75 +41,108 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Profile Information</h1>
+    <div className={styles.profileContainer}>
+      <div className={styles.profileHeaderContainer}>
+        <div style={{ display: "flex", alignItems: 'center', gap: "8px", justifyContent: 'flex-start' }}>
+          <User style={{ height: "20px", width: "20px"}}/>
+          <h3 className={styles.profileHeaderHeader}>Personal Information</h3>
+        </div>
+        <p className={styles.profileHeaderTitle}>
+          Enter your personal details to include in your resume
+        </p>
+      </div>
       <form className={styles.form}>
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className={styles.input}
-          type="text"
-          name="phone"
-          placeholder="Phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className={styles.input}
-          type="url"
-          name="linkedin"
-          placeholder="LinkedIn Profile Link"
-          value={formData.linkedin}
-          onChange={handleChange}
-        />
-        <input
-          className={styles.input}
-          type="url"
-          name="github"
-          placeholder="GitHub Profile Link"
-          value={formData.github}
-          onChange={handleChange}
-        />
-        <textarea
-          className={styles.textarea}
-          type="text"
-          name="languages"
-          placeholder="Technical Skills (comma-separated)"
-          value={formData.languages}
-          onChange={handleChange}
-        />
-        <textarea
-          className={styles.textarea}
-          type="text"
-          name="frameworks"
-          placeholder="Libraries/Frameworks (comma-separated)"
-          value={formData.frameworks}
-          onChange={handleChange}
-        />
+        <div className={styles.formGrid}>
+          <div className={styles.fullWidth}>
+            <label>Full Name</label>
+            <input
+              className={styles.profileInput}
+              type="text"
+              name="name"
+              placeholder="John Doe"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Email</label>
+            <input
+              className={styles.profileInput}
+              type="email"
+              name="email"
+              placeholder="john.doe@example.com"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Phone</label>
+            <input
+              className={styles.profileInput}
+              type="text"
+              name="phone"
+              placeholder="+1 (555) 123-4567"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>LinkedIn</label>
+            <input
+              className={styles.profileInput}
+              type="url"
+              name="linkedin"
+              placeholder="linkedin.com/in/johndoe"
+              value={formData.linkedin}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Github</label>
+            <input
+              className={styles.profileInput}
+              type="url"
+              name="github"
+              placeholder="github.com/johndoe"
+              value={formData.github}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.fullWidth}>
+            <label>Technical Skills</label>
+            <textarea
+              className={styles.profileTextarea}
+              type="text"
+              name="languages"
+              placeholder="JavaScript, Python, Java, etc."
+              value={formData.languages}
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.fullWidth}>
+            <label>Libraries & Frameworks</label>
+            <textarea
+              className={styles.profileTextarea}
+              type="text"
+              name="frameworks"
+              placeholder="React, Node.js, Express, etc."
+              value={formData.frameworks}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
       </form>
       <div className={styles.buttonContainer}>
         <button onClick={handlePreviousPage} className={styles.buttonLeft}>
-          Back ⬅
+          <ArrowLeft className={styles.buttonArrowLeft} />
+          Back
         </button>
         <button onClick={handleNextPage} className={styles.buttonRight}>
-          Next ➡
+          Next
+          <ArrowRight className={styles.buttonArrowRight} />
         </button>
       </div>
     </div>

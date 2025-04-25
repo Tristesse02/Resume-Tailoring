@@ -1,16 +1,13 @@
 /* index.module.css */
 
 .container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-height: 100vh;
-  text-align: center;
-
   padding-left: 1rem;
   padding-right: 1rem;
-
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
@@ -56,37 +53,45 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
-  margin-top: 20px;
+  margin-top: 16px;
+  padding-top: 16px;
 }
 
 .buttonLeft,
 .buttonRight {
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: bold;
-  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.5rem;
+  outline: none;
 }
 
 .buttonLeft {
-  background-color: gray;
-  color: white;
-}
-
-.buttonRight {
-  background-color: #3b82f6;
-  color: white;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  gap: 0.3rem;
+  color: #000000;
 }
 
 .buttonLeft:hover {
-  background-color: #4b5563;
+  background-color: #f3f3f3;
+  outline: none;
+  border-color: #d1d5db;
+}
+
+.buttonRight {
+  background-color: #000000;
+  color: white;
 }
 
 .buttonRight:hover {
-  background-color: #2563eb;
+  background-color: #242424;
+  outline: none;
+  border-color: #000000;
 }
 
 .form {
@@ -94,7 +99,6 @@
   flex-direction: column;
   gap: 10px;
   width: 100%;
-  max-width: 400px;
 }
 
 .input {
@@ -235,4 +239,108 @@
   margin-left: 0.5rem;
   height: 1rem;
   width: 1rem;
+}
+
+.buttonArrowLeft {
+  margin-right: 0px;
+  width: 1rem;
+  height: 1rem;
+}
+
+.buttonArrowRight {
+  margin-left: 0px;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Profile section */
+.profileContainer {
+  width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.profileHeaderHeader {
+  line-height: 1.5rem;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.profileHeaderTitle {
+  font-size: 14px;
+  margin: 6px 0px 0px;
+}
+
+.profileHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem; /* vertical spacing between children */
+  padding: 0rem; /* equal padding on all sides */
+  padding-bottom: 2rem;
+}
+
+.formGrid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.profileInput,
+.profileTextarea {
+  width: 100%;
+  font-size: 0.88rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  background-color: #fff;
+  color: #111827; /* Tailwind gray-900 */
+  box-sizing: border-box;
+  outline: none; /* remove browser default outline */
+  margin: 8px 0px 0px;
+  padding: 8px 12px;
+  line-height: 1.3rem;
+}
+
+.profileTextarea {
+  height: 120px; /* Increase default height */
+  min-height: 100px; /* Set a minimum height */
+  resize: vertical; /* Allow user to resize height */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.profileInput:focus {
+  border-color: #0a0a0a;
+  outline: none;
+}
+
+.profileTextarea:focus {
+  border-color: #0a0a0a;
+  outline: none; /* removes the default browser outline */
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0a0a0a; /* Tailwind gray-800 */
+}
+
+@media (max-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .fullWidth {
+    grid-column: span 1;
+  }
 }
