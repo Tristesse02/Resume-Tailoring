@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
+import { FileText, ArrowRight } from "lucide-react";
 
 import CardContent, { Card } from "./../ui/card.jsx";
 import { Button } from "../ui/button.jsx";
@@ -7,14 +8,14 @@ import { Button } from "../ui/button.jsx";
 const MainPage = () => {
   const navigate = useNavigate();
 
-  console.log("minh dz");
-  console.log("quan dz");
-
   return (
     <div className={styles.container}>
-      <div className={styles.titleWrapper}>
-        <h1 className={styles.title}>Resume Tailor</h1>
-        <p className={styles.description}>
+      <div className={styles.headingWrapper}>
+        <div className={styles.titleWrapper}>
+          <FileText className={styles.titleIcon} />
+          <h1 className={styles.title}>Resume Tailor</h1>
+        </div>
+        <p className={styles.title_description}>
           Create a perfectly tailored resume for every job application
         </p>
       </div>
@@ -65,6 +66,7 @@ const MainPage = () => {
             className={styles.mainPage__Button}
           >
             Get Started
+            <ArrowRight className={styles.buttonArrow} />
           </Button>
         </CardContent>
       </Card>
