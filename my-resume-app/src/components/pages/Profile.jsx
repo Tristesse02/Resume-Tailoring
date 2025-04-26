@@ -43,8 +43,15 @@ const ProfilePage = () => {
   return (
     <div className={styles.profileContainer}>
       <div className={styles.profileHeaderContainer}>
-        <div style={{ display: "flex", alignItems: 'center', gap: "8px", justifyContent: 'flex-start' }}>
-          <User style={{ height: "20px", width: "20px"}}/>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            justifyContent: "flex-start",
+          }}
+        >
+          <User style={{ height: "20px", width: "20px" }} />
           <h3 className={styles.profileHeaderHeader}>Personal Information</h3>
         </div>
         <p className={styles.profileHeaderTitle}>

@@ -17,7 +17,7 @@
   justify-content: flex-start;
   width: 100%;
   height: 100vh;
-  padding: 2rem 0;
+  padding: 48px 16px;
 }
 
 .buttonContainer {
@@ -115,7 +115,7 @@
 
 /* Disabled state */
 .submitButton.disabled {
-  background-color: #6c757d ; /* Gray background */
+  background-color: #6c757d; /* Gray background */
   cursor: not-allowed; /* Show 'not-allowed' cursor */
   opacity: 0.6; /* Reduce opacity to indicate it's inactive */
 }
@@ -160,7 +160,7 @@
   display: flex;
   justify-content: flex-start; /* Align to the left */
   width: 100%;
-  margin: 1rem auto 0 1rem; /* Add margin for spacing */
+  margin: 1rem auto 0 2rem; /* Add margin for spacing */
 }
 
 .backButton {
@@ -201,4 +201,114 @@
 
 .removeButton:hover {
   color: #ff1a1a;
+}
+
+.resTailHeaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 52px;
+  margin-bottom: 8px;
+  line-height: 20px;
+}
+
+.resTailHeaderDescription {
+  margin: 0px 0px;
+  color: #737373;
+  max-width: 400px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.buttonLeft {
+  padding: 0px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 2rem;
+  outline: none;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  gap: 0.3rem;
+  color: #000000;
+  font-size: 14px;
+}
+
+.buttonLeft:hover {
+  background-color: #f3f3f3;
+  outline: none;
+  border-color: #d1d5db;
+}
+
+.buttonArrowLeft {
+  height: 16px;
+  width: 16px;
+}
+
+.profileContainer {
+  width: 720px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb; /* Tailwind gray-200 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.profileHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem; /* vertical spacing between children */
+  padding: 0rem; /* equal padding on all sides */
+}
+
+.profileHeaderHeader {
+  line-height: 1.5rem;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+/* Who cares*/
+.profileTextarea {
+  width: 100%;
+  font-size: 0.88rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  background-color: #fff;
+  color: #111827; /* Tailwind gray-900 */
+  box-sizing: border-box;
+  outline: none; /* remove browser default outline */
+  padding: 8px 12px;
+  line-height: 1.3rem;
+  height: 80px; /* Increase default height */
+  min-height: 100px; /* Set a minimum height */
+  resize: vertical; /* Allow user to resize height */
+}
+
+.profileInput:focus {
+  border-color: #0a0a0a;
+  outline: none;
+}
+
+.profileTextarea:focus {
+  border-color: #0a0a0a;
+  outline: none; /* removes the default browser outline */
+}
+
+.sparkles {
+  color: #facc15;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.5));
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.sparkles:hover {
+  filter: drop-shadow(0 0 25px rgba(250, 204, 21, 1));
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.7), 0 0 10px rgba(250, 204, 21, 0.6),
+    0 0 20px rgba(250, 204, 21, 0.5);
+  transform: scale(1.2);
 }

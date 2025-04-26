@@ -1,10 +1,18 @@
+import { Sparkles } from "lucide-react";
+import styles from "./index.module.css";
+
 const Header = () => {
   return (
-    <header
-      style={{ textAlign: "center", marginBottom: "1rem", color: "white" }}
-    >
-      <h1>Let us tailor your resume 😫</h1>
-    </header>
+    <>
+      <div className={styles.resTailHeaderContainer}>
+        <h1 style={{ fontSize: "30px", margin: "0" }}>Resume Tailor</h1>
+        <Sparkles className={styles.sparkles} />
+      </div>
+      <p className={styles.resTailHeaderDescription}>
+        Let us optimize your resume for job applications with AI-powered
+        tailoring
+      </p>
+    </>
   );
 };
 

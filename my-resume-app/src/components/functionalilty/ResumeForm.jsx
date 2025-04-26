@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import ToggleButton from "../ui/toggleButton";
+import { Sparkles } from "lucide-react";
 
 export default function ResumeForm({
   id,
@@ -133,9 +134,45 @@ export default function ResumeForm({
     }
   };
 
+  // <div className={styles.profileContainer}>
+  //   <div className={styles.profileHeaderContainer}>
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         alignItems: "center",
+  //         gap: "8px",
+  //         justifyContent: "flex-start",
+  //         marginBottom: "12px",
+  //       }}
+  //     >
+  //       <Briefcase style={{ height: "20px", width: "20px" }} />
+  //       <h3 className={styles.profileHeaderHeader}>Job Description</h3>
+  //     </div>
+  //     <textarea
+  //       className={styles.profileTextarea}
+  //       placeholder="Paste the job description here to optimize your resume"
+  //       onChange={(e) => setJobDescription(e.target.value)}
+  //     />
+  //   </div>
+  // </div>;
+
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <div className={styles.profileContainer}>
+      <div className={styles.profileHeaderContainer}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            justifyContent: "flex-start",
+            marginBottom: "12px",
+          }}
+        >
+          <Sparkles style={{ height: "20px", width: "20px" }} />
+          <h3 className={styles.profileHeaderHeader}>Job Description</h3>
+        </div>
+      </div>
+      {/* <div className={styles.header}>
         <ToggleButton isOn={isOn} setIsOn={setIsOn} onToggle={handleOnToggle} />
         <h1 className={styles.title}>Experience {indexEntry}</h1>
         <button
@@ -144,7 +181,7 @@ export default function ResumeForm({
         >
           ❌
         </button>
-      </div>
+      </div> */}
 
       <div className={styles.formGroup}>
         <input

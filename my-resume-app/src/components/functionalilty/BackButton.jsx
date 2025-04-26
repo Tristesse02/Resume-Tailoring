@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import styles from "./index.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -8,9 +9,10 @@ const BackButton = () => {
     <div className={styles.backButtonContainer}>
       <button
         onClick={() => navigate("/university-info")}
-        className={styles.backButton}
+        className={styles.buttonLeft}
       >
-        ⬅ Back to Profile
+        <ArrowLeft className={styles.buttonArrowLeft} />
+        Back to Education
       </button>
     </div>
   );
