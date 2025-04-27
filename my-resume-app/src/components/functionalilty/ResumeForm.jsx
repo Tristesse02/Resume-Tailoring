@@ -239,7 +239,7 @@ export default function ResumeForm({
               <input
                 name="location"
                 className={styles.profileInput}
-                placeholder="Location (e.g. Remote, US)"
+                placeholder="Remote, US"
                 value={form.location}
                 onChange={handleChange}
               />
@@ -255,7 +255,7 @@ export default function ResumeForm({
             <input
               name="techStack"
               className={styles.profileInput}
-              placeholder="Tech Stack ⚙️🛠️(e.g. React, Node.js, AWS, etc.)"
+              placeholder="React, Node.js, AWS, etc."
               value={form.techStack}
               onChange={handleChange}
             />
@@ -289,7 +289,7 @@ export default function ResumeForm({
               <input
                 name="bulletPoints"
                 className={styles.profileInput}
-                placeholder="How many bullet points do you want to add? (From 👆to🤚)"
+                placeholder="Number of bullet points (3-5)"
                 value={form.bulletPoints}
                 onChange={handleChange}
               />
@@ -301,7 +301,7 @@ export default function ResumeForm({
             <textarea
               name="bulletDescription"
               className={styles.profileTextarea}
-              placeholder="Bullet points 📝(e.g. Developed a web application using React.js)"
+              placeholder="• Developed a web application using React.js"
               value={form.bulletDescription}
               onBlur={handleOnBlur}
               onFocus={handleOnFocus}

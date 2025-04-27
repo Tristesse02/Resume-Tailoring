@@ -15,31 +15,46 @@ const SecureKeyInput = ({ onConfirm }) => {
   };
 
   return (
-    <div>
-      <input
-        type="password"
-        className={styles.input}
-        value={apiKey}
-        disabled={locked}
-        onChange={(e) => setApiKey(e.target.value)}
-        onPaste={(e) => locked && e.preventDefault()}
-        onCopy={(e) => locked && e.preventDefault()}
-        placeholder="Enter your OpenAI API key"
-      />
-      {!locked && <button onClick={handleConfirm}>Confirm</button>}
-      {locked && <p>🔒 Key locked for this session</p>}
-      {/* <div>
-        <p>Security Reminder</p>
-        <p>
-          Your API key is stored <strong>only in memory</strong> and will be
-          lose when you refresh or close the page. For your safety:
-        </p>
-        <ul className="list-disc list-inside text-sm mt-2 space-y-1">
-          <li>Don’t use this site on a public or shared computer</li>
-          <li>Don’t leave this tab open unattended</li>
-          <li>Close the tab when you're done</li>
-        </ul>
-      </div> */}
+    <div className={styles.form}>
+      <div className={styles.formGrid}>
+        <div style={{ gridColumn: "span 5" }}>
+          <label>API Key</label>
+          <input
+            type="password"
+            className={styles.profileInput}
+            value={apiKey}
+            disabled={locked}
+            onChange={(e) => setApiKey(e.target.value)}
+            onPaste={(e) => locked && e.preventDefault()}
+            onCopy={(e) => locked && e.preventDefault()}
+            placeholder="Enter your OpenAI API key"
+          />
+        </div>
+        <div
+          style={{
+            gridColumn: "span 1",
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "flex-start",
+          }}
+        >
+          <label></label>
+          {!locked && (
+            <button onClick={handleConfirm} className={styles.confirmButton}>
+              Confirm
+            </button>
+          )}
+        </div>
+        <div
+          style={{
+            gridColumn: "span 6",
+          }}
+        >
+          {locked && (
+            <p style={{ margin: "0" }}>🔒 Key locked for this session</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
