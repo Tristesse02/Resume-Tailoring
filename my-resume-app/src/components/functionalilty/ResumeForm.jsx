@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./index.module.css";
-import ToggleButton from "../ui/toggleButton";
-import { Sparkles } from "lucide-react";
+import { LucideX, Pencil, Sparkles } from "lucide-react";
 
 export default function ResumeForm({
   id,
@@ -49,6 +48,12 @@ export default function ResumeForm({
     const newForm = { ...form, isBulletDescription: value };
     setForm(newForm);
     updateFormData(id, newForm);
+  };
+
+  const handleChangeTailor = () => {
+    const newValue = !isOn;
+    setIsOn(newValue);
+    handleOnToggle(newValue);
   };
 
   const handleOnFocus = (e) => {
@@ -134,30 +139,8 @@ export default function ResumeForm({
     }
   };
 
-  // <div className={styles.profileContainer}>
-  //   <div className={styles.profileHeaderContainer}>
-  //     <div
-  //       style={{
-  //         display: "flex",
-  //         alignItems: "center",
-  //         gap: "8px",
-  //         justifyContent: "flex-start",
-  //         marginBottom: "12px",
-  //       }}
-  //     >
-  //       <Briefcase style={{ height: "20px", width: "20px" }} />
-  //       <h3 className={styles.profileHeaderHeader}>Job Description</h3>
-  //     </div>
-  //     <textarea
-  //       className={styles.profileTextarea}
-  //       placeholder="Paste the job description here to optimize your resume"
-  //       onChange={(e) => setJobDescription(e.target.value)}
-  //     />
-  //   </div>
-  // </div>;
-
   return (
-    <div className={styles.profileContainer}>
+    <div className={styles.profileContainer} style={{ position: "relative" }}>
       <div className={styles.profileHeaderContainer}>
         <div
           style={{
@@ -168,112 +151,164 @@ export default function ResumeForm({
             marginBottom: "12px",
           }}
         >
-          <Sparkles style={{ height: "20px", width: "20px" }} />
-          <h3 className={styles.profileHeaderHeader}>Job Description</h3>
+          <button
+            onClick={handleChangeTailor}
+            className={
+              isOn ? styles.toggleTailorStar : styles.toggleTailorPencil
+            }
+          >
+            {isOn ? (
+              <Sparkles
+                className={styles.sparkles}
+                style={{
+                  height: "20px",
+                  width: "20px",
+                }}
+              />
+            ) : (
+              <Pencil
+                className={styles.pencil}
+                style={{ height: "20px", width: "20px" }}
+              />
+            )}
+          </button>
+          <h3 className={styles.profileHeaderHeader}>
+            Experience {indexEntry}
+          </h3>
+          <button
+            className={styles.removeButton}
+            onClick={() => id && removeEntry(id)}
+          >
+            <LucideX className={styles.deleteExperienceEntry} />
+          </button>
         </div>
       </div>
-      {/* <div className={styles.header}>
-        <ToggleButton isOn={isOn} setIsOn={setIsOn} onToggle={handleOnToggle} />
-        <h1 className={styles.title}>Experience {indexEntry}</h1>
-        <button
-          className={styles.removeButton}
-          onClick={() => id && removeEntry(id)}
-        >
-          ❌
-        </button>
-      </div> */}
 
-      <div className={styles.formGroup}>
-        <input
-          name="name"
-          className={styles.input}
-          placeholder="Job/Project Name 🤔"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <select
-          name="type"
-          className={styles.input}
-          value={form.type}
-          onChange={handleChange}
-        >
-          <option value="">Select Type 💜</option>
-          <option value="Job">Job</option>
-          <option value="Project">Project</option>
-        </select>
+      <div className={styles.experienceEntryFormGrid}>
+        <div className={styles.widthSpan3}>
+          <label>Name</label>
+          <input
+            name="name"
+            className={styles.profileInput}
+            placeholder="Job/Project Name"
+            value={form.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={styles.widthSpan3}>
+          <label>Type</label>
+          <select
+            name="type"
+            className={styles.profileInput}
+            value={form.type}
+            onChange={handleChange}
+          >
+            <option value="">Select Type 💜</option>
+            <option value="Job">Job</option>
+            <option value="Project">Project</option>
+          </select>
+        </div>
 
         {form.type !== "Project" && (
           <>
-            <input
-              name="duration"
-              className={styles.input}
-              placeholder="Duration (Jun 2024 -- Aug 2024)"
-              value={form.duration}
-              onChange={handleChange}
-            />
-            <input
-              name="position"
-              className={styles.input}
-              placeholder="Position (e.g. Software Engineer Intern)"
-              value={form.position}
-              onChange={handleChange}
-            />
-            <input
-              name="location"
-              className={styles.input}
-              placeholder="Location (e.g. Remote, US)"
-              value={form.location}
-              onChange={handleChange}
-            />
+            <div className={styles.widthSpan2}>
+              <label>Duration</label>
+              <input
+                name="duration"
+                className={styles.profileInput}
+                placeholder="Jun 2024 -- Aug 2024"
+                value={form.duration}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.widthSpan2}>
+              <label>Position</label>
+              <input
+                name="position"
+                className={styles.profileInput}
+                placeholder="Software Engineer Intern"
+                value={form.position}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.widthSpan2}>
+              <label>Location</label>
+              <input
+                name="location"
+                className={styles.profileInput}
+                placeholder="Location (e.g. Remote, US)"
+                value={form.location}
+                onChange={handleChange}
+              />
+            </div>
           </>
         )}
+
         {(form.type === "Project" ||
           form.type.includes("Select Type") ||
           isOn) && (
-          <input
-            name="techStack"
-            className={styles.input}
-            placeholder="Tech Stack ⚙️🛠️(e.g. React, Node.js, AWS, etc.)"
-            value={form.techStack}
-            onChange={handleChange}
-          />
+          <div className={styles.widthSpanFull}>
+            <label>Tech Stack</label>
+            <input
+              name="techStack"
+              className={styles.profileInput}
+              placeholder="Tech Stack ⚙️🛠️(e.g. React, Node.js, AWS, etc.)"
+              value={form.techStack}
+              onChange={handleChange}
+            />
+          </div>
         )}
 
         {isOn ? (
           <>
-            <textarea
-              name="description"
-              className={styles.textarea}
-              placeholder="Description 📃(just describe by words, as detailed as possible)"
-              value={form.description}
-              onChange={handleChange}
-            />
-            <input
-              name="numbers"
-              className={styles.input}
-              placeholder="Numbers 🔢(Quantifiable Result)"
-              value={form.numbers}
-              onChange={handleChange}
-            />
-            <input
-              name="bulletPoints"
-              className={styles.input}
-              placeholder="How many bullet points do you want to add? (From 👆to🤚)"
-              value={form.bulletPoints}
-              onChange={handleChange}
-            />
+            <div className={styles.widthSpanFull}>
+              <label>Description</label>
+              <textarea
+                name="description"
+                className={styles.profileTextarea}
+                placeholder="Describe your experience in detail"
+                value={form.description}
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.widthSpanFull}>
+              <label>Quantifiable Results</label>
+              <input
+                name="numbers"
+                className={styles.profileInput}
+                placeholder="Increased performance by 40%"
+                value={form.numbers}
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.widthSpanFull}>
+              <label>Bullet Points</label>
+              <input
+                name="bulletPoints"
+                className={styles.profileInput}
+                placeholder="How many bullet points do you want to add? (From 👆to🤚)"
+                value={form.bulletPoints}
+                onChange={handleChange}
+              />
+            </div>
           </>
         ) : (
-          <textarea
-            name="bulletDescription"
-            className={styles.textarea}
-            placeholder="Bullet points 📝(e.g. Developed a web application using React.js)"
-            value={form.bulletDescription}
-            onBlur={handleOnBlur}
-            onFocus={handleOnFocus}
-            onKeyDown={handleOnKeyDown}
-            onChange={handleChange}
-          />
+          <div className={styles.widthSpanFull}>
+            <label>Description</label>
+            <textarea
+              name="bulletDescription"
+              className={styles.profileTextarea}
+              placeholder="Bullet points 📝(e.g. Developed a web application using React.js)"
+              value={form.bulletDescription}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
+              onKeyDown={handleOnKeyDown}
+              onChange={handleChange}
+            />
+          </div>
         )}
       </div>
     </div>

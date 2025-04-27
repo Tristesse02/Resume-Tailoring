@@ -71,7 +71,7 @@
 }
 
 .buttonLeft {
-  border: 1px solid #d1d5db;
+  border: 1px solid #dfe6ef;
   background-color: #ffffff;
   gap: 0.3rem;
   color: #000000;
@@ -80,7 +80,7 @@
 .buttonLeft:hover {
   background-color: #f3f3f3;
   outline: none;
-  border-color: #d1d5db;
+  border-color: #dfe6ef;
 }
 
 .buttonRight {
@@ -301,7 +301,7 @@
   width: 100%;
   font-size: 0.88rem;
   border-radius: 6px;
-  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border: 1px solid #dfe6ef; /* Tailwind gray-300 */
   background-color: #fff;
   color: #111827; /* Tailwind gray-900 */
   box-sizing: border-box;

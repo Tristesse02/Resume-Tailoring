@@ -1,3 +1,4 @@
+import { Send } from "lucide-react";
 import styles from "./index.module.css";
 
 const SubmitButton = ({ submitAllForms, disabled }) => (
@@ -6,7 +7,8 @@ const SubmitButton = ({ submitAllForms, disabled }) => (
     onClick={submitAllForms}
     disabled={disabled}
   >
-    Submit All Forms
+    <Send style={{ width: "16px", height: "16px" }} />
+    Generate Tailored Resume
   </button>
 );
 

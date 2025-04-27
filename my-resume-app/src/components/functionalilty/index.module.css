@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
   min-height: auto; /* Allow it to grow dynamically */
-  gap: 1rem; /* Add spacing */
+  gap: 2rem; /* Add spacing */
   padding-top: 2rem; /* Ensures space below the header */
 }
 
@@ -25,7 +25,6 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 20px;
   margin-bottom: 50px; /* Add bottom spacing */
 }
 
@@ -98,14 +97,21 @@
 }
 
 .submitButton {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  height: 40px;
+  width: 448px;
+  max-width: 448px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
-  margin-top: 20px;
   border: none;
-  background-color: #28a745;
+  background-color: #0a0a0a;
   color: white;
-  font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;
+  gap: 0.5rem;
   transition: background 0.3s;
 }
 
@@ -189,18 +195,30 @@
 /* Remove (❌) Button */
 .removeButton {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
   top: 10px;
   right: 0px;
   background-color: transparent;
   border: none;
+  border-radius: 6px;
   color: #ff4d4d; /* Red color */
   font-size: 1.5rem; /* Increase size */
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.removeButton:hover .deleteExperienceEntry {
+  color: red;
 }
 
 .removeButton:hover {
-  color: #ff1a1a;
+  background-color: #f1f1f1;
 }
 
 .resTailHeaderContainer {
@@ -230,7 +248,7 @@
   align-items: center;
   line-height: 2rem;
   outline: none;
-  border: 1px solid #d1d5db;
+  border: 1px solid #dfe6ef;
   background-color: #ffffff;
   gap: 0.3rem;
   color: #000000;
@@ -240,7 +258,7 @@
 .buttonLeft:hover {
   background-color: #f3f3f3;
   outline: none;
-  border-color: #d1d5db;
+  border-color: #dfe6ef;
 }
 
 .buttonArrowLeft {
@@ -250,7 +268,7 @@
 
 .profileContainer {
   width: 720px;
-  margin: 2rem auto;
+  margin: 0 auto;
   background-color: #fff;
   border-radius: 12px;
   border: 1px solid #e5e7eb; /* Tailwind gray-200 */
@@ -277,7 +295,7 @@
   width: 100%;
   font-size: 0.88rem;
   border-radius: 6px;
-  border: 1px solid #d1d5db; /* Tailwind gray-300 */
+  border: 1px solid #dfe6ef; /* Tailwind gray-300 */
   background-color: #fff;
   color: #111827; /* Tailwind gray-900 */
   box-sizing: border-box;
@@ -302,13 +320,165 @@
 .sparkles {
   color: #facc15;
   filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.5));
-  text-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+  text-shadow: 0 0 6px rgba(231, 189, 18, 0.4);
   transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .sparkles:hover {
-  filter: drop-shadow(0 0 25px rgba(250, 204, 21, 1));
-  text-shadow: 0 0 4px rgba(250, 204, 21, 0.7), 0 0 10px rgba(250, 204, 21, 0.6),
+  color: #fbbf24;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 1));
+  text-shadow: 0 0 4px rgba(71, 57, 3, 0.7), 0 0 10px rgba(135, 110, 6, 0.6),
     0 0 20px rgba(250, 204, 21, 0.5);
   transform: scale(1.2);
+}
+
+.pencil {
+  color: #6b7280;
+  filter: drop-shadow(0 0 6px rgba(120, 120, 120, 0.5));
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.pencil:hover {
+  color: #374151;
+  filter: drop-shadow(0 0 25px rgba(250, 204, 21, 1));
+  text-shadow: 0 0 4px rgba(43, 43, 43, 0.7), 0 0 10px rgba(136, 136, 136, 0.6),
+    0 0 20px rgba(224, 224, 224, 0.5);
+  transform: scale(1.2);
+}
+
+.toggleTailorStar,
+.toggleTailorPencil {
+  all: unset;
+  outline: none;
+  padding: 0;
+  background-color: white;
+  color: #facc15;
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.4);
+  transition: filter 0.3s ease, text-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.toggleTailorStar:hover,
+.toggleTailorPencil:hover {
+  cursor: pointer;
+  outline: none;
+  color: #fbbf24;
+  text-shadow: 0 0 4px rgba(250, 204, 21, 0.7), 0 0 10px rgba(250, 204, 21, 0.6),
+    0 0 20px rgba(250, 204, 21, 0.5);
+  transform: scale(1);
+}
+
+.toggleTailorStar:focus,
+.toggleTailorPencil:focus {
+  outline: none;
+}
+
+.deleteExperienceEntry {
+  color: #737373;
+  width: 20px;
+  height: 20px;
+  transition: color 0.3s ease-in-out;
+}
+
+.experienceEntryFormGrid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.widthSpan3 {
+  grid-column: span 3;
+}
+
+.widthSpan2 {
+  grid-column: span 2;
+}
+
+.widthSpanFull {
+  grid-column: span 6;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0a0a0a; /* Tailwind gray-800 */
+}
+
+.profileInput,
+.profileTextarea {
+  width: 100%;
+  font-size: 0.88rem;
+  border-radius: 6px;
+  border: 1px solid #dfe6ef; /* Tailwind gray-300 */
+  background-color: #fff;
+  color: #111827; /* Tailwind gray-900 */
+  box-sizing: border-box;
+  outline: none; /* remove browser default outline */
+  margin: 8px 0px 0px;
+  padding: 8px 12px;
+  line-height: 1.3rem;
+}
+
+.profileTextarea {
+  height: 120px; /* Increase default height */
+  min-height: 100px; /* Set a minimum height */
+  resize: vertical; /* Allow user to resize height */
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.profileInput:focus {
+  border-color: #0a0a0a;
+  outline: none;
+}
+
+.profileTextarea:focus {
+  border-color: #0a0a0a;
+  outline: none; /* removes the default browser outline */
+}
+
+.profileTextarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.profileTextarea::-webkit-scrollbar-thumb {
+  background: white; /* Make the thumb white */
+  border-radius: 4px; /* Optional: make it a bit rounded */
+}
+
+.profileTextarea::-webkit-scrollbar-thumb:hover {
+  background: #e0e0e0; /* Optional: light gray when hover */
+}
+
+.addMoreExperienceButton {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 448px;
+  max-width: 448px;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #dfe6ef;
+  background-color: white;
+  color: #0a0a0a;
+  gap: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  outline: none;
+}
+
+.addMoreExperienceButton:hover {
+  outline: none;
+  border-color: #dfe6ef;
+  background-color: #f3f3f3;
+}
+
+.addMoreExperienceButton:focus {
+  border-color: #0a0a0a;
+  outline: none;
 }
