@@ -235,6 +235,11 @@
   padding-right: 2rem;
 }
 
+.mainPage__Button:hover {
+  border-color: black;
+  outline: none;
+}
+
 .buttonArrow {
   margin-left: 0.5rem;
   height: 1rem;

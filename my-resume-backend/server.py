@@ -124,6 +124,8 @@ def tailor_resume():
         formatted_json.format_resume_data()
         data = formatted_json.get_formatted_json()
 
+        print("nina cutehotme", flush=True)
+
         # [Note 2.1]: GPT is being used HERE
         print("ditconmedzvlon", data, flush=True)
         tailored_resume = deep_tailor.tailor_resume(data)

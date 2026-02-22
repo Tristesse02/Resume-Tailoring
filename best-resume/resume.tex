@@ -1,0 +1,242 @@
+
+% chktex-disable
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[]{article}
+\pagestyle{empty}
+
+% Encoding and font
+% \usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage{lmodern}
+% \usepackage{textcomp}  % for symbols like euro, etc.
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sfdefault]{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Math (just in case you use math in bullet points)
+\usepackage{amsmath, amssymb}
+
+% Page setup
+\usepackage[top=0.3in, bottom=0.1in, left=0.5in, right=0.5in]{geometry}
+
+% Layout and spacing
+\usepackage{parskip}       % avoid indentation
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\usepackage{needspace}     % avoid page breaks in blocks
+
+% Lists
+\usepackage{enumitem}
+\AtBeginEnvironment{itemize}{\small}
+\setlist[itemize]{left=0em, itemsep=0.1em, topsep=0em, parsep=0em}
+\renewcommand{\labelitemi}{\scriptsize$\bullet$}
+
+% Colors and rules
+\usepackage{xcolor}
+
+% Hyperlinks
+\usepackage{hyperref}
+\hypersetup{hidelinks, pdfcreator={LaTeX via pandoc} }
+
+% Soft line break support
+\IfFileExists{xurl.sty}{\usepackage{xurl} }{}
+
+% Highlight (optional, for \hl{})
+\usepackage{soul}
+
+% Misc
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+}
+
+% Disable section numbering
+\setcounter{secnumdepth}{-\maxdimen}
+%----------------------------------User Metadata----------------------------------%
+
+\begin{document}
+\begin{center}
+	\huge{\fontseries{sb}\selectfont{Minh (Miller) Vu}}\\
+	\vspace{-0.56em} % a bit of space lol
+	{\normalsize\fontseries{m}\selectfont
+		\href{mailto:vtaminh02@gmail.com}{vtaminh02@gmail.com}\hspace{0.4em}\textbar{}\hspace{0.4em}4132756387\hspace{0.4em}\textbar{}\hspace{0.4em}\href{https://www.linkedin.com/in/minhvu02/}{linkedin.com/in/minhvu02}\hspace{0.4em}\textbar{}\hspace{0.4em}\href{https://portfolio-minh.vercel.app/}{portfolio-minh}
+	}
+\end{center}
+
+\vspace{0.2em}
+%----------------------------------Education----------------------------------%
+
+\textbf{\large Education}\\ 
+\vspace{-0.8em}
+\hrule height 0.5pt
+\vspace{1.8em}
+\needspace{5\baselineskip}
+\begin{samepage}
+\begin{itemize}[topsep=0pt, leftmargin=0pt, itemsep=4pt, labelsep=0em, partopsep=0pt]
+\renewcommand\labelitemi{}
+\vspace{-2em}
+	
+		\item \textbf{\ignorespaces University of Massachusetts Amherst} \hfill \textbf{\small May 2025} \\\small
+				\ignorespaces \textit{B.S. Computer Science and Mathematics - GPA: 3.9} \hfill \textit{Amherst, MA}
+\end{itemize}
+\end{samepage}
+\vspace{1em}
+
+\begin{itemize}[leftmargin=2em]
+    \vspace{-1.7em}
+		\item Courses: Programming Methodology, Machine Learning, Algorithm Design, Search Engine, Computer Systems, Operating System, Linear Algebra, Discrete Mathematics		
+	\end{itemize}
+\vspace{0.2em}
+%----------------------------------Technical Skill----------------------------------%
+
+\needspace{6\baselineskip}
+\begin{samepage}
+\textbf{\large Technical Skill}\\ 
+\vspace{-0.8em}
+\hrule height 0.5pt
+\vspace{1.5em}
+\begin{itemize}[leftmargin=2em]
+    \vspace{-1.7em}
+		
+		
+		\item Languages: Java, Python, JavaScript, Typescript, HTML, CSS, C/C++, C\#, Go, Rust, Swift, Kotlin
+		
+		\item Libraries/Framework: MongoDB, ExpressJS, ReactJS, NodeJS, AngularJS, FastAPI, Django, SpringBoot, Docker, AWS, SQL, PostgreSQL, Supabase, Tensorflow, Pytorch, Sklearn, Tailwind, Figma
+		
+		
+	\end{itemize}
+\end{samepage}
+
+\vspace{0.2em}
+%----------------------------------Work Experience----------------------------------%
+
+\textbf{\large Work Experience}\\ 
+\vspace{-0.8em}
+\hrule height 0.5pt
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces Avocademy (YC W22)} \hfill \textbf{\small Jun 2024 -- Sep 2024} \\\small
+    \ignorespaces \textit{Software Engineer Intern} \hfill \textit{Remote, US}\\ % Add job label and location
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		\item Leveraged Azure \& OpenAI API endpoints to generate secure, prompt‑engineered resumes, boosting beta-user satisfaction to 90\% with polished, ATS-friendly PDFs while safeguarding all PII confined to controlled cloud services
+
+			\item Re‑architected batch‑apply pipeline with Supabase Deno edge functions and batch triggers, eliminated race conditions and achieved 100\% success for 200+ concurrent submissions to Skyvern
+			
+			\item Engineered a Dockerized Nunjucks \& LuaTeX template pipeline on AWS Lightsail—streamlining provisioning of 10 resume templates to support 25,000+ active clients without manual setup
+			
+			\item Built an automated job‑crawler with PuppeteerJS \& Fire Crawler across multiple ATS, achieving 99\% success rate and cut manual crawling time from days to minutes per board
+			
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces FPT Software} \hfill \textbf{\small Jun 2023 -- Aug 2023} \\\small
+    \ignorespaces \textit{Software Engineer Intern} \hfill \textit{Hanoi, Vietnam} \\ % Add job label and location
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		
+			\item Led an AngularJS-TypeScript website for managing prescriptions, serving Japan Pharmacists Association with 500-1000 daily visits.
+			
+			\item Refined JavaScript SDK to ensure seamless data binding across 350+ UIs, improving data accuracy for 20,000 entries.
+			
+			\item Created an Observer pattern, automating frontend to backend data updates with high precision and reduced manual coding time.
+			
+			\item Improved communication and team efficiency by implementing Agile-Scrum methods, supporting a fast-paced development cycle.
+			
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces Viettel AI} \hfill \textbf{\small Jun 2024 -- Aug 2024} \\\small
+    \ignorespaces \textit{Machine Learning Engineer Intern} \hfill \textit{Hanoi, Vietnam}\\ % Add job label and location
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		
+			\item Engineered semantic search systems using SBERT and Solr, enhancing data retrieval performance by 35\% in NLP applications.
+			
+			\item Developed resilient data storage and retrieval pipelines with Microsoft Graph RAG, optimizing resource use and scalability.
+			
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces Advance Learning Technologies Lab} \hfill \textbf{\small Sep 2022 -- May 2023} \\\small
+    \ignorespaces \textit{Undergraduate Research Assistance} \hfill \textit{Amherst, MA}\\ % Add job label and location
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+
+			\item Presented research at 2023 ERSP National Conference on automating the analysis of JSON‑formatted game designs, achieving a 90\% reduction in game‑design review time
+		
+			\item Utilized BERT and graph modeling to extract loops, conditionals, and text features in 54 student‑designed games—training the model to a 0.67 loss and eliminating manual review bottlenecks
+
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\textbf{\large Personal Project}\\ 
+\vspace{-0.8em}
+\hrule height 0.5pt
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces CloudCueAI \textbar{}}  \textit{FastAPI, RestfulAPI, Svelte, Docker, WebSocket, PostgreSQL, PassLib}\\\small
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		
+			\item Leveraged AWS Lambda \& Transcribe to build live word prediction service for mock interview, boosting screening success by 50\%
+			
+			\item Integrated AWS S3 for secure transcript storage and API Gateway to enable low-latency, cutting transcription delays by 30\%
+
+			\item Fine-tuned Facebook OPT-1.3b for word suggestions and visualized results via React-D3-Cloud, boosting users engagement by 40\%
+			
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces Beatcode \textbar{}}  \textit{FastAPI, RestfulAPI, Svelte, Docker, WebSocket, PostgreSQL, PassLib}\\\small
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		
+			\item Utilized FastAPI and PostgreSQL to design a scalable multi-client LeetCode game platform, achieving 500+ players during beta
+			
+			\item Optimized Docker for code judging and WebSocket for reliable gameplay connections, supporting 1,000+ concurrent users
+			
+			\item Built OAuth, session management with Passlib, and CORS support client-server interaction, improving security compliance by 40\%
+
+
+		\end{itemize}
+	\vspace{0.1em}
+\end{samepage}
+
+\needspace{10\baselineskip}
+\begin{samepage}
+\textbf{\ignorespaces XploreIt \textbar{}}  \textit{Meta Quest, Vapi, Gemini, Claude}\\\small
+		\begin{itemize}[leftmargin=2em]
+      	\vspace{-1.7em}
+	  		
+			\item Built real time, voice-guided XR assistant with Vapi \& Deepgram, boosting task comprehension speed for elderly users by 70\%
+			
+			\item Develop grid-based CV on Meta Quest to localize task-critical regions, improving Claude guidance accuracy across 20+ daily tasks
+			
+		\end{itemize}
+	\vspace{0.2em}
+\end{samepage}
+
+
+
+\end{document}
+% chktex-enable

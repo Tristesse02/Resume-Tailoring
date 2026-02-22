@@ -10,7 +10,7 @@ class ResumeSkillMatcher:
         load_dotenv()
         # self.api_key = api_key or os.getenv("OPENAI_API_KEY")
         # self.client = OpenAI(api_key=self.api_key)
-        
+
     def set_api_key(self, api_key):
         """Set the API key for OpenAI client."""
         self.api_key = api_key
@@ -64,7 +64,7 @@ class ResumeSkillMatcher:
         )
 
         output_content = chat_completion.choices[0].message.content.strip()
-        # print(output_content)
+        print(output_content, flush=True)
         return self.extract_json(output_content)
 
     @staticmethod

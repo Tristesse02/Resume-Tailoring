@@ -112,7 +112,7 @@ const UniversityInfo = () => {
             <input
               className={styles.profileInput}
               type="text"
-              name="Location"
+              name="location"
               placeholder="Stanford, CA"
               value={formData.location}
               onChange={handleChange}

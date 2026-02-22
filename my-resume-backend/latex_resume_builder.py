@@ -160,6 +160,7 @@ class LatexResumeBuilder:
         """
         # **Escape LaTeX special characters**
         escaped_data = self.recursive_escape(self.template)
+        print("thoi ditmenoroi", escaped_data, flush=True)
 
         # **Load the LaTeX template**
         with open(template_path, "r") as f:

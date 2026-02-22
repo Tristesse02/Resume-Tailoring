@@ -17,6 +17,7 @@ class DeepResumeTailor:
         self.api_key = api_key
         self.client = OpenAI(api_key=self.api_key)
 
+    # Replace the string to become what?
     # If you found out a line is longer than 132 characters, try to break it down into two lines, and make sure both lines follow the above rules.
     def generate_system_message(self, resume_data):
         return f"""
@@ -85,7 +86,7 @@ class DeepResumeTailor:
 
                 # TODO: Error handling: We are largely assuming that output_content has ```json``` block so that .extract_json() can work
                 output_content = chat_completion.choices[0].message.content.strip()
-                # print("ducdz", output_content, flush=True)
+                print("ducdz", output_content, flush=True)
                 return self.extract_json(output_content)
             except Exception as e:
                 print("Error during OpenAI processing:", str(e))
